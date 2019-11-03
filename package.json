@@ -4,9 +4,6 @@
     "author": "Ricardo Cino",
     "copyright": "Ricardo Cino",
     "description": "Container app to bundle multiple web apps",
-    "build": {
-        "appId": "com.basket.app"
-    },
     "version": "0.0.1",
     "homepage": "./",
     "main": "src/main.js",
@@ -16,7 +13,7 @@
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
+        "prod": "npm run production && node ./build-helper/replaceMain.js",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "dist": "npm run prod && electron-builder"
     },
@@ -44,9 +41,8 @@
         "ts-loader": "^6.2.1",
         "typescript": "^3.6.4",
         "vue-template-compiler": "^2.6.10",
-        "webpack-livereload-plugin": "^2.2.0"
-    },
-    "dependencies": {
+        "webpack-livereload-plugin": "^2.2.0",
         "electron-squirrel-startup": "^1.0.0"
-    }
+    },
+    "dependencies": {}
 }

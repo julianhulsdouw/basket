@@ -5,3 +5,6 @@ directories:
 appId: com.basketapp.basket
 
 compression: maximum
+
+mac:
+  category: Network;InstantMessaging;

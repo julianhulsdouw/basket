@@ -25,7 +25,8 @@ mix
                 chunks: [],
             }),
             new CopyWebpackPlugin([
-                { from: './src/Static' }
+                { from: './src/Static' },
+                { from: 'package.json' }
             ])
         ],
         node: {
