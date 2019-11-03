@@ -1,0 +1,52 @@
+{
+    "name": "basket",
+    "productName": "Basket",
+    "author": "Ricardo Cino",
+    "copyright": "Ricardo Cino",
+    "description": "Container app to bundle multiple web apps",
+    "build": {
+        "appId": "com.basket.app"
+    },
+    "version": "0.0.1",
+    "homepage": "./",
+    "main": "src/main.js",
+    "scripts": {
+        "start": "cross-env NODE_ENV=development electron ./build/main.js",
+        "dev": "npm run development",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "npm run development -- --watch",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "dist": "npm run prod && electron-builder"
+    },
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/preset-react": "^7.6.3",
+        "@types/react": "^16.9.11",
+        "array-move": "^2.2.0",
+        "copy-webpack-plugin": "^5.0.4",
+        "cross-env": "^6.0.3",
+        "electron": "^7.0.1",
+        "electron-builder": "^22.1.0",
+        "fs": "0.0.1-security",
+        "html-webpack-injector": "^1.1.2",
+        "html-webpack-plugin": "^3.2.0",
+        "laravel-mix": "^5.0.0",
+        "mobx": "^5.14.2",
+        "mobx-react": "^6.1.4",
+        "node-sass": "^4.13.0",
+        "react": "^16.11.0",
+        "react-dom": "^16.11.0",
+        "react-electron-web-view": "^2.0.1",
+        "react-sortable-hoc": "^1.10.1",
+        "sass-loader": "^8.0.0",
+        "ts-loader": "^6.2.1",
+        "typescript": "^3.6.4",
+        "vue-template-compiler": "^2.6.10",
+        "webpack-livereload-plugin": "^2.2.0"
+    },
+    "dependencies": {
+        "electron-squirrel-startup": "^1.0.0"
+    }
+}

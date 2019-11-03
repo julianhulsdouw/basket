@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+}
+
+.app {
+  .draggable {
+    height: 50px;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    -webkit-app-region: drag;
+  }
+
+  .layout {
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@import "./variables.scss";
+@import "./sidebar.scss";
+@import "./sidebar-item.scss";
+@import "./view.scss";
