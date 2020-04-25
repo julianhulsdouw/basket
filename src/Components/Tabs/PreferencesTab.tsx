@@ -30,7 +30,7 @@ class PreferencesTab extends React.Component<TabProps> {
                 key="preferences"
                 onClick={() => this.clickHandler()}
             >
-                <img src="./serviceIcons/preferences.svg" className="sidebar-logo" alt="Preferences" />
+                <img src="./Static/serviceIcons/preferences.svg" className="sidebar-logo" alt="Preferences" />
             </li>
         );
     }

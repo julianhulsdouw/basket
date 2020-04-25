@@ -1,3 +1,4 @@
+const { isDevMode } = require('./Library/environment');
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
@@ -24,7 +25,9 @@ const createWindow = () => {
         },
     });
 
-    mainWindow.webContents.openDevTools();
+    if (isDevMode) {
+        mainWindow.webContents.openDevTools();
+    }
 
     // and load the index.html of the app.
     mainWindow.loadURL(

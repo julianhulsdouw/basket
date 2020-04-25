@@ -41,12 +41,25 @@ class ServiceWebView extends React.Component<iServiceWebviewProps> {
             });
 
             this.webview.view.addEventListener('ipc-message', (event) => {
-                const options = event.args[0].options;
-                options.serviceId = this.id;
-                options.title = event.args[0].title;
-                // options.icon = './serviceIcons/slack.svg';
+                if (event.channel === 'hello') {
 
-                new IpcHandler(event.args[0].notificationId, options);
+                    console.log('test');
+
+                    // const modulePath = path.join(__dirname, "/Services/whatsapp.com/index");
+                    // console.log(modulePath);
+                    // import(/* webpackMode: "eager" */ modulePath);
+                    // const test = require('./Services/whatsapp.com/index.js');
+
+                    this.service().webview.send('init-recipe', { test: 'jaa' });
+                }
+
+                if (event.channel === 'notification') {
+                    const options = event.args[0].options;
+                    options.serviceId = this.id;
+                    options.title = event.args[0].title;
+
+                    new IpcHandler(event.args[0].notificationId, options);
+                }
             });
         }
     }

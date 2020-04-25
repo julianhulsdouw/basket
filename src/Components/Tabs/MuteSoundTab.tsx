@@ -31,10 +31,10 @@ class MuteTab extends React.Component<iTabProps> {
 
     @computed get muteIcon() {
         if (this.props.SettingsStore!.sound) {
-            return './serviceIcons/volume_up-24px.svg';
+            return './Static/serviceIcons/volume_up-24px.svg';
         }
 
-        return './serviceIcons/volume_off-24px.svg';
+        return './Static/serviceIcons/volume_off-24px.svg';
     }
 
     render() {

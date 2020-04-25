@@ -17,10 +17,10 @@ class MuteNotificationTab extends React.Component<TabProps> {
 
     @computed get notificationIcon() {
         if (this.props.SettingsStore!.notifications) {
-            return './serviceIcons/notifications-24px.svg';
+            return './Static/serviceIcons/notifications-24px.svg';
         }
 
-        return './serviceIcons/notifications_off-24px.svg';
+        return './Static/serviceIcons/notifications_off-24px.svg';
     }
 
     render() {
