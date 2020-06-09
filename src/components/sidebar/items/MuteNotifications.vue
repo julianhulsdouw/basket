@@ -4,6 +4,7 @@
 
 <script>
 import BottomTab from "../tabs/BottomTab";
+import settings from "electron-settings";
 
 const notificationsOff = "static/serviceIcons/notifications_off-24px.svg";
 const notificationsOn = "static/serviceIcons/notifications-24px.svg";
@@ -19,8 +20,10 @@ export default {
             icon: null
         };
     },
-    created: function() {
-        this.icon = notificationsOff;
+    created: async function() {
+        const notificationsMuted = await settings.get("notificationsMuted");
+
+        this.icon = notificationsMuted ? notificationsOff : notificationsOn;
     },
     methods: {
         toggleNotifications() {
@@ -29,8 +32,7 @@ export default {
                     ? notificationsOn
                     : notificationsOff;
 
-            // Todo actually persist notifications toggled
-            console.log("notifications togggled");
+            settings.set("notificationsMuted", this.icon === notificationsOff);
         }
     }
 };
