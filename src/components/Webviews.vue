@@ -1,10 +1,10 @@
 <template>
     <div class="views">
-        <div class="view view-active">
+        <div id="preferences" class="view view-active" key="preferences">
             <webview
                 id="foo"
                 class="innner-view"
-                src="https://web.whatsapp.com/"
+                src="./preferences.html"
                 style="height: 100%;width: 100%;"
             ></webview>
         </div>

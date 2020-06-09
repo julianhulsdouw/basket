@@ -5,24 +5,28 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const outputDir = 'build/';
 
-let indexFile = 'index.html';
-
 mix
     .setPublicPath(outputDir)
     .js('src/main.js', outputDir)
-    .ts('src/renderer.js', outputDir)
+    .js('src/renderer.js', outputDir)
+    .js('src/preferences.js', outputDir)
     .webpackConfig({
         target: 'electron-renderer',
         plugins: [
             new LiveReloadPlugin(),
             new HtmlWebpackPlugin({
-                template: './src/' + indexFile,
+                template: './src/index.html',
                 filename: './index.html',
+                chunks: [],
+            }),
+            new HtmlWebpackPlugin({
+                template: './src/preferences.html',
+                filename: './preferences.html',
                 chunks: [],
             }),
             new CopyWebpackPlugin({
                 patterns: [
-                    { from: './src/static', to: 'Static' },
+                    { from: './src/static', to: 'static' },
                     { from: 'package.json' }
                 ]
             })
