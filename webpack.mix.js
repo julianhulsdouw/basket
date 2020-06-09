@@ -6,15 +6,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const outputDir = 'build/';
 
 let indexFile = 'index.html';
-if ((process.env.NODE_ENV || false) === 'development') {
-    indexFile = 'index_dev.html';
-}
 
 mix
     .setPublicPath(outputDir)
     .js('src/main.js', outputDir)
-    .ts('src/renderer.tsx', outputDir)
-    .js('src/Components/Webviews/Library/servicePreload.js', outputDir)
+    .ts('src/renderer.js', outputDir)
     .webpackConfig({
         target: 'electron-renderer',
         plugins: [
@@ -24,12 +20,17 @@ mix
                 filename: './index.html',
                 chunks: [],
             }),
-            new CopyWebpackPlugin([
-                { from: './src/Static', to: 'Static' },
-                { from: 'package.json' }
-            ])
+            new CopyWebpackPlugin({
+                patterns: [
+                    { from: './src/static', to: 'Static' },
+                    { from: 'package.json' }
+                ]
+            })
         ],
         node: {
             __dirname: false,
         }
+    })
+    .options({
+        globalVueStyles: './src/sass/all.scss',
     });

@@ -1,18 +1,9 @@
-const { isDevMode } = require('./Library/environment');
 const { app, BrowserWindow } = require('electron');
-const path = require('path');
 
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
-    app.quit();
-}
 
-let mainWindow;
-let forceQuit;
-
-const createWindow = () => {
+function createWindow() {
     // Create the browser window.
-    mainWindow = new BrowserWindow({
+    const window = new BrowserWindow({
         titleBarStyle: process.platform === 'darwin' ? 'hidden' : '',
         title: 'Basket',
         height: 680,
@@ -25,41 +16,24 @@ const createWindow = () => {
         },
     });
 
-    if (isDevMode) {
-        mainWindow.webContents.openDevTools();
-    }
+    // if (isDevMode) {
+    window.webContents.openDevTools();
+    // }
 
     // and load the index.html of the app.
-    mainWindow.loadURL(
-        `file://${path.join(__dirname, "/index.html")}`
-    );
+    window.loadFile('index.html');
+}
 
-    mainWindow.on("close", (event) => {
-        event.preventDefault();
-        if (!forceQuit && process.platform === "darwin") {
-            mainWindow.hide();
-        } else {
-            app.exit(0);
-        }
-    });
-};
+// This method will be called when Electron has finished
+// initialization and is ready to create browser windows.
+// Some APIs can only be used after this event occurs.
+app.whenReady().then(createWindow)
 
-app.on('ready', createWindow);
-
-app.on("window-all-closed", (event) => {
-    event.preventDefault();
-    if (!forceQuit && process.platform === "darwin") {
-        mainWindow.hide();
-    } else {
-        app.exit(0);
+// Quit when all windows are closed.
+app.on('window-all-closed', () => {
+    // On macOS it is common for applications and their menu bar
+    // to stay active until the user quits explicitly with Cmd + Q
+    if (process.platform !== 'darwin') {
+        app.quit()
     }
-});
-
-app.on('before-quit', () => {
-    forceQuit = true;
-});
-
-app.on("activate", () => {
-    if (mainWindow === null) createWindow;
-    else mainWindow.show();
-});
+})
