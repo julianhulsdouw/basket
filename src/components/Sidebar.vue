@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import MuteNotifications from "./items/MuteNotifications";
-import MuteSound from "./items/MuteSound";
-import Preferences from "./items/Preferences";
+import MuteNotifications from "./sidebar/items/MuteNotifications";
+import MuteSound from "./sidebar/items/MuteSound";
+import Preferences from "./sidebar/items/Preferences";
 
 export default {
     name: "Sidebar",
@@ -25,7 +25,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .outer-sidebar {
     flex: 0 0 72px;
     height: 100%;
