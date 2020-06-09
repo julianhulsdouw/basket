@@ -4,6 +4,7 @@
 
 <script>
 import BottomTab from "../tabs/BottomTab";
+import settings from "electron-settings";
 
 const soundOff = "static/serviceIcons/volume_off-24px.svg";
 const soundOn = "static/serviceIcons/volume_up-24px.svg";
@@ -19,15 +20,16 @@ export default {
             icon: null
         };
     },
-    created: function() {
-        this.icon = soundOff;
+    created: async function() {
+        const soundMuted = await settings.get("soundMuted");
+
+        this.icon = soundMuted ? soundOff : soundOn;
     },
     methods: {
         toggleSound() {
             this.icon = this.icon === soundOff ? soundOn : soundOff;
 
-            // Todo actually persist sound toggled
-            console.log("sound togggled");
+            settings.set("soundMuted", this.icon === soundOff);
         }
     }
 };
