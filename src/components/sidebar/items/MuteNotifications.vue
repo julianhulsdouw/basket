@@ -6,8 +6,8 @@
 import BottomTab from "../tabs/BottomTab";
 import settings from "electron-settings";
 
-const notificationsOff = "static/serviceIcons/notifications_off-24px.svg";
-const notificationsOn = "static/serviceIcons/notifications-24px.svg";
+const notificationsOff = "static/icons/notifications_off-24px.svg";
+const notificationsOn = "static/icons/notifications-24px.svg";
 
 export default {
     name: "MuteNotifications",

@@ -6,8 +6,8 @@
 import BottomTab from "../tabs/BottomTab";
 import settings from "electron-settings";
 
-const soundOff = "static/serviceIcons/volume_off-24px.svg";
-const soundOn = "static/serviceIcons/volume_up-24px.svg";
+const soundOff = "static/icons/volume_off-24px.svg";
+const soundOn = "static/icons/volume_up-24px.svg";
 
 export default {
     name: "MuteSound",

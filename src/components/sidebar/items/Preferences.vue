@@ -1,7 +1,7 @@
 <template>
     <BottomTab
         identifier="preferences"
-        icon="static/serviceIcons/preferences.svg"
+        icon="static/icons/preferences.svg"
         :click="showPreferences"
     />
 </template>

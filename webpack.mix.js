@@ -26,7 +26,7 @@ mix
             }),
             new CopyWebpackPlugin({
                 patterns: [
-                    { from: './src/static', to: 'static' },
+                    { from: './src/resources/static', to: 'static' },
                     { from: 'package.json' }
                 ]
             })
@@ -36,5 +36,5 @@ mix
         }
     })
     .options({
-        globalVueStyles: './src/sass/all.scss',
+        globalVueStyles: './src/resources/sass/all.scss',
     });
