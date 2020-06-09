@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import Sidebar from "./components/Sidebar";
-import Webviews from "./components/Webviews";
+import Sidebar from "./Sidebar";
+import Webviews from "./Webviews";
 
 export default {
     name: "app",
