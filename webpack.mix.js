@@ -7,16 +7,16 @@ const outputDir = 'build/';
 
 mix
     .setPublicPath(outputDir)
+    .js('src/app.js', outputDir)
     .js('src/main.js', outputDir)
-    .js('src/renderer.js', outputDir)
     .js('src/preferences.js', outputDir)
     .webpackConfig({
         target: 'electron-renderer',
         plugins: [
             new LiveReloadPlugin(),
             new HtmlWebpackPlugin({
-                template: './src/index.html',
-                filename: './index.html',
+                template: './src/main.html',
+                filename: './main.html',
                 chunks: [],
             }),
             new HtmlWebpackPlugin({
