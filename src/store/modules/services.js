@@ -8,7 +8,9 @@ const getters = {
 };
 
 const actions = {
-
+    async addService({ }, data) {
+        console.log('service created');
+    },
 };
 
 const mutations = {

@@ -1,18 +1,14 @@
 <template>
-    <BottomTab
-        identifier="preferences"
-        icon="static/icons/preferences.svg"
-        :click="showPreferences"
-    />
+    <Tab identifier="preferences" icon="static/icons/preferences.svg" :click="showPreferences" />
 </template>
 
 <script>
-import BottomTab from "../tabs/BottomTab";
+import Tab from "../tabs/Tab";
 
 export default {
     name: "Preferences",
     components: {
-        BottomTab
+        Tab
     },
     methods: {
         showPreferences() {
