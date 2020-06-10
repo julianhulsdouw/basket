@@ -22,10 +22,6 @@ export default {
         }
     },
     methods: {
-        ...mapState({
-            notificationsMuted: "settings/notificationsMuted"
-        }),
-
         ...mapActions({
             toggleNotifications: "settings/toggleNotifications"
         })

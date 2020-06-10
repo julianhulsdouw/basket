@@ -20,10 +20,6 @@ export default {
         }
     },
     methods: {
-        ...mapState({
-            soundMuted: "settings/soundMuted"
-        }),
-
         ...mapActions({
             toggleSound: "settings/toggleSound"
         })
