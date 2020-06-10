@@ -15,6 +15,8 @@ async function createWindow() {
         y: mainWindowStateKeeper.y,
         width: mainWindowStateKeeper.width,
         height: mainWindowStateKeeper.height,
+        minWidth: 800,
+        minHeight: 600,
         webPreferences: {
             nodeIntegration: true,
             webviewTag: true,
