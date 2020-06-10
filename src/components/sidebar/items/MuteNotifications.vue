@@ -22,9 +22,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions({
-            toggleNotifications: "settings/toggleNotifications"
-        })
+        ...mapActions("settings", ["toggleNotifications"])
     }
 };
 </script>

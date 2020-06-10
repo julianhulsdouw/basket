@@ -20,9 +20,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions({
-            toggleSound: "settings/toggleSound"
-        })
+        ...mapActions("settings", ["toggleSound"])
     }
 };
 </script>
