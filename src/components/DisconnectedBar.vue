@@ -19,10 +19,9 @@ export default {
 
         // Check if there is an internet connection every 30
         // seconds to, otherwise show warning.
-        var ogThis = this;
-        window.setInterval(async function() {
-            ogThis.status = await isOnline();
-        }, 30000);
+        setInterval(async () => {
+            this.status = await isOnline();
+        }, 3000);
     }
 };
 </script>
