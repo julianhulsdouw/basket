@@ -4,7 +4,7 @@
 
 <script>
 import BottomTab from "../tabs/BottomTab";
-import settings from "electron-settings";
+import { mapActions, mapState } from "vuex";
 
 const notificationsOff = "static/icons/notifications_off-24px.svg";
 const notificationsOn = "static/icons/notifications-24px.svg";
@@ -14,25 +14,21 @@ export default {
     components: {
         BottomTab
     },
-    data: () => {
-        return {
-            icon: "static/icons/basket.svg"
-        };
-    },
-    created: async function() {
-        const notificationsMuted = await settings.get("notificationsMuted");
-
-        this.icon = notificationsMuted ? notificationsOff : notificationsOn;
+    computed: {
+        icon() {
+            return this.$store.state.settings.notificationsMuted
+                ? notificationsOff
+                : notificationsOn;
+        }
     },
     methods: {
-        toggleNotifications() {
-            this.icon =
-                this.icon === notificationsOff
-                    ? notificationsOn
-                    : notificationsOff;
+        ...mapState({
+            notificationsMuted: "settings/notificationsMuted"
+        }),
 
-            settings.set("notificationsMuted", this.icon === notificationsOff);
-        }
+        ...mapActions({
+            toggleNotifications: "settings/toggleNotifications"
+        })
     }
 };
 </script>

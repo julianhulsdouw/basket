@@ -4,7 +4,7 @@
 
 <script>
 import BottomTab from "../tabs/BottomTab";
-import settings from "electron-settings";
+import { mapActions, mapState } from "vuex";
 
 const soundOff = "static/icons/volume_off-24px.svg";
 const soundOn = "static/icons/volume_up-24px.svg";
@@ -14,22 +14,19 @@ export default {
     components: {
         BottomTab
     },
-    data: () => {
-        return {
-            icon: "static/icons/basket.svg"
-        };
-    },
-    created: async function() {
-        const soundMuted = await settings.get("soundMuted");
-
-        this.icon = soundMuted ? soundOff : soundOn;
+    computed: {
+        icon() {
+            return this.$store.state.settings.soundMuted ? soundOff : soundOn;
+        }
     },
     methods: {
-        toggleSound() {
-            this.icon = this.icon === soundOff ? soundOn : soundOff;
+        ...mapState({
+            soundMuted: "settings/soundMuted"
+        }),
 
-            settings.set("soundMuted", this.icon === soundOff);
-        }
+        ...mapActions({
+            toggleSound: "settings/toggleSound"
+        })
     }
 };
 </script>
