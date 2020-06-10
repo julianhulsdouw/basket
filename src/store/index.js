@@ -6,8 +6,6 @@ import settings from './modules/settings';
 
 Vue.use(Vuex);
 
-settings.actions
-
 export default new Vuex.Store({
     modules: {
         settings,
