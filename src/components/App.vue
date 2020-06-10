@@ -6,7 +6,10 @@
             <div class="layout">
                 <Sidebar />
 
-                <Webviews />
+                <div class="content">
+                    <DisconnectedBar />
+                    <Webviews />
+                </div>
             </div>
         </div>
     </div>
@@ -15,10 +18,12 @@
 <script>
 import Sidebar from "./Sidebar";
 import Webviews from "./Webviews";
+import DisconnectedBar from "./DisconnectedBar";
 
 export default {
     name: "app",
     components: {
+        DisconnectedBar,
         Sidebar,
         Webviews
     }
@@ -48,6 +53,10 @@ export default {
         position: absolute;
         display: flex;
         height: 100%;
+        width: 100%;
+    }
+
+    .content {
         width: 100%;
     }
 }

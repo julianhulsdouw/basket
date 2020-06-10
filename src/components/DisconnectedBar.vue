@@ -1,0 +1,39 @@
+<template>
+    <div class="bar" v-if="status === false">
+        <span>Not connected to the internet.</span>
+    </div>
+</template>
+
+<script>
+const isOnline = require("is-online");
+
+export default {
+    name: "DisconnectedBar",
+    data: () => {
+        return {
+            status: true
+        };
+    },
+    mounted: async function() {
+        this.status = await isOnline();
+
+        // Check if there is an internet connection every 30
+        // seconds to, otherwise show warning.
+        var ogThis = this;
+        window.setInterval(async function() {
+            ogThis.status = await isOnline();
+        }, 30000);
+    }
+};
+</script>
+<style lang="scss" scoped>
+.bar {
+    width: 100%;
+    height: 25px;
+    background-color: $selective-yellow;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>

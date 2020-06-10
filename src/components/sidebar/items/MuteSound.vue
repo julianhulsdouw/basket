@@ -14,7 +14,6 @@ export default {
     components: {
         BottomTab
     },
-
     data: () => {
         return {
             icon: "static/icons/basket.svg"
