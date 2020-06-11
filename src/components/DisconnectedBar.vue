@@ -21,7 +21,7 @@ export default {
         // seconds to, otherwise show warning.
         setInterval(async () => {
             this.status = await isOnline();
-        }, 3000);
+        }, 30000);
     }
 };
 </script>
