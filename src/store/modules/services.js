@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const state = {
     activeService: null,
     services: [
@@ -23,8 +25,17 @@ const state = {
 const getters = {};
 
 const actions = {
-    async addService() {
-        console.log('service created');
+    async addService({ commit, state }) {
+        const newService = {
+            icon: './static/icons/basket.svg',
+            identifier: uuidv4(),
+            index: state.services.length,
+            visible: false,
+            title: 'New service',
+            url: './preferences.html',
+        };
+
+        commit('addService', newService);
     },
 
     setActive({ commit }, data) {
@@ -33,6 +44,10 @@ const actions = {
 };
 
 const mutations = {
+    addService(state, service) {
+        state.services.push(service);
+    },
+
     changeActiveService(state, identifier) {
         state.services.forEach((service) => {
             service.visible = false;
