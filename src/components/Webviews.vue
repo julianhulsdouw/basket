@@ -12,28 +12,28 @@
 </template>
 
 <script>
-export default {
-    name: "Webviews"
-};
+    export default {
+        name: 'Webviews',
+    };
 </script>
 <style lang="scss">
-.views {
-    width: 100%;
-
-    .inner-view {
-        height: 100%;
+    .views {
         width: 100%;
-    }
 
-    .view {
-        flex: 1;
-        height: 100%;
-        background-color: $silver;
-        display: none;
+        .inner-view {
+            height: 100%;
+            width: 100%;
+        }
 
-        &-active {
-            display: block;
+        .view {
+            flex: 1;
+            height: 100%;
+            background-color: $silver;
+            display: none;
+
+            &-active {
+                display: block;
+            }
         }
     }
-}
 </style>

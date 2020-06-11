@@ -1,23 +1,26 @@
 <template>
-    <Tab identifier="mutenotifications" icon="static/icons/plus-solid.svg" :click="addService" />
+    <Tab
+        identifier="mutenotifications"
+        icon="static/icons/plus-solid.svg"
+        :click="addService"
+    />
 </template>
 
 <script>
-import Tab from "../tabs/Tab";
-import { mapActions, mapState } from "vuex";
+    import { mapActions } from 'vuex';
+    import Tab from '../tabs/Tab';
 
-export default {
-    name: "AddService",
-    components: {
-        Tab
-    },
-    methods: {
-        showAddModal() {
-            // Add service to state / persist.
-        }
-    },
-    methods: {
-        ...mapActions("services", ["addService"])
-    }
-};
+    export default {
+        name: 'AddService',
+        components: {
+            Tab,
+        },
+        methods: {
+            showAddModal() {
+                // Add service to state / persist.
+            },
+
+            ...mapActions('services', ['addService']),
+        },
+    };
 </script>

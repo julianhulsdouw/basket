@@ -1,4 +1,4 @@
-import settings from "electron-settings";
+import settings from 'electron-settings';
 
 const state = {
     soundMuted: false,
@@ -6,38 +6,37 @@ const state = {
 };
 
 const getters = {
-    getNotificationsMuted: state => state.notificationsMuted,
+    getNotificationsMuted: (state) => state.notificationsMuted,
 
-    getSoundMuted: state => state.soundMuted,
+    getSoundMuted: (state) => state.soundMuted,
 };
 
 const actions = {
-    async loadSettings({ commit, state }, data) {
-        commit('setNotifications', await settings.get("notificationsMuted"));
-        commit('setSound', await settings.get("soundMuted"));
+    async loadSettings({ commit }) {
+        commit('setNotifications', await settings.get('notificationsMuted'));
+        commit('setSound', await settings.get('soundMuted'));
     },
 
-    async toggleNotifications({ commit, state }, data) {
+    async toggleNotifications({ commit, state }) {
         const notificationsMuted = !state.notificationsMuted;
 
         commit('setNotifications', notificationsMuted);
 
         // Persist to disk
-        await settings.set("notificationsMuted", notificationsMuted);
+        await settings.set('notificationsMuted', notificationsMuted);
     },
 
-    async toggleSound({ commit, state }, data) {
+    async toggleSound({ commit, state }) {
         const soundMuted = !state.soundMuted;
 
         commit('setSound', soundMuted);
 
         // Persist to disk
-        await settings.set("soundMuted", soundMuted);
+        await settings.set('soundMuted', soundMuted);
     },
 };
 
 const mutations = {
-
     setNotifications(state, value) {
         state.notificationsMuted = value;
     },

@@ -1,21 +1,21 @@
-import App from './components/App'
 import Vue from 'vue';
-import VueI18n from 'vue-i18n'
+import VueI18n from 'vue-i18n';
 import Vuex from 'vuex';
-import store from './store'
-import { mapActions } from "vuex";
+import store from './store';
+import App from './components/App';
+
+import en from './resources/lang/en.json';
+import nl from './resources/lang/nl.json';
 
 Vue.use(Vuex);
 Vue.use(VueI18n);
 
 new Vue({
-    created: async function () {
+    async created() {
         await this.loadSettings();
     },
     methods: {
-        ...mapActions({
-            loadSettings: "settings/loadSettings"
-        }),
+        ...Vuex.mapActions('settings', ['loadSettings']),
     },
     components: { App },
     template: '<App/>',
@@ -24,8 +24,8 @@ new Vue({
         locale: 'nl',
         fallbackLocale: 'en',
         messages: {
-            en: require('./resources/lang/en.json'),
-            nl: require('./resources/lang/nl.json')
-        }
+            en,
+            nl,
+        },
     }),
 }).$mount('#app');

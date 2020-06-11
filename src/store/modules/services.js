@@ -2,33 +2,29 @@ const state = {
     activeService: null,
     services: [
         {
-            icon: "./static/services/slack.svg",
+            icon: './static/services/slack.svg',
             index: 0,
-            title: "Slack",
-            url: "https://slack.com"
+            title: 'Slack',
+            url: 'https://slack.com',
         },
         {
-            icon: "./static/services/whatsapp.svg",
+            icon: './static/services/whatsapp.svg',
             index: 1,
-            title: "Whatsapp",
-            url: "https://web.whatsapp.com"
-        }
-    ]
+            title: 'Whatsapp',
+            url: 'https://web.whatsapp.com',
+        },
+    ],
 };
 
-const getters = {
-
-};
+const getters = {};
 
 const actions = {
-    async addService({ }, data) {
+    async addService() {
         console.log('service created');
     },
 };
 
-const mutations = {
-
-};
+const mutations = {};
 
 export default {
     namespaced: true,

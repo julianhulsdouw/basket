@@ -5,34 +5,32 @@
 </template>
 
 <script>
-const isOnline = require("is-online");
+    const isOnline = require('is-online');
 
-export default {
-    name: "DisconnectedBar",
-    data: () => {
-        return {
-            status: true
-        };
-    },
-    mounted: async function() {
-        this.status = await isOnline();
-
-        // Check if there is an internet connection every 30
-        // seconds to, otherwise show warning.
-        setInterval(async () => {
+    export default {
+        name: 'DisconnectedBar',
+        data: () => ({
+            status: true,
+        }),
+        mounted: async () => {
             this.status = await isOnline();
-        }, 30000);
-    }
-};
+
+            // Check if there is an internet connection every 30
+            // seconds to, otherwise show warning.
+            setInterval(async () => {
+                this.status = await isOnline();
+            }, 30000);
+        },
+    };
 </script>
 <style lang="scss" scoped>
-.bar {
-    width: 100%;
-    height: 25px;
-    background-color: $selective-yellow;
+    .bar {
+        width: 100%;
+        height: 25px;
+        background-color: $selective-yellow;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>

@@ -1,11 +1,12 @@
-const { app, BrowserWindow } = require('electron');
 import settings from 'electron-settings';
+
+const { app, BrowserWindow } = require('electron');
 
 let mainWindow;
 let forceQuit;
 
 async function createWindow() {
-    const mainWindowStateKeeper = await windowStateKeeper('main');
+    const mainWindowStateKeeper = await windowStateKeeper('main'); // eslint-disable-line
 
     // Create the browser window.
     mainWindow = new BrowserWindow({
@@ -33,9 +34,10 @@ async function createWindow() {
     // and load the index.html of the app.
     mainWindow.loadFile('app.html');
 
-    mainWindow.on("close", (event) => {
+    mainWindow.on('close', (event) => {
         event.preventDefault();
-        if (!forceQuit && process.platform === "darwin") {
+
+        if (!forceQuit && process.platform === 'darwin') {
             mainWindow.hide();
         } else {
             app.exit(0);
@@ -46,19 +48,23 @@ async function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.whenReady().then(createWindow)
+app.whenReady().then(createWindow());
 
 app.on('before-quit', () => {
     forceQuit = true;
 });
 
-app.on("activate", () => {
-    if (mainWindow === null) createWindow;
-    else mainWindow.show();
+app.on('activate', () => {
+    if (mainWindow === null) {
+        createWindow(); // eslint-disbale-line
+    } else {
+        mainWindow.show();
+    }
 });
 
 async function windowStateKeeper(windowName) {
-    let window, windowState;
+    let window;
+    let windowState;
 
     async function setBounds() {
         // Restore from settings
@@ -85,19 +91,19 @@ async function windowStateKeeper(windowName) {
 
     function track(win) {
         window = win;
-        ['resize', 'move', 'close'].forEach(event => {
+        ['resize', 'move', 'close'].forEach((event) => {
             win.on(event, saveState);
         });
     }
 
     await setBounds();
 
-    return ({
+    return {
         x: windowState.x,
         y: windowState.y,
         width: windowState.width,
         height: windowState.height,
         isMaximized: windowState.isMaximized,
         track,
-    });
+    };
 }

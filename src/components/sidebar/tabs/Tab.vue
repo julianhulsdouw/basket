@@ -5,65 +5,66 @@
 </template>
 
 <script>
-export default {
-    name: "Tab",
-    props: {
-        icon: {
-            required: true,
-            type: String
+    export default {
+        name: 'Tab',
+        props: {
+            icon: {
+                required: true,
+                type: String,
+            },
+            identifier: {
+                required: true,
+                type: String,
+            },
+            click: {
+                required: true,
+                type: Function,
+            },
         },
-        identifier: {
-            required: true,
-            type: String
-        },
-        click: {
-            required: true
-        }
-    }
-};
+    };
 </script>
 
 <style lang="scss">
-.sidebar-item {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 8px;
-    list-style-type: none;
-
-    &.active {
-        background-color: $bright-gray;
-    }
-
-    &:hover {
-        background-color: $bright-gray;
-        cursor: pointer;
-    }
-
-    &.small {
-        padding-top: 4px;
-        padding-bottom: 4px;
-    }
-
-    .sidebar-logo {
-        margin-left: 4px;
+    .sidebar-item {
+        margin-left: auto;
+        margin-right: auto;
         padding: 8px;
-        height: 24px;
-        width: 32px;
-        fill: $silver;
-    }
+        list-style-type: none;
 
-    &.disabled {
-        .sidebar-logo {
-            filter: grayscale(100%);
+        &.active {
+            background-color: $bright-gray;
         }
 
         &:hover {
-            cursor: default;
+            background-color: $bright-gray;
+            cursor: pointer;
+        }
+
+        &.small {
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+
+        .sidebar-logo {
+            margin-left: 4px;
+            padding: 8px;
+            height: 24px;
+            width: 32px;
+            fill: $silver;
+        }
+
+        &.disabled {
+            .sidebar-logo {
+                filter: grayscale(100%);
+            }
+
+            &:hover {
+                cursor: default;
+            }
         }
     }
-}
 
-.bottom .sidebar-item .sidebar-logo {
-    height: 24px;
-}
+    .bottom .sidebar-item .sidebar-logo {
+        height: 24px;
+    }
 </style>
