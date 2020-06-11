@@ -15,8 +15,8 @@ mix
         plugins: [
             new LiveReloadPlugin(),
             new HtmlWebpackPlugin({
-                template: './src/main.html',
-                filename: './main.html',
+                template: './src/app.html',
+                filename: './app.html',
                 chunks: [],
             }),
             new HtmlWebpackPlugin({
