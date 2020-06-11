@@ -1,6 +1,21 @@
 <template>
     <div class="views">
-        <div id="preferences" class="view view-active" key="preferences">
+        <div
+            :key="service.identifier"
+            v-for="service in sortedServices"
+            class="view"
+            :class="{ 'view-active': service.visible }"
+        >
+            <webview
+                autosize
+                :key="service.identifier"
+                class="innner-view"
+                :src="service.url"
+                style="width: 100%;height: 100%;"
+            ></webview>
+        </div>
+
+        <div id="preferences" class="view" key="preferences">
             <webview
                 id="foo"
                 class="innner-view"
@@ -14,16 +29,18 @@
 <script>
     export default {
         name: 'Webviews',
+
+        computed: {
+            sortedServices() {
+                return this.$store.state.services.services;
+            },
+        },
     };
 </script>
 <style lang="scss">
     .views {
         width: 100%;
-
-        .inner-view {
-            width: 100%;
-            height: 100%;
-        }
+        height: 100%;
 
         .view {
             display: none;

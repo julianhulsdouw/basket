@@ -1,12 +1,13 @@
 <template>
     <Tab
-        :identifier="identifier"
-        icon="static/icons/preferences.svg"
+        :identifier="service.identifier"
+        :icon="service.icon"
         :click="showService"
     />
 </template>
 
 <script>
+    import { mapActions } from 'vuex';
     import Tab from '../tabs/Tab';
 
     export default {
@@ -15,15 +16,17 @@
             Tab,
         },
         props: {
-            identifier: {
+            service: {
                 required: true,
-                type: String,
+                type: Object,
             },
         },
         methods: {
             showService() {
-                console.log('kapot');
+                this.setActive(this.service.identifier);
             },
+
+            ...mapActions('services', ['setActive']),
         },
     };
 </script>
