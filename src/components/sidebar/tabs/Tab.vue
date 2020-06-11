@@ -1,5 +1,10 @@
 <template>
-    <li class="sidebar-item small" :key="identifier" @click="click">
+    <li
+        class="sidebar-item small"
+        :class="{ active: active }"
+        :key="identifier"
+        @click="click"
+    >
         <img class="sidebar-logo" :src="icon" />
     </li>
 </template>
@@ -8,17 +13,22 @@
     export default {
         name: 'Tab',
         props: {
-            icon: {
+            active: {
+                required: false,
+                type: Boolean,
+                default: false,
+            },
+            click: {
                 required: true,
-                type: String,
+                type: Function,
             },
             identifier: {
                 required: true,
                 type: String,
             },
-            click: {
+            icon: {
                 required: true,
-                type: Function,
+                type: String,
             },
         },
     };
