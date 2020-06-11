@@ -35,32 +35,32 @@
     }
 
     .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
         flex: 0 0 72px;
         float: left;
-        height: 100%;
         width: 72px;
-        position: fixed;
-        z-index: 1;
-        top: 0;
+        height: 100%;
         padding-top: 16px;
-        left: 0;
         background-color: $shark;
 
         .services {
-            margin-top: 16px;
             position: relative;
             width: 100%;
+            margin-top: 16px;
             list-style-type: none;
-            padding-inline-start: 0px;
+            padding-inline-start: 0;
         }
 
         .bottom {
-            margin-bottom: 24px;
-            bottom: 0;
             position: absolute;
+            bottom: 0;
             width: 100%;
+            margin-bottom: 24px;
             list-style-type: none;
-            padding-inline-start: 0px;
+            padding-inline-start: 0;
         }
     }
 </style>

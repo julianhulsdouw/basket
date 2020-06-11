@@ -5,7 +5,7 @@
                 id="foo"
                 class="innner-view"
                 src="./preferences.html"
-                style="height: 100%;width: 100%;"
+                style="width: 100%;height: 100%;"
             ></webview>
         </div>
     </div>
@@ -21,15 +21,15 @@
         width: 100%;
 
         .inner-view {
-            height: 100%;
             width: 100%;
+            height: 100%;
         }
 
         .view {
+            display: none;
             flex: 1;
             height: 100%;
             background-color: $silver;
-            display: none;
 
             &-active {
                 display: block;

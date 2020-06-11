@@ -26,9 +26,9 @@
 
 <style lang="scss">
     .sidebar-item {
-        margin-left: auto;
-        margin-right: auto;
         padding: 8px;
+        margin-right: auto;
+        margin-left: auto;
         list-style-type: none;
 
         &.active {
@@ -36,8 +36,8 @@
         }
 
         &:hover {
-            background-color: $bright-gray;
             cursor: pointer;
+            background-color: $bright-gray;
         }
 
         &.small {
@@ -46,10 +46,10 @@
         }
 
         .sidebar-logo {
-            margin-left: 4px;
-            padding: 8px;
-            height: 24px;
             width: 32px;
+            height: 24px;
+            padding: 8px;
+            margin-left: 4px;
             fill: $silver;
         }
 

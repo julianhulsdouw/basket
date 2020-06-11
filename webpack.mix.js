@@ -2,6 +2,7 @@ const mix = require('laravel-mix');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 const outputDir = 'build/';
 
@@ -41,6 +42,10 @@ mix.setPublicPath(outputDir)
                     { from: './src/resources/static', to: 'static' },
                     { from: 'package.json' },
                 ],
+            }),
+            new StylelintPlugin({
+                files: ['**/*.?(vue|scss)'],
+                fix: false,
             }),
         ],
         node: {

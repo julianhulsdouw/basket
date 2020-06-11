@@ -9,9 +9,11 @@
 
     export default {
         name: 'DisconnectedBar',
-        data: () => ({
-            status: true,
-        }),
+        data() {
+            return {
+                status: true,
+            };
+        },
         async mounted() {
             this.status = await isOnline();
 
@@ -25,12 +27,11 @@
 </script>
 <style lang="scss" scoped>
     .bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 100%;
         height: 25px;
         background-color: $selective-yellow;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 </style>

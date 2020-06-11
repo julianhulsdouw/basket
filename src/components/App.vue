@@ -32,28 +32,28 @@
 
 <style lang="scss">
     .app {
-        background-color: $silver;
         position: absolute;
         display: flex;
-        height: 100%;
         width: 100%;
+        height: 100%;
+        background-color: $silver;
 
         .draggable {
-            height: 50px;
-            left: 0;
-            pointer-events: none;
             position: absolute;
             top: 0;
-            width: 100%;
+            left: 0;
             z-index: 9999;
+            width: 100%;
+            height: 50px;
+            pointer-events: none;
             -webkit-app-region: drag;
         }
 
         .layout {
             position: absolute;
             display: flex;
-            height: 100%;
             width: 100%;
+            height: 100%;
         }
 
         .content {
