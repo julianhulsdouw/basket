@@ -12,7 +12,7 @@
         data: () => ({
             status: true,
         }),
-        mounted: async () => {
+        async mounted() {
             this.status = await isOnline();
 
             // Check if there is an internet connection every 30
