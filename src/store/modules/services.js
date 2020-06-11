@@ -1,6 +1,19 @@
 const state = {
     activeService: null,
-    services: []
+    services: [
+        {
+            icon: "./static/services/slack.svg",
+            index: 0,
+            title: "Slack",
+            url: "https://slack.com"
+        },
+        {
+            icon: "./static/services/whatsapp.svg",
+            index: 1,
+            title: "Whatsapp",
+            url: "https://web.whatsapp.com"
+        }
+    ]
 };
 
 const getters = {
