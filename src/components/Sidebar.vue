@@ -41,7 +41,7 @@
     };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .outer-sidebar {
         flex: 0 0 72px;
         height: 100%;
@@ -53,7 +53,6 @@
         left: 0;
         z-index: 1;
         flex: 0 0 72px;
-        float: left;
         width: 72px;
         height: 100%;
         padding-top: 16px;
@@ -62,15 +61,23 @@
         .services {
             position: relative;
             width: 100%;
+            height: calc(100% - 172px);
             margin-top: 16px;
+            overflow-y: auto;
             list-style-type: none;
             padding-inline-start: 0;
+        }
+
+        .services::-webkit-scrollbar {
+            width: 0;
+            background: transparent; /* make scrollbar transparent */
         }
 
         .bottom {
             position: absolute;
             bottom: 0;
             width: 100%;
+            height: 112px;
             margin-bottom: 24px;
             list-style-type: none;
             padding-inline-start: 0;
