@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import AppMenu from '../../library/menu';
+import AppMenu from '../../library/menu/main';
 import store from '../../store'; // eslint-disable-line
 
 const state = {
@@ -12,6 +12,9 @@ const state = {
             visible: true,
             title: 'Slack',
             url: 'https://slack.com',
+            soundEnabled: true,
+            notificationsEnabled: true,
+            enabled: true,
         },
         {
             icon: './static/services/whatsapp.svg',
@@ -20,6 +23,9 @@ const state = {
             visible: false,
             title: 'Whatsapp',
             url: 'https://web.whatsapp.com',
+            soundEnabled: true,
+            notificationsEnabled: true,
+            enabled: true,
         },
     ],
 };

@@ -4,6 +4,7 @@
         :class="{ active: active }"
         :key="identifier"
         @click="click"
+        @contextmenu.prevent="contextMenu"
     >
         <img class="sidebar-logo" :src="icon" />
     </li>
@@ -21,6 +22,11 @@
             click: {
                 required: true,
                 type: Function,
+            },
+            contextMenu: {
+                required: false,
+                type: Function,
+                default: () => {},
             },
             identifier: {
                 required: true,

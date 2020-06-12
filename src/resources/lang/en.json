@@ -1,5 +1,16 @@
 {
     "add_service": "Add service",
 
-    "internet_disconnected": "Not connected to the internet."
+    "internet_disconnected": "Not connected to the internet.",
+
+    "notifications_disable": "Disable notifications",
+    "notifications_enable": "Enable notifications",
+
+    "reload": "Reload",
+    "remove_service": "Remove service",
+
+    "service_disable": "Disabled service",
+    "service_enable": "Enable service",
+    "sound_disable": "Disabled sound",
+    "sound_enable": "Enable sound"
 }
