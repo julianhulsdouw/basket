@@ -21,7 +21,7 @@ new Vue({
     template: '<App/>',
     store,
     i18n: new VueI18n({
-        locale: 'nl',
+        locale: 'en',
         fallbackLocale: 'en',
         messages: {
             en,

@@ -1,6 +1,6 @@
 <template>
     <div class="bar" v-if="status === false">
-        <span>Not connected to the internet.</span>
+        <span>{{ $t('internet_disconnected') }}</span>
     </div>
 </template>
 

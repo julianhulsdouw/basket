@@ -1,4 +1,3 @@
 {
-    "test": "EN",
-    "testfallback": "JAJA"
+    "internet_disconnected": "Not connected to the internet."
 }
