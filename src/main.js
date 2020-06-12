@@ -1,6 +1,7 @@
 import settings from 'electron-settings';
 
 const { app, BrowserWindow } = require('electron');
+const { isDevMode } = require('./library/environment');
 
 let mainWindow;
 let forceQuit;
@@ -27,9 +28,9 @@ async function createWindow() {
     // Track window state
     mainWindowStateKeeper.track(mainWindow);
 
-    // if (isDevMode) {
-    mainWindow.webContents.openDevTools();
-    // }
+    if (isDevMode) {
+        mainWindow.webContents.openDevTools();
+    }
 
     // and load the index.html of the app.
     mainWindow.loadFile('app.html');
