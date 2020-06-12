@@ -40,6 +40,11 @@ const actions = {
         commit('addService', newService);
 
         new AppMenu(store); // eslint-disable-line
+
+        commit(
+            'changeActiveService',
+            state.services[state.services.length - 1].identifier,
+        );
     },
 
     setActive({ commit }, data) {

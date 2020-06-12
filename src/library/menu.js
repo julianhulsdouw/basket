@@ -1,6 +1,7 @@
 /* eslint indent: 0 */ // --> OFF
 
 import { isMac } from './environment';
+import i18n from './lang';
 
 const electron = window.require('electron');
 const { Menu } = electron.remote;
@@ -36,7 +37,16 @@ class AppMenu {
                 : []),
             {
                 label: 'File',
-                submenu: [isMac ? { role: 'close' } : { role: 'quit' }],
+                submenu: [
+                    {
+                        label: i18n.tc('add_service'),
+                        accelerator: 'CmdOrCtrl+N',
+                        click: () => {
+                            this.store.dispatch('services/addService');
+                        },
+                    },
+                    isMac ? { role: 'close' } : { role: 'quit' },
+                ],
             },
             {
                 label: 'Edit',

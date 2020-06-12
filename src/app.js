@@ -1,15 +1,11 @@
 import Vue from 'vue';
-import VueI18n from 'vue-i18n';
 import Vuex from 'vuex';
 import store from './store';
 import App from './components/App';
 import AppMenu from './library/menu';
-
-import en from './resources/lang/en.json';
-import nl from './resources/lang/nl.json';
+import i18n from './library/lang';
 
 Vue.use(Vuex);
-Vue.use(VueI18n);
 
 new Vue({
     async created() {
@@ -23,12 +19,5 @@ new Vue({
     components: { App },
     template: '<App/>',
     store,
-    i18n: new VueI18n({
-        locale: 'en',
-        fallbackLocale: 'en',
-        messages: {
-            en,
-            nl,
-        },
-    }),
+    i18n,
 }).$mount('#app');
