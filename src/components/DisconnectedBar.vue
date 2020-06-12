@@ -17,8 +17,8 @@
         async mounted() {
             this.status = await isOnline();
 
-            // Check if there is an internet connection every 30
-            // seconds to, otherwise show warning.
+            // Check if there is an internet connection every
+            // 30 seconds, otherwise show warning.
             setInterval(async () => {
                 this.status = await isOnline();
             }, 30000);
