@@ -1,7 +1,7 @@
 <template>
     <li
         class="sidebar-item small"
-        :class="{ active: active }"
+        :class="{ active: active, disabled: disabled }"
         :key="identifier"
         @click="click"
         @contextmenu.prevent="contextMenu"
@@ -27,6 +27,11 @@
                 required: false,
                 type: Function,
                 default: () => {},
+            },
+            disabled: {
+                required: false,
+                type: Boolean,
+                default: false,
             },
             identifier: {
                 required: true,

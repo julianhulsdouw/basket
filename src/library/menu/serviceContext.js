@@ -1,4 +1,5 @@
 import i18n from '../lang';
+import AppMenu from './main';
 
 class ContextMenu {
     constructor(store, service) {
@@ -33,7 +34,14 @@ class ContextMenu {
                 label: service.enabled
                     ? i18n.tc('service_disable')
                     : i18n.tc('service_enable'),
-                click: () => {},
+                click: () => {
+                    store.dispatch(
+                        'services/toggleService',
+                        service.identifier,
+                    );
+
+                    new AppMenu(store); // eslint-disable-line no-new
+                },
             },
             {
                 type: 'separator',

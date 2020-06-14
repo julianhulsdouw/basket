@@ -1,6 +1,7 @@
 <template>
     <Tab
         :active="service.visible"
+        :disabled="!service.enabled"
         :identifier="service.identifier"
         :icon="service.icon"
         :click="showService"

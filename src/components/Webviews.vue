@@ -2,7 +2,7 @@
     <div class="views">
         <div
             :key="service.identifier"
-            v-for="service in sortedServices"
+            v-for="service in enabledServices"
             class="view"
             :class="{ 'view-active': service.visible }"
         >
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex';
     import ServiceWebview from './webview/ServiceWebview';
 
     export default {
@@ -29,9 +30,7 @@
             ServiceWebview,
         },
         computed: {
-            sortedServices() {
-                return this.$store.state.services.services;
-            },
+            ...mapGetters('services', ['enabledServices']),
         },
     };
 </script>

@@ -28,7 +28,12 @@ const state = {
     ],
 };
 
-const getters = {};
+const getters = {
+    // eslint-disable-next-line arrow-body-style
+    enabledServices: (state) => {
+        return state.services.filter((service) => service.enabled === true);
+    },
+};
 
 const actions = {
     async addService({ commit, state }) {
@@ -49,8 +54,12 @@ const actions = {
         );
     },
 
-    setActive({ commit }, data) {
-        commit('changeActiveService', data);
+    toggleService({ commit }, identifier) {
+        commit('toggleService', identifier);
+    },
+
+    setActive({ commit }, identifier) {
+        commit('changeActiveService', identifier);
     },
 };
 
@@ -69,6 +78,16 @@ const mutations = {
             .forEach((service) => {
                 service.visible = true;
             });
+    },
+
+    toggleService(state, identifier) {
+        state.services
+            .filter((service) => service.identifier === identifier)
+            .forEach((service) => {
+                service.enabled = !service.enabled;
+            });
+
+        console.log(state.services);
     },
 };
 
