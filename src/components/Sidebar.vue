@@ -35,6 +35,7 @@
         },
         computed: {
             sortedServices() {
+                // TODO use ordered services.
                 return this.$store.state.services.services;
             },
         },

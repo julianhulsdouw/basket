@@ -1,6 +1,4 @@
 import { v4 as uuidv4 } from 'uuid';
-import AppMenu from '../../library/menu/main';
-import store from '../../store'; // eslint-disable-line
 
 const state = {
     activeService: null,
@@ -44,8 +42,6 @@ const actions = {
         };
 
         commit('addService', newService);
-
-        new AppMenu(store); // eslint-disable-line
 
         commit(
             'changeActiveService',

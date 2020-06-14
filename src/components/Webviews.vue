@@ -6,14 +6,7 @@
             class="view"
             :class="{ 'view-active': service.visible }"
         >
-            <webview
-                autosize
-                :key="service.identifier"
-                class="innner-view"
-                :src="service.url"
-                :partition="'persist:service-' + service.identifier"
-                style="width: 100%;height: 100%;"
-            ></webview>
+            <ServiceWebview :service="service"></ServiceWebview>
         </div>
 
         <div id="preferences" class="view" key="preferences">
@@ -28,9 +21,13 @@
 </template>
 
 <script>
+    import ServiceWebview from './webview/ServiceWebview';
+
     export default {
         name: 'Webviews',
-
+        components: {
+            ServiceWebview,
+        },
         computed: {
             sortedServices() {
                 return this.$store.state.services.services;

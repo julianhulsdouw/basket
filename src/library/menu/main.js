@@ -43,6 +43,8 @@ class AppMenu {
                         accelerator: 'CmdOrCtrl+N',
                         click: () => {
                             this.store.dispatch('services/addService');
+
+                            new AppMenu(this.store); // eslint-disable-line no-new
                         },
                     },
                     isMac ? { role: 'close' } : { role: 'quit' },
