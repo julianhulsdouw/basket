@@ -28,10 +28,7 @@ class ContextMenu {
                     ? i18n.tc('sound_disable')
                     : i18n.tc('sound_enable'),
                 click: () => {
-                    store.dispatch(
-                        'services/toggleSound',
-                        service.identifier,
-                    );
+                    store.dispatch('services/toggleSound', service.identifier);
                 },
             },
             {
@@ -64,7 +61,21 @@ class ContextMenu {
             {
                 label: i18n.tc('remove_service'),
                 enabled: true,
-                click: () => {},
+                click: () => {
+                    if (
+                        // eslint-disable-next-line no-alert
+                        window.confirm(
+                            'Are you sure you want to delete this service?',
+                        )
+                    ) {
+                        store.dispatch(
+                            'services/removeService',
+                            service.identifier,
+                        );
+
+                        new AppMenu(store); // eslint-disable-line no-new
+                    }
+                },
             },
         ];
     }

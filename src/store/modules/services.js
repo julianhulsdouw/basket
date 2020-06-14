@@ -67,6 +67,10 @@ const actions = {
         commit('changeActiveService', newServiceIdentifier);
     },
 
+    removeService({ commit }, identifier) {
+        commit('removeService', identifier);
+    },
+
     toggleService({ commit, getters }, identifier) {
         commit('toggleService', identifier);
 
@@ -109,6 +113,15 @@ const mutations = {
             .forEach((service) => {
                 service.visible = true;
             });
+    },
+
+    removeService(state, identifier) {
+        const index = state.services.indexOf(
+            state.services.filter(
+                (service) => service.identifier === identifier,
+            )[0],
+        );
+        state.services.splice(index, 1);
     },
 
     toggleService(state, identifier) {
