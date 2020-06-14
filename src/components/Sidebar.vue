@@ -2,11 +2,7 @@
     <div class="outer-sidebar">
         <div class="sidebar">
             <ul class="services">
-                <Service
-                    :key="service.identifier"
-                    v-for="service in sortedServices"
-                    :service="service"
-                />
+                <Services />
 
                 <AddService />
             </ul>
@@ -23,7 +19,7 @@
     import AddService from './sidebar/items/AddService';
     import MuteNotifications from './sidebar/items/MuteNotifications';
     import MuteSound from './sidebar/items/MuteSound';
-    import Service from './sidebar/items/Service';
+    import Services from './sidebar/Services';
 
     export default {
         name: 'Sidebar',
@@ -31,13 +27,7 @@
             AddService,
             MuteNotifications,
             MuteSound,
-            Service,
-        },
-        computed: {
-            sortedServices() {
-                // TODO use ordered services.
-                return this.$store.state.services.services;
-            },
+            Services,
         },
     };
 </script>

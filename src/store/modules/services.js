@@ -7,19 +7,34 @@ const state = {
 
 const getters = {
     // eslint-disable-next-line arrow-body-style
+    activeService: (state) => {
+        return state.services.filter((service) => service.visible === true)[0];
+    },
+
+    // eslint-disable-next-line arrow-body-style
     enabledServices: (state) => {
         return state.services.filter((service) => service.enabled === true);
     },
 
     // eslint-disable-next-line arrow-body-style
-    activeService: (state) => {
-        return state.services.filter((service) => service.visible === true)[0];
+    sortedServices: (state) => {
+        return state.services
+            .slice()
+            .sort((a, b) => (a.index > b.index ? 1 : -1));
     },
 };
 
 const actions = {
     async loadServices({ commit }) {
         commit('setServices', await settings.get('services'));
+    },
+
+    setServices({ commit, state }, services) {
+        commit('setServices', services);
+
+        commit('correctIndex');
+
+        settings.set('services', state.services);
     },
 
     addService({ commit, state }) {
