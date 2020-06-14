@@ -2,41 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import settings from 'electron-settings';
 
 const state = {
-    services: [
-        {
-            icon: './static/services/slack.svg',
-            identifier: 'G3aHRDw7aQyfncv5L7d',
-            index: 0,
-            visible: true,
-            title: 'Slack',
-            url: 'https://slack.com',
-            soundEnabled: true,
-            notificationsEnabled: true,
-            enabled: true,
-        },
-        {
-            icon: './static/services/whatsapp.svg',
-            identifier: 'sBfhUVp2Aw6N8cvvJ3Zp',
-            index: 1,
-            visible: false,
-            title: 'Whatsapp',
-            url: 'https://web.whatsapp.com',
-            soundEnabled: true,
-            notificationsEnabled: true,
-            enabled: true,
-        },
-        {
-            icon: './static/services/telegram.svg',
-            identifier: 'sBfhUVp2Aw6N8cvva3Zp',
-            index: 2,
-            visible: false,
-            title: 'Whatsapp',
-            url: 'https://web.telegram.org',
-            soundEnabled: true,
-            notificationsEnabled: true,
-            enabled: true,
-        },
-    ],
+    services: [],
 };
 
 const getters = {
@@ -52,6 +18,10 @@ const getters = {
 };
 
 const actions = {
+    async loadServices({ commit }) {
+        commit('setServices', await settings.get('services'));
+    },
+
     addService({ commit, state }) {
         const newServiceIdentifier = uuidv4();
         const newService = {
@@ -111,6 +81,10 @@ const actions = {
 };
 
 const mutations = {
+    setServices(state, services) {
+        state.services = services;
+    },
+
     addService(state, service) {
         state.services.push(service);
     },

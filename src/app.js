@@ -12,11 +12,13 @@ window.webviews = [];
 new Vue({
     async created() {
         await this.loadSettings();
+        await this.loadServices();
 
         this.$menu = new AppMenu(store);
     },
     methods: {
         ...Vuex.mapActions('settings', ['loadSettings']),
+        ...Vuex.mapActions('services', ['loadServices']),
     },
     components: { App },
     template: '<App/>',
