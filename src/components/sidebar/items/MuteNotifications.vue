@@ -18,8 +18,8 @@
         computed: {
             icon() {
                 return this.$store.state.settings.notificationsMuted
-                    ? 'static/icons/notifications_off-24px.svg'
-                    : 'static/icons/notifications-24px.svg';
+                    ? 'static/icons/notifications_off-black-18dp.svg'
+                    : 'static/icons/notifications-white-18dp.svg';
             },
         },
         methods: {

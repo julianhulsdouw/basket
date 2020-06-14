@@ -1,7 +1,7 @@
 <template>
     <Tab
         identifier="mutenotifications"
-        icon="static/icons/plus-solid.svg"
+        icon="static/icons/add_circle-white-18dp.svg"
         :click="addServiceHandler"
     />
 </template>

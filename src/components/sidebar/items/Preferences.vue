@@ -1,7 +1,7 @@
 <template>
     <Tab
         identifier="preferences"
-        icon="static/icons/preferences.svg"
+        icon="static/icons/settings-black-18dp.svg"
         :click="showPreferences"
     />
 </template>

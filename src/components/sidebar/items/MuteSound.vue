@@ -14,8 +14,8 @@
         computed: {
             icon() {
                 return this.$store.state.settings.soundMuted
-                    ? 'static/icons/volume_off-24px.svg'
-                    : 'static/icons/volume_up-24px.svg';
+                    ? 'static/icons/volume_off-black-18dp.svg'
+                    : 'static/icons/volume_up-white-18dp.svg';
             },
         },
         methods: {
