@@ -111,7 +111,6 @@ const mutations = {
             .forEach((service) => {
                 service.notificationsEnabled = !service.notificationsEnabled;
             });
-        console.log(state.services);
     },
 
     toggleSound(state, identifier) {
@@ -120,7 +119,6 @@ const mutations = {
             .forEach((service) => {
                 service.soundEnabled = !service.soundEnabled;
             });
-        console.log(state.services);
     },
 };
 
