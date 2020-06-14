@@ -11,7 +11,6 @@
 
         <div id="preferences" class="view" key="preferences">
             <webview
-                id="foo"
                 class="innner-view"
                 src="./preferences.html"
                 style="width: 100%;height: 100%;"

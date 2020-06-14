@@ -29,13 +29,14 @@
                 type: Object,
             },
         },
-        methods: {
+        computed: {
             showContextMenu() {
                 return Menu.buildFromTemplate(
                     new ContextMenu(this.$store, this.service),
-                ).popup();
+                );
             },
-
+        },
+        methods: {
             showService() {
                 this.setActive(this.service.identifier);
             },

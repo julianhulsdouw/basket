@@ -4,7 +4,7 @@
         :class="{ active: active, disabled: disabled }"
         :key="identifier"
         @click="click"
-        @contextmenu.prevent="contextMenu"
+        @contextmenu.prevent="showContextMenu"
     >
         <img class="sidebar-logo" :src="icon" />
     </li>
@@ -25,7 +25,7 @@
             },
             contextMenu: {
                 required: false,
-                type: Function,
+                type: Object,
                 default: () => {},
             },
             disabled: {
@@ -40,6 +40,12 @@
             icon: {
                 required: true,
                 type: String,
+            },
+        },
+        methods: {
+            showContextMenu() {
+                const menu = this.contextMenu;
+                return menu.popup();
             },
         },
     };

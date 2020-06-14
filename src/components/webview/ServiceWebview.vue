@@ -1,12 +1,14 @@
 <template>
-    <webview
-        autosize
-        :key="service.identifier"
-        class="innner-view"
-        :src="service.url"
-        :partition="'persist:service-' + service.identifier"
-        style="width: 100%;height: 100%;"
-    ></webview>
+    <div style="width: 100%;height: 100%;" :id="service.identifier">
+        <webview
+            autosize
+            :key="service.identifier"
+            class="innner-view"
+            :src="service.url"
+            style="width: 100%;height: 100%;"
+            :partition="'persist:service-' + service.identifier"
+        ></webview>
+    </div>
 </template>
 
 <script>
@@ -18,6 +20,5 @@
                 type: Object,
             },
         },
-        methods: {},
     };
 </script>

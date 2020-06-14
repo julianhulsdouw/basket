@@ -1,5 +1,6 @@
 import i18n from '../lang';
 import AppMenu from './main';
+import GetWebview from '../webview';
 
 class ContextMenu {
     constructor(store, service) {
@@ -13,7 +14,10 @@ class ContextMenu {
             },
             {
                 label: i18n.tc('reload'),
-                click: () => {},
+                click: () => {
+                    const webview = GetWebview(service.identifier);
+                    webview.loadURL(service.url);
+                },
             },
             {
                 type: 'separator',

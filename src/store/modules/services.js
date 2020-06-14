@@ -25,6 +25,17 @@ const state = {
             notificationsEnabled: true,
             enabled: true,
         },
+        {
+            icon: './static/services/telegram.svg',
+            identifier: 'sBfhUVp2Aw6N8cvva3Zp',
+            index: 2,
+            visible: false,
+            title: 'Whatsapp',
+            url: 'https://web.telegram.org',
+            soundEnabled: true,
+            notificationsEnabled: true,
+            enabled: true,
+        },
     ],
 };
 
@@ -37,9 +48,10 @@ const getters = {
 
 const actions = {
     async addService({ commit, state }) {
+        const newServiceIdentifier = uuidv4();
         const newService = {
             icon: './static/icons/basket.svg',
-            identifier: uuidv4(),
+            identifier: newServiceIdentifier,
             index: state.services.length,
             visible: false,
             title: 'New service',
@@ -48,10 +60,7 @@ const actions = {
 
         commit('addService', newService);
 
-        commit(
-            'changeActiveService',
-            state.services[state.services.length - 1].identifier,
-        );
+        commit('changeActiveService', newServiceIdentifier);
     },
 
     toggleService({ commit }, identifier) {

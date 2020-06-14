@@ -7,6 +7,8 @@ import i18n from './library/lang';
 
 Vue.use(Vuex);
 
+window.webviews = [];
+
 new Vue({
     async created() {
         await this.loadSettings();
