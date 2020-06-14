@@ -1,6 +1,8 @@
 {
     "add_service": "Dienst toevoegen",
 
+    "confirm_delete_service": "Weet je zeker dat je deze dienst wilt verwijderen?",
+
     "internet_disconnected": "Niet verbonden met internet.",
 
     "notifications_disable": "Zet notificaties uit",

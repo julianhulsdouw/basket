@@ -40,7 +40,7 @@ class AppMenu {
                 label: 'File',
                 submenu: [
                     {
-                        label: i18n.tc('add_service'),
+                        label: i18n.t('add_service'),
                         accelerator: 'CmdOrCtrl+N',
                         click: () => {
                             this.store.dispatch('services/addService');

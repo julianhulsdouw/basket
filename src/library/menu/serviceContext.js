@@ -13,7 +13,7 @@ class ContextMenu {
                 type: 'separator',
             },
             {
-                label: i18n.tc('reload'),
+                label: i18n.t('reload'),
                 click: () => {
                     const webview = GetWebview(service.identifier);
                     webview.loadURL(service.url);
@@ -25,16 +25,16 @@ class ContextMenu {
             },
             {
                 label: service.soundEnabled
-                    ? i18n.tc('sound_disable')
-                    : i18n.tc('sound_enable'),
+                    ? i18n.t('sound_disable')
+                    : i18n.t('sound_enable'),
                 click: () => {
                     store.dispatch('services/toggleSound', service.identifier);
                 },
             },
             {
                 label: service.notificationsEnabled
-                    ? i18n.tc('notifications_disable')
-                    : i18n.tc('notifications_enable'),
+                    ? i18n.t('notifications_disable')
+                    : i18n.t('notifications_enable'),
                 click: () => {
                     store.dispatch(
                         'services/toggleNotifications',
@@ -44,8 +44,8 @@ class ContextMenu {
             },
             {
                 label: service.enabled
-                    ? i18n.tc('service_disable')
-                    : i18n.tc('service_enable'),
+                    ? i18n.t('service_disable')
+                    : i18n.t('service_enable'),
                 click: () => {
                     store.dispatch(
                         'services/toggleService',
@@ -59,14 +59,12 @@ class ContextMenu {
                 type: 'separator',
             },
             {
-                label: i18n.tc('remove_service'),
+                label: i18n.t('remove_service'),
                 enabled: true,
                 click: () => {
                     if (
                         // eslint-disable-next-line no-alert
-                        window.confirm(
-                            'Are you sure you want to delete this service?',
-                        )
+                        window.confirm(i18n.t('confirm_delete_service'))
                     ) {
                         store.dispatch(
                             'services/removeService',
