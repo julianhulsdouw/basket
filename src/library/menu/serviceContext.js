@@ -18,6 +18,7 @@ class ContextMenu {
                     const webview = GetWebview(service.identifier);
                     webview.loadURL(service.url);
                 },
+                enabled: service.enabled,
             },
             {
                 type: 'separator',
@@ -26,13 +27,23 @@ class ContextMenu {
                 label: service.soundEnabled
                     ? i18n.tc('sound_disable')
                     : i18n.tc('sound_enable'),
-                click: () => {},
+                click: () => {
+                    store.dispatch(
+                        'services/toggleSound',
+                        service.identifier,
+                    );
+                },
             },
             {
                 label: service.notificationsEnabled
                     ? i18n.tc('notifications_disable')
                     : i18n.tc('notifications_enable'),
-                click: () => {},
+                click: () => {
+                    store.dispatch(
+                        'services/toggleNotifications',
+                        service.identifier,
+                    );
+                },
             },
             {
                 label: service.enabled

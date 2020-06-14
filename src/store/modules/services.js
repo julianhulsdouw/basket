@@ -67,6 +67,14 @@ const actions = {
         commit('toggleService', identifier);
     },
 
+    toggleNotifications({ commit }, identifier) {
+        commit('toggleNotifications', identifier);
+    },
+
+    toggleSound({ commit }, identifier) {
+        commit('toggleSound', identifier);
+    },
+
     setActive({ commit }, identifier) {
         commit('changeActiveService', identifier);
     },
@@ -95,7 +103,23 @@ const mutations = {
             .forEach((service) => {
                 service.enabled = !service.enabled;
             });
+    },
 
+    toggleNotifications(state, identifier) {
+        state.services
+            .filter((service) => service.identifier === identifier)
+            .forEach((service) => {
+                service.notificationsEnabled = !service.notificationsEnabled;
+            });
+        console.log(state.services);
+    },
+
+    toggleSound(state, identifier) {
+        state.services
+            .filter((service) => service.identifier === identifier)
+            .forEach((service) => {
+                service.soundEnabled = !service.soundEnabled;
+            });
         console.log(state.services);
     },
 };
