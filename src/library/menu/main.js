@@ -2,6 +2,7 @@
 
 import { isMac } from '../environment';
 import i18n from '../lang';
+import GetWebview from '../webview';
 
 const electron = window.require('electron');
 const { Menu } = electron.remote;
@@ -89,10 +90,14 @@ class AppMenu {
                     {
                         label: 'Open Service Developer Tools',
                         click: () => {
-                            console.log('developer console');
-                            // this.stores.ServicesStore!.activeService.webview.openDevTools();
+                            const webview = GetWebview(
+                                this.store.getters['services/activeService']
+                                    .identifier,
+                            );
+
+                            webview.openDevTools();
                         },
-                        // enabled: this.stores.ServicesStore!.activeService,
+                        enabled: this.store.getters['services/activeService'],
                     },
                     { type: 'separator' },
                     { role: 'resetzoom' },

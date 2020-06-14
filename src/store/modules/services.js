@@ -44,6 +44,11 @@ const getters = {
     enabledServices: (state) => {
         return state.services.filter((service) => service.enabled === true);
     },
+
+    // eslint-disable-next-line arrow-body-style
+    activeService: (state) => {
+        return state.services.filter((service) => service.visible === true)[0];
+    },
 };
 
 const actions = {
