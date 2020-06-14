@@ -3,7 +3,7 @@
         <div class="sidebar">
             <ul class="services">
                 <Service
-                    :key="service.index"
+                    :key="service.identifier"
                     v-for="service in sortedServices"
                     :service="service"
                 />
