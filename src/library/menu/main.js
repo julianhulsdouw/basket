@@ -123,8 +123,16 @@ class AppMenu {
                             service.identifier,
                         );
 
+                        const webview = GetWebview(
+                            this.store.getters['services/activeService']
+                                .identifier,
+                        );
+
+                        webview.focus();
+                        if (document.activeElement) {
+                            document.activeElement.blur();
+                        }
                         // TODO: Make sure the preference/add view is closed
-                        // TODO: make sure webview gets focussed.
                     },
                 })),
             },
