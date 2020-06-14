@@ -1,5 +1,5 @@
 module.exports = {
-    extends: ['airbnb-base', 'plugin:vue/strongly-recommended'],
+    extends: ['airbnb-base', 'plugin:vue/strongly-recommended', 'prettier'],
     plugins: ['import', 'html'],
     rules: {
         'import/no-extraneous-dependencies': [

@@ -64,12 +64,21 @@ const actions = {
         };
 
         commit('addService', newService);
-
         commit('changeActiveService', newServiceIdentifier);
     },
 
-    toggleService({ commit }, identifier) {
+    toggleService({ commit, getters }, identifier) {
         commit('toggleService', identifier);
+
+        if (
+            getters.activeService.identifier === identifier &&
+            getters.enabledServices.length
+        ) {
+            commit(
+                'changeActiveService',
+                getters.enabledServices[0].identifier,
+            );
+        }
     },
 
     toggleNotifications({ commit }, identifier) {
