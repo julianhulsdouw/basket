@@ -97,7 +97,8 @@ class AppMenu {
 
                             webview.openDevTools();
                         },
-                        enabled: this.store.getters['services/activeService'],
+                        enabled: this.store.getters['services/enabledServices']
+                            .length,
                     },
                     { type: 'separator' },
                     { role: 'resetzoom' },
