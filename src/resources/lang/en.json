@@ -9,8 +9,8 @@
     "reload": "Reload",
     "remove_service": "Remove service",
 
-    "service_disable": "Disabled service",
+    "service_disable": "Disable service",
     "service_enable": "Enable service",
-    "sound_disable": "Disabled sound",
+    "sound_disable": "Disable sound",
     "sound_enable": "Enable sound"
 }
