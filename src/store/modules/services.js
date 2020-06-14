@@ -42,6 +42,8 @@ const actions = {
     removeService({ commit, state }, identifier) {
         commit('removeService', identifier);
 
+        commit('correctIndex');
+
         settings.set('services', state.services);
     },
 
@@ -108,6 +110,12 @@ const mutations = {
             )[0],
         );
         state.services.splice(index, 1);
+    },
+
+    correctIndex(state) {
+        state.services.forEach((service, index) => {
+            service.index = index;
+        });
     },
 
     toggleService(state, identifier) {
