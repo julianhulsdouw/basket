@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
+import settings from 'electron-settings';
 
 const state = {
-    activeService: null,
     services: [
         {
             icon: './static/services/slack.svg',
@@ -52,7 +52,7 @@ const getters = {
 };
 
 const actions = {
-    async addService({ commit, state }) {
+    addService({ commit, state }) {
         const newServiceIdentifier = uuidv4();
         const newService = {
             icon: './static/icons/basket.svg',
@@ -65,13 +65,17 @@ const actions = {
 
         commit('addService', newService);
         commit('changeActiveService', newServiceIdentifier);
+
+        settings.set('services', state.services);
     },
 
-    removeService({ commit }, identifier) {
+    removeService({ commit, state }, identifier) {
         commit('removeService', identifier);
+
+        settings.set('services', state.services);
     },
 
-    toggleService({ commit, getters }, identifier) {
+    toggleService({ commit, getters, state }, identifier) {
         commit('toggleService', identifier);
 
         if (
@@ -83,18 +87,26 @@ const actions = {
                 getters.enabledServices[0].identifier,
             );
         }
+
+        settings.set('services', state.services);
     },
 
-    toggleNotifications({ commit }, identifier) {
+    toggleNotifications({ commit, state }, identifier) {
         commit('toggleNotifications', identifier);
+
+        settings.set('services', state.services);
     },
 
-    toggleSound({ commit }, identifier) {
+    toggleSound({ commit, state }, identifier) {
         commit('toggleSound', identifier);
+
+        settings.set('services', state.services);
     },
 
-    setActive({ commit }, identifier) {
+    setActive({ commit, state }, identifier) {
         commit('changeActiveService', identifier);
+
+        settings.set('services', state.services);
     },
 };
 
