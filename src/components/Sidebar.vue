@@ -14,6 +14,7 @@
             <div class="bottom">
                 <MuteSound />
                 <MuteNotifications />
+                <Preferences />
             </div>
         </div>
     </div>
@@ -23,6 +24,7 @@
     import AddService from '@/components/sidebar/items/AddService';
     import MuteNotifications from '@/components/sidebar/items/MuteNotifications';
     import MuteSound from '@/components/sidebar/items/MuteSound';
+    import Preferences from '@/components/sidebar/items/Preferences';
     import Services from '@/components/sidebar/Services';
 
     export default {
@@ -31,6 +33,7 @@
             AddService,
             MuteNotifications,
             MuteSound,
+            Preferences,
             Services,
         },
     };
@@ -69,7 +72,7 @@
         .services {
             position: relative;
             width: 100%;
-            height: calc(100% - 172px);
+            height: calc(100% - 212px);
             margin-top: 8px;
             overflow-y: auto;
             list-style-type: none;
@@ -84,7 +87,7 @@
         .bottom {
             position: absolute;
             width: 100%;
-            height: 112px;
+            height: 152px;
             list-style-type: none;
             padding-inline-start: 0;
         }
