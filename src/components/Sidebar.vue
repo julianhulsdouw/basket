@@ -1,6 +1,10 @@
 <template>
     <div class="outer-sidebar">
         <div class="sidebar">
+            <div class="logo">
+                <span>basket</span>
+            </div>
+
             <ul class="services">
                 <Services />
 
@@ -8,8 +12,8 @@
             </ul>
 
             <div class="bottom">
-                <MuteNotifications />
                 <MuteSound />
+                <MuteNotifications />
             </div>
         </div>
     </div>
@@ -32,9 +36,9 @@
     };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .outer-sidebar {
-        flex: 0 0 72px;
+        flex: 0 0 68px;
         height: 100%;
     }
 
@@ -43,17 +47,30 @@
         top: 0;
         left: 0;
         z-index: 1;
-        flex: 0 0 72px;
-        width: 72px;
+        width: 68px;
         height: 100%;
-        padding-top: 16px;
-        background-color: $shark;
+        background-color: $firefly;
+
+        .logo {
+            width: 100%;
+            height: 52px;
+            background-color: $blue-stone;
+
+            span {
+                position: absolute;
+                padding-top: 25px;
+                margin-left: 10px;
+                font-family: 'Lato', sans-serif;
+                font-size: 16px;
+                color: $gallery;
+            }
+        }
 
         .services {
             position: relative;
             width: 100%;
             height: calc(100% - 172px);
-            margin-top: 16px;
+            margin-top: 8px;
             overflow-y: auto;
             list-style-type: none;
             padding-inline-start: 0;
@@ -66,10 +83,8 @@
 
         .bottom {
             position: absolute;
-            bottom: 0;
             width: 100%;
             height: 112px;
-            margin-bottom: 24px;
             list-style-type: none;
             padding-inline-start: 0;
         }

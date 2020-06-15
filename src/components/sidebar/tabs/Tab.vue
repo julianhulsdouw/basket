@@ -1,12 +1,14 @@
 <template>
     <li
-        class="sidebar-item small"
+        class="sidebar-item"
         :class="{ active: active, disabled: disabled }"
         :key="identifier"
         @click="click"
         @contextmenu.prevent="showContextMenu"
     >
-        <img class="sidebar-logo" :src="icon" />
+        <div class="container">
+            <img class="sidebar-logo" :src="icon" />
+        </div>
     </li>
 </template>
 
@@ -53,30 +55,34 @@
 
 <style lang="scss">
     .sidebar-item {
-        padding: 8px;
-        margin-right: auto;
-        margin-left: auto;
+        padding: 10px 10px 0 10px;
         list-style-type: none;
 
+        .container {
+            width: 48px;
+            height: 48px;
+            border-radius: 4px;
+        }
+
         &.active {
-            background-color: $bright-gray;
+            .container {
+                background-color: $pickled-bluewood;
+            }
         }
 
         &:hover {
-            cursor: pointer;
-            background-color: $bright-gray;
-        }
-
-        &.small {
-            padding-top: 4px;
-            padding-bottom: 4px;
+            .container {
+                box-sizing: border-box;
+                cursor: pointer;
+                box-shadow: inset 0 0 0 2px $pickled-bluewood;
+            }
         }
 
         .sidebar-logo {
-            width: 32px;
+            position: relative;
+            width: 24px;
             height: 24px;
-            padding: 8px;
-            margin-left: 4px;
+            padding: 12px;
             fill: $silver;
         }
 
@@ -95,7 +101,28 @@
         }
     }
 
-    .bottom .sidebar-item .sidebar-logo {
-        height: 24px;
+    .bottom {
+        .sidebar-item {
+            padding: 10px 18px 0 18px;
+
+            .container {
+                width: 32px;
+                height: 32px;
+                border-radius: 4px;
+            }
+
+            &:hover {
+                .container {
+                    cursor: pointer;
+                    background-color: $pickled-bluewood;
+                    border-radius: 16px;
+                }
+            }
+            .sidebar-logo {
+                max-width: 16px;
+                height: 16px;
+                padding: 8px;
+            }
+        }
     }
 </style>
