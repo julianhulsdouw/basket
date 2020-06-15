@@ -1,8 +1,8 @@
 /* eslint indent: 0 */ // --> OFF
 
-import { isMac } from '../environment';
-import i18n from '../lang';
-import GetWebview from '../webview';
+import { isMac } from '@/library/environment';
+import i18n from '@/library/lang';
+import GetWebview from '@/library/webview';
 
 const electron = window.require('electron');
 const { Menu } = electron.remote;

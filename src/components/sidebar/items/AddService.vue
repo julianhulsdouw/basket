@@ -8,8 +8,8 @@
 
 <script>
     import { mapActions } from 'vuex';
-    import Tab from '../tabs/Tab';
-    import AppMenu from '../../../library/menu/main';
+    import Tab from '@/components/sidebar/tabs/Tab';
+    import AppMenu from '@/library/menu/main';
 
     export default {
         name: 'AddService',

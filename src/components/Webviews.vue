@@ -21,7 +21,7 @@
 
 <script>
     import { mapGetters } from 'vuex';
-    import ServiceWebview from './webview/ServiceWebview';
+    import ServiceWebview from '@/components/webview/ServiceWebview';
 
     export default {
         name: 'Webviews',

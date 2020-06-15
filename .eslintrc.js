@@ -100,6 +100,13 @@ module.exports = {
                 indent: 'off',
             },
         },
+        {
+            files: '**/**.{js,vue}',
+            rules: {
+                'import/extensions': 'off',
+                'import/no-unresolved': 'off',
+            },
+        },
     ],
     settings: {
         'import/resolver': {

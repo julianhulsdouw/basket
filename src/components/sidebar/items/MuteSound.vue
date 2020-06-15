@@ -4,7 +4,7 @@
 
 <script>
     import { mapActions } from 'vuex';
-    import Tab from '../tabs/Tab';
+    import Tab from '@/components/sidebar/tabs/Tab';
 
     export default {
         name: 'MuteSound',

@@ -11,8 +11,8 @@
 
 <script>
     import { mapActions } from 'vuex';
-    import Tab from '../tabs/Tab';
-    import ContextMenu from '../../../library/menu/serviceContext';
+    import Tab from '@/components/sidebar/tabs/Tab';
+    import ContextMenu from '@/library/menu/serviceContext';
 
     const electron = require('electron');
 
