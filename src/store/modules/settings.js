@@ -1,5 +1,7 @@
 import settings from 'electron-settings';
 
+settings.configure({ prettify: true });
+
 const state = {
     soundMuted: false,
     notificationsMuted: false,

@@ -1,6 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 import settings from 'electron-settings';
 
+settings.configure({ prettify: true });
+
 const state = {
     services: [],
 };
