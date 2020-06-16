@@ -103,25 +103,12 @@
 
     .bottom {
         .sidebar-item {
-            padding: 10px 18px 0 18px;
-
-            .container {
-                width: 32px;
-                height: 32px;
-                border-radius: 4px;
-            }
-
             &:hover {
                 .container {
                     cursor: pointer;
                     background-color: $pickled-bluewood;
-                    border-radius: 16px;
+                    border-radius: 20px;
                 }
-            }
-            .sidebar-logo {
-                max-width: 16px;
-                height: 16px;
-                padding: 8px;
             }
         }
     }

@@ -72,7 +72,7 @@
         .services {
             position: relative;
             width: 100%;
-            height: calc(100% - 212px);
+            height: calc(100% - 262px);
             margin-top: 8px;
             overflow-y: auto;
             list-style-type: none;
@@ -87,7 +87,6 @@
         .bottom {
             position: absolute;
             width: 100%;
-            height: 152px;
             list-style-type: none;
             padding-inline-start: 0;
         }
