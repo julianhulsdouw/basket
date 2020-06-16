@@ -47,6 +47,10 @@
         methods: {
             showContextMenu() {
                 const menu = this.contextMenu;
+                if (!menu) {
+                    return null;
+                }
+
                 return menu.popup();
             },
         },
