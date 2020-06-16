@@ -1,16 +1,21 @@
 {
     "add_service": "Dienst toevoegen",
 
+    "copy": "Kopiëren",
     "confirm_delete_service": "Weet je zeker dat je deze dienst wilt verwijderen?",
+    "cut": "Knippen",
 
     "internet_disconnected": "Niet verbonden met internet.",
 
     "notifications_disable": "Zet notificaties uit",
     "notifications_enable": "Zet notificaties aan",
 
+    "paste": "Plakken",
+
     "reload": "Herladen",
     "remove_service": "Dienst verwijderen",
 
+    "search": "Op google zoeken naar",
     "service_disable": "Zet dienst uit",
     "service_enable": "Zet dienst aan",
     "sound_disable": "Zet geluid uit",

@@ -11,6 +11,7 @@ mix.setPublicPath(outputDir)
     .js('src/app.js', outputDir)
     .js('src/main.js', outputDir)
     .js('src/preferences.js', outputDir)
+    .js('src/library/preload.js', outputDir + 'services')
     .webpackConfig({
         target: 'electron-renderer',
         module: {
@@ -41,6 +42,7 @@ mix.setPublicPath(outputDir)
             new CopyWebpackPlugin({
                 patterns: [
                     { from: './src/resources/static', to: 'static' },
+                    { from: './src/library/services', to: 'services' },
                     { from: 'package.json' },
                 ],
             }),

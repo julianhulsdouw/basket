@@ -5,6 +5,7 @@
             :key="service.identifier"
             class="innner-view"
             :src="service.url"
+            preload="./services/preload.js"
             style="width: 100%;height: 100%;"
             :partition="'persist:service-' + service.identifier"
         ></webview>
