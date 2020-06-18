@@ -8,6 +8,12 @@
     >
         <div class="container">
             <img class="sidebar-logo" :src="icon" />
+
+            <div v-if="notificationCount" class="notificationCount">
+                <div>
+                    {{ notificationCount }}
+                </div>
+            </div>
         </div>
     </li>
 </template>
@@ -43,6 +49,11 @@
                 required: true,
                 type: String,
             },
+            notificationCount: {
+                required: false,
+                type: Number,
+                default: 0,
+            },
         },
         methods: {
             showContextMenu() {
@@ -63,6 +74,7 @@
         list-style-type: none;
 
         .container {
+            position: relative;
             width: 48px;
             height: 48px;
             border-radius: 4px;
@@ -83,11 +95,30 @@
         }
 
         .sidebar-logo {
-            position: relative;
+            position: absolute;
             width: 24px;
             height: 24px;
             padding: 12px;
             fill: $silver;
+        }
+
+        .notificationCount {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            margin-top: 26px;
+            margin-left: 26px;
+            overflow: hidden;
+            font-family: 'Lato', sans-serif;
+            color: $white;
+            text-align: center;
+            background-color: $red;
+            border-radius: 8px;
+
+            div {
+                margin-top: 2px;
+                font-size: 10px;
+            }
         }
 
         &.disabled {

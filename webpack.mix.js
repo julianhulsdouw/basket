@@ -44,6 +44,7 @@ mix.setPublicPath(outputDir)
                     { from: './src/resources/static', to: 'static' },
                     { from: './src/services', to: 'services' },
                     { from: './src/library/preload.js', to: 'services' },
+                    { from: './src/library/notification.js', to: 'services' },
                     { from: './package.json' },
                 ],
             }),

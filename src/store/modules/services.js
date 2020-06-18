@@ -97,6 +97,10 @@ const actions = {
 
         settings.set('services', state.services);
     },
+
+    setMessageCount({ commit }, data) {
+        commit('setMessageCount', data);
+    },
 };
 
 const mutations = {
@@ -156,6 +160,14 @@ const mutations = {
             .filter((service) => service.identifier === identifier)
             .forEach((service) => {
                 service.soundEnabled = !service.soundEnabled;
+            });
+    },
+
+    setMessageCount(state, data) {
+        state.services
+            .filter((service) => service.identifier === data.identifier)
+            .forEach((service) => {
+                service.notificationCount = data.count;
             });
     },
 };

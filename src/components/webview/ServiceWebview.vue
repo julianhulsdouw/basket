@@ -8,11 +8,13 @@
             preload="./services/preload.js"
             style="width: 100%;height: 100%;"
             :partition="'persist:service-' + service.identifier"
+            :useragent="userAgent"
         ></webview>
     </div>
 </template>
 
 <script>
+    import { mapActions } from 'vuex';
     import GetWebview from '../../library/webview';
 
     export default {
@@ -23,21 +25,36 @@
                 type: Object,
             },
         },
+        computed: {
+            userAgent() {
+                return window.navigator.userAgent.replace(
+                    /(Basket|Electron)([^\s]+\s)/g,
+                    '',
+                );
+            },
+        },
         mounted() {
+            const webview = GetWebview(this.service.identifier);
+            const service = this.service;
+
             this.$nextTick(() => {
-                const webview = GetWebview(this.service.identifier);
-                const service = this.service;
                 webview.addEventListener('ipc-message', (event) => {
                     if (event.channel === 'init') {
-                        // const modulePath = path.join(__dirname, "/Services/whatsapp.com/index");
-                        // console.log(modulePath);
-                        // import(/* webpackMode: "eager" */ modulePath);
-                        // const test = require('./Services/whatsapp.com/index.js');
-                        console.log('ping');
                         webview.send('init-recipe', {
                             recipe: service.recipe,
                         });
                     }
+
+                    if (event.channel === 'message-count') {
+                        const unreadMessages = event.args[0] || 0;
+
+                        this.setMessageCount({
+                            identifier: this.service.identifier,
+                            count: unreadMessages,
+                        });
+                    }
+
+                    // TODO: Hijack notifications
 
                     // if (event.channel === 'notification') {
                     //     const options = event.args[0].options;
@@ -48,6 +65,9 @@
                     // }
                 });
             });
+        },
+        methods: {
+            ...mapActions('services', ['setMessageCount']),
         },
     };
 </script>

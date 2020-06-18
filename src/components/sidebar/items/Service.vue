@@ -6,6 +6,7 @@
         :icon="service.icon"
         :click="showService"
         :context-menu="showContextMenu"
+        :notification-count="service.notificationCount"
     />
 </template>
 
