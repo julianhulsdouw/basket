@@ -21,11 +21,11 @@
 </template>
 
 <script>
-    import AddService from '@/components/sidebar/items/AddService';
-    import MuteNotifications from '@/components/sidebar/items/MuteNotifications';
-    import MuteSound from '@/components/sidebar/items/MuteSound';
-    import Preferences from '@/components/sidebar/items/Preferences';
-    import Services from '@/components/sidebar/Services';
+    import AddService from './sidebar/items/AddService';
+    import MuteNotifications from './sidebar/items/MuteNotifications';
+    import MuteSound from './sidebar/items/MuteSound';
+    import Preferences from './sidebar/items/Preferences';
+    import Services from './sidebar/Services';
 
     export default {
         name: 'Sidebar',

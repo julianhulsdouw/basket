@@ -1,7 +1,9 @@
 import settings from 'electron-settings';
 
+settings.configure({ prettify: true });
+
 const { app, BrowserWindow } = require('electron');
-const { isDevMode } = require('@/library/environment');
+const { isDevMode } = require('./library/environment');
 
 let mainWindow;
 let forceQuit;

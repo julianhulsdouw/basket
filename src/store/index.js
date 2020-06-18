@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import services from '@/store/modules/services';
-import settings from '@/store/modules/settings';
+import services from './modules/services';
+import settings from './modules/settings';
 
 Vue.use(Vuex);
 

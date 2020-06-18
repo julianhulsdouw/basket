@@ -1,9 +1,16 @@
-import contextMenu from '@/library/menu/webviewContext';
+const electron = require('electron');
+const path = require('path');
 
-const webContents = require('electron').remote.getCurrentWebContents();
+// Is actually used.
+const contextMenu = require('./webviewContext');
 
-const { session } = webContents;
+const webContents = electron.remote.getCurrentWebContents();
+const ipcRenderer = electron.ipcRenderer;
 
-window.session = session;
+window.session = webContents;
 
-contextMenu();
+ipcRenderer.sendToHost('init');
+
+ipcRenderer.once('init-recipe', (channel, message) => {
+    require(path.join(__dirname, message.recipe));
+});

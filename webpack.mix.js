@@ -11,7 +11,7 @@ mix.setPublicPath(outputDir)
     .js('src/app.js', outputDir)
     .js('src/main.js', outputDir)
     .js('src/preferences.js', outputDir)
-    .js('src/library/preload.js', outputDir + 'services')
+    .js('src/library/menu/webviewContext.js', outputDir + 'services')
     .webpackConfig({
         target: 'electron-renderer',
         module: {
@@ -42,8 +42,9 @@ mix.setPublicPath(outputDir)
             new CopyWebpackPlugin({
                 patterns: [
                     { from: './src/resources/static', to: 'static' },
-                    { from: './src/library/services', to: 'services' },
-                    { from: 'package.json' },
+                    { from: './src/services', to: 'services' },
+                    { from: './src/library/preload.js', to: 'services' },
+                    { from: './package.json' },
                 ],
             }),
             new StylelintPlugin({
@@ -53,12 +54,6 @@ mix.setPublicPath(outputDir)
         ],
         node: {
             __dirname: false,
-        },
-        resolve: {
-            alias: {
-                '@': path.resolve(__dirname, 'src'),
-            },
-            extensions: ['js', 'vue', 'json'],
         },
     })
     .options({

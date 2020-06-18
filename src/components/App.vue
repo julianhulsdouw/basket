@@ -16,9 +16,9 @@
 </template>
 
 <script>
-    import Sidebar from '@/components/Sidebar';
-    import Webviews from '@/components/Webviews';
-    import DisconnectedBar from '@/components/DisconnectedBar';
+    import Sidebar from './Sidebar';
+    import Webviews from './Webviews';
+    import DisconnectedBar from './DisconnectedBar';
 
     export default {
         name: 'App',

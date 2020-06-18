@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import store from '@/store';
-import App from '@/components/App';
-import AppMenu from '@/library/menu/main';
-import i18n from '@/library/lang';
+import store from './store';
+import App from './components/App';
+import AppMenu from './library/menu/main';
+import i18n from './library/lang';
 
 Vue.use(Vuex);
 

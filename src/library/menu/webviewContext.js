@@ -1,5 +1,5 @@
-import i18n from '@/library/lang';
 import { remote, shell } from 'electron';
+import i18n from '../lang';
 
 const { Menu } = remote;
 
@@ -69,10 +69,8 @@ const buildMenu = (props) => {
     return ContextMenu;
 };
 
-export default function contextMenu() {
-    webContents.on('context-menu', async (e, props) => {
-        e.preventDefault();
-        const menu = Menu.buildFromTemplate(buildMenu(props));
-        menu.popup();
-    });
-}
+webContents.on('context-menu', async (e, props) => {
+    e.preventDefault();
+    const menu = Menu.buildFromTemplate(buildMenu(props));
+    menu.popup();
+});

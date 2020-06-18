@@ -1,6 +1,6 @@
-import i18n from '@/library/lang';
-import AppMenu from '@/library/menu/main';
-import GetWebview from '@/library/webview';
+import i18n from '../lang';
+import AppMenu from './main';
+import GetWebview from '../webview';
 
 class ContextMenu {
     constructor(store, service) {
