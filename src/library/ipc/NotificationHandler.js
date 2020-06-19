@@ -36,7 +36,6 @@ class NotificationHandler {
             this.options.title,
             this.options,
         );
-        console.log(notification);
 
         notification.onclick = (event) => {
             // Set the correct webview as active
