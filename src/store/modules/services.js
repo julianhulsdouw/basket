@@ -9,6 +9,13 @@ const state = {
 
 const getters = {
     // eslint-disable-next-line arrow-body-style
+    serviceByIdentifier: (state) => (identifier) => {
+        return state.services.filter(
+            (service) => service.identifier === identifier,
+        )[0];
+    },
+
+    // eslint-disable-next-line arrow-body-style
     activeService: (state) => {
         return state.services.filter((service) => service.visible === true)[0];
     },

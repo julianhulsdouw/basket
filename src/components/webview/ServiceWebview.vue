@@ -16,6 +16,7 @@
 <script>
     import { mapActions } from 'vuex';
     import GetWebview from '../../library/webview';
+    import NotificationHandler from '../../library/ipc/NotificationHandler';
 
     export default {
         name: 'ServiceWebview',
@@ -54,15 +55,17 @@
                         });
                     }
 
-                    // TODO: Hijack notifications
+                    if (event.channel === 'notification') {
+                        const options = event.args[0].options;
+                        options.identifier = this.service.identifier;
+                        options.title = event.args[0].title;
 
-                    // if (event.channel === 'notification') {
-                    //     const options = event.args[0].options;
-                    //     options.serviceId = this.id;
-                    //     options.title = event.args[0].title;
-
-                    //     new IpcHandler(event.args[0].notificationId, options);
-                    // }
+                        new NotificationHandler( // eslint-disable-line
+                            event.args[0].notificationId,
+                            options,
+                            this.$store,
+                        );
+                    }
                 });
             });
         },
