@@ -9,3 +9,5 @@ compression: maximum
 mac:
     category: Network;InstantMessaging;
     icon: './build/Static/basket.png'
+    hardenedRuntime: true
+    gatekeeperAssess: false
