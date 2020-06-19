@@ -5,6 +5,24 @@ setTimeout(() => {
     }
 }, 1000);
 
+const isMutedIcon = (element) =>
+    element.parentElement.parentElement.querySelectorAll('*[data-icon="muted"]')
+        .length !== 0;
+const isPinnedIcon = (element) => element.classList.contains('_1EFSv');
+
 window.checkMessageCount = () => {
-    return 15;
+    const allMessages = document.querySelectorAll(
+        '.CxUIE, .unread, ._0LqQ, .m61XR .ZKn2B',
+    );
+
+    let messageCount = 0;
+    allMessages.forEach((chat) => {
+        if (!isMutedIcon(chat) && !isPinnedIcon(chat)) {
+            chat.querySelectorAll('._31gEB').forEach((test) => {
+                messageCount += parseInt(test.innerHTML);
+            });
+        }
+    });
+
+    return messageCount;
 };
