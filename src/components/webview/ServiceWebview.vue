@@ -14,9 +14,12 @@
 </template>
 
 <script>
+    import electron from 'electron';
     import { mapActions } from 'vuex';
     import GetWebview from '../../library/webview';
     import NotificationHandler from '../../library/ipc/NotificationHandler';
+
+    const shell = electron.shell;
 
     export default {
         name: 'ServiceWebview',
@@ -39,6 +42,11 @@
             const service = this.service;
 
             this.$nextTick(() => {
+                webview.addEventListener('new-window', (event) => {
+                    event.preventDefault();
+                    shell.openExternal(event.url);
+                });
+
                 webview.addEventListener('ipc-message', (event) => {
                     if (event.channel === 'init') {
                         webview.send('init-recipe', {
