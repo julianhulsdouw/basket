@@ -1,0 +1,11 @@
+directories:
+    app: ./build
+    output: ./out
+
+appId: com.basketapp.basket
+
+compression: maximum
+
+mac:
+    category: Network;InstantMessaging;
+    icon: './build/Static/basket.png'

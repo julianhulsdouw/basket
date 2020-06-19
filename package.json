@@ -1,5 +1,6 @@
 {
     "name": "basket",
+    "productName": "Basket",
     "version": "0.0.1",
     "description": "Container app to bundle multiple web apps",
     "main": "src/main.js",
