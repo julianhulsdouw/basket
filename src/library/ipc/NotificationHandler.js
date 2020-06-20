@@ -1,6 +1,6 @@
 import { v1 as uuidv1 } from 'uuid';
 import { remote } from 'electron';
-import GetWebview from '../webview';
+import { GetWebview } from '../webview';
 
 const mainWindow = remote.getCurrentWindow();
 

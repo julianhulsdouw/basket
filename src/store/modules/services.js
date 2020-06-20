@@ -8,6 +8,10 @@ const state = {
 };
 
 const getters = {
+    allServices: (state) => {
+        return state.services;
+    },
+
     // eslint-disable-next-line arrow-body-style
     serviceByIdentifier: (state) => (identifier) => {
         return state.services.filter(

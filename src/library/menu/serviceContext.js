@@ -1,6 +1,6 @@
 import i18n from '../lang';
 import AppMenu from './main';
-import GetWebview from '../webview';
+import { GetWebview } from '../webview';
 
 class ContextMenu {
     constructor(store, service) {
@@ -29,6 +29,16 @@ class ContextMenu {
                     : i18n.t('sound_enable'),
                 click: () => {
                     store.dispatch('services/toggleSound', service.identifier);
+
+                    const webview = GetWebview(service.identifier);
+                    const allSoundMuted =
+                        store.getters['settings/getSoundMuted'];
+
+                    // When toggling sound on a service ensure the sound is muted if
+                    // the service is muted or all sound is muted.
+                    webview.setAudioMuted(
+                        !service.soundEnabled || allSoundMuted,
+                    );
                 },
             },
             {

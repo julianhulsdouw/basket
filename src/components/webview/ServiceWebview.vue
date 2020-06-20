@@ -15,8 +15,8 @@
 
 <script>
     import electron from 'electron';
-    import { mapActions } from 'vuex';
-    import GetWebview from '../../library/webview';
+    import { mapActions, mapGetters } from 'vuex';
+    import { GetWebview } from '../../library/webview';
     import NotificationHandler from '../../library/ipc/NotificationHandler';
 
     const shell = electron.shell;
@@ -75,10 +75,20 @@
                         );
                     }
                 });
+
+                // Once the dom is ready ensure the sound is muted if
+                // the service is muted or all sound is muted.
+                webview.addEventListener('dom-ready', async () => {
+                    webview.setAudioMuted(
+                        !service.soundEnabled || this.getSoundMuted(),
+                    );
+                });
             });
         },
         methods: {
             ...mapActions('services', ['setMessageCount']),
+
+            ...mapGetters('settings', ['getSoundMuted']),
         },
     };
 </script>
