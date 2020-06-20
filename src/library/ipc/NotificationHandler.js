@@ -55,7 +55,7 @@ class NotificationHandler {
 
         setTimeout(() => {
             notification.close();
-        }, 3500);
+        }, 5000);
     }
 }
 
