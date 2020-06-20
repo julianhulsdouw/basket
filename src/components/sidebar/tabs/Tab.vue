@@ -9,7 +9,10 @@
         <div class="container">
             <img class="sidebar-logo" :src="icon" />
 
-            <div v-if="notificationCount" class="notificationCount">
+            <div
+                v-if="!disabled && notificationCount"
+                class="notificationCount"
+            >
                 <div>
                     {{ notificationCount }}
                 </div>
