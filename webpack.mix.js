@@ -10,7 +10,6 @@ const outputDir = 'build/';
 mix.setPublicPath(outputDir)
     .js('src/app.js', outputDir)
     .js('src/main.js', outputDir)
-    .js('src/preferences.js', outputDir)
     .js('src/library/menu/webviewContext.js', outputDir + 'services')
     .webpackConfig({
         target: 'electron-renderer',
@@ -32,11 +31,6 @@ mix.setPublicPath(outputDir)
             new HtmlWebpackPlugin({
                 template: './src/app.html',
                 filename: './app.html',
-                chunks: [],
-            }),
-            new HtmlWebpackPlugin({
-                template: './src/preferences.html',
-                filename: './preferences.html',
                 chunks: [],
             }),
             new CopyWebpackPlugin({
