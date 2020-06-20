@@ -2,7 +2,7 @@
 
 import { isMac } from '../environment';
 import i18n from '../lang';
-import { GetWebview } from '../webview';
+import GetWebview from '../webview';
 
 const electron = window.require('electron');
 const { Menu } = electron.remote;

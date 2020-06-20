@@ -1,6 +1,6 @@
 import i18n from '../lang';
 import AppMenu from './main';
-import { GetWebview } from '../webview';
+import GetWebview from '../webview';
 
 class ContextMenu {
     constructor(store, service) {

@@ -16,7 +16,7 @@
 <script>
     import electron from 'electron';
     import { mapActions, mapGetters } from 'vuex';
-    import { GetWebview } from '../../library/webview';
+    import GetWebview from '../../library/webview';
     import NotificationHandler from '../../library/ipc/NotificationHandler';
 
     const shell = electron.shell;

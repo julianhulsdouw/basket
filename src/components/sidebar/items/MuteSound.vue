@@ -5,7 +5,7 @@
 <script>
     import { mapActions, mapGetters } from 'vuex';
     import Tab from '../tabs/Tab';
-    import { GetWebview } from '../../../library/webview';
+    import GetWebview from '../../../library/webview';
 
     export default {
         name: 'MuteSound',
