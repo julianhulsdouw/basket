@@ -1,12 +1,12 @@
 {
     "name": "basket",
     "productName": "Basket",
-    "version": "0.0.1",
+    "version": "0.2.0",
     "description": "Container app to bundle multiple web apps",
     "main": "src/main.js",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/basketapp/basket.git"
+        "url": "https://github.com/basketapp/basket.git"
     },
     "author": "Ricardo Cino",
     "license": "MIT",
@@ -20,6 +20,7 @@
         "electron": "^9.0.3",
         "electron-builder": "^22.7.0",
         "electron-settings": "^4.0.0",
+        "electron-updater": "^4.3.1",
         "eslint": "^7.2.0",
         "eslint-config-airbnb": "^18.1.0",
         "eslint-config-prettier": "^6.11.0",
@@ -55,7 +56,8 @@
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production && node ./build-helper/replaceMain.js",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "dist": "npm run prod && electron-builder"
+        "dist": "npm run prod && electron-builder",
+        "release": "npm run prod && electron-builder --publish always"
     },
     "dependencies": {
         "uuid": "^8.1.0"

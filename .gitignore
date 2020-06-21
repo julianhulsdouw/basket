@@ -5,3 +5,4 @@ out
 
 services.json
 settings.json
+electron-builder.env

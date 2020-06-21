@@ -1,4 +1,5 @@
 import settings from 'electron-settings';
+import { autoUpdater } from 'electron-updater';
 
 settings.configure({ prettify: true });
 
@@ -51,7 +52,11 @@ async function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.whenReady().then(createWindow());
+app.on('ready', () => {
+    createWindow();
+
+    autoUpdater.checkForUpdatesAndNotify();
+});
 
 app.on('before-quit', () => {
     forceQuit = true;
