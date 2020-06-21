@@ -59,6 +59,12 @@ const actions = {
         settings.set('services', state.services);
     },
 
+    hideAllServices({ commit, state }) {
+        commit('hideAllServices');
+
+        settings.set('services', state.services);
+    },
+
     removeService({ commit, state }, identifier) {
         commit('removeService', identifier);
 
@@ -134,6 +140,12 @@ const mutations = {
     correctIndex(state) {
         state.services.forEach((service, index) => {
             service.index = index;
+        });
+    },
+
+    hideAllServices(state) {
+        state.services.forEach((service) => {
+            service.visible = false;
         });
     },
 

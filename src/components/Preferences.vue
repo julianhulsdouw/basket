@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="view view-active">
         <h2>Preferences. TODO</h2>
     </div>
 </template>

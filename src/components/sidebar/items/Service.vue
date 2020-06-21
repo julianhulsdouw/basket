@@ -39,10 +39,12 @@
         },
         methods: {
             showService() {
+                this.hidePreferences();
                 this.setActive(this.service.identifier);
             },
 
             ...mapActions('services', ['setActive']),
+            ...mapActions('settings', ['hidePreferences']),
         },
     };
 </script>

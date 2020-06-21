@@ -9,26 +9,26 @@
             <ServiceWebview :service="service"></ServiceWebview>
         </div>
 
-        <div id="preferences" class="view" key="preferences">
-            <webview
-                class="innner-view"
-                src="./preferences.html"
-                style="width: 100%;height: 100%;"
-            ></webview>
-        </div>
+        <Preferences />
     </div>
 </template>
 
 <script>
     import { mapGetters } from 'vuex';
+    import Preferences from './Preferences';
     import ServiceWebview from './webview/ServiceWebview';
 
     export default {
         name: 'Webviews',
         components: {
+            Preferences,
             ServiceWebview,
         },
         computed: {
+            showPreferences() {
+                return this.$store.state.settings.showPreferences;
+            },
+
             ...mapGetters('services', ['enabledServices']),
         },
     };

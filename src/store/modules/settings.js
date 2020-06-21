@@ -17,6 +17,21 @@ const actions = {
     async loadSettings({ commit }) {
         commit('setNotifications', await settings.get('notificationsMuted'));
         commit('setSound', await settings.get('soundMuted'));
+        commit('showPreferences', await settings.get('showPreferences'));
+    },
+
+    hidePreferences({ commit }) {
+        commit('hidePreferences');
+
+        // Persist to disk
+        settings.set('showPreferences', false);
+    },
+
+    showPreferences({ commit }) {
+        commit('showPreferences');
+
+        // Persist to disk
+        settings.set('showPreferences', true);
     },
 
     async toggleNotifications({ commit, state }) {
@@ -25,7 +40,7 @@ const actions = {
         commit('setNotifications', notificationsMuted);
 
         // Persist to disk
-        await settings.set('notificationsMuted', notificationsMuted);
+        settings.set('notificationsMuted', notificationsMuted);
     },
 
     async toggleSound({ commit, state }) {
@@ -34,17 +49,25 @@ const actions = {
         commit('setSound', soundMuted);
 
         // Persist to disk
-        await settings.set('soundMuted', soundMuted);
+        settings.set('soundMuted', soundMuted);
     },
 };
 
 const mutations = {
+    hidePreferences(state) {
+        state.showPreferences = false;
+    },
+
     setNotifications(state, value) {
         state.notificationsMuted = value;
     },
 
     setSound(state, value) {
         state.soundMuted = value;
+    },
+
+    showPreferences(state) {
+        state.showPreferences = true;
     },
 };
 

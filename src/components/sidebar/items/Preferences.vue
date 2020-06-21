@@ -2,11 +2,12 @@
     <Tab
         identifier="preferences"
         icon="static/icons/settings-black-18dp.svg"
-        :click="showPreferences"
+        :click="clickHandler"
     />
 </template>
 
 <script>
+    import { mapActions } from 'vuex';
     import Tab from '../tabs/Tab';
 
     export default {
@@ -15,9 +16,16 @@
             Tab,
         },
         methods: {
-            showPreferences() {
-                console.log('kapot');
+            clickHandler() {
+                this.hideAllServices();
+
+                this.showPreferences();
+
+                console.log(this.$store.state.settings.showPreferences);
             },
+
+            ...mapActions('services', ['hideAllServices']),
+            ...mapActions('settings', ['showPreferences']),
         },
     };
 </script>
