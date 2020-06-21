@@ -59,10 +59,10 @@ const actions = {
         settings.set('services', state.services);
     },
 
-    hideAllServices({ commit, state }) {
+    async hideAllServices({ commit, state }) {
         commit('hideAllServices');
 
-        settings.set('services', state.services);
+        await settings.set('services', state.services);
     },
 
     removeService({ commit, state }, identifier) {

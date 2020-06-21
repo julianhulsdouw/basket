@@ -16,8 +16,8 @@
             Tab,
         },
         methods: {
-            clickHandler() {
-                this.hideAllServices();
+            async clickHandler() {
+                await this.hideAllServices();
 
                 this.showPreferences();
             },
