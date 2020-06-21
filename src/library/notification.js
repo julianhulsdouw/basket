@@ -33,7 +33,6 @@ class Notification {
         }
 
         if (typeof cb === 'function') {
-            // @ts-ignore
             return cb(Notification.permission);
         }
 
