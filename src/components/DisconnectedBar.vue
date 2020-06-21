@@ -25,6 +25,7 @@
         },
     };
 </script>
+
 <style lang="scss" scoped>
     .bar {
         display: flex;
