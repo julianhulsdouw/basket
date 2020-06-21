@@ -8,20 +8,13 @@ const state = {
 };
 
 const getters = {
-    allServices: (state) => {
-        return state.services;
-    },
-
-    // eslint-disable-next-line arrow-body-style
-    serviceByIdentifier: (state) => (identifier) => {
-        return state.services.filter(
-            (service) => service.identifier === identifier,
-        )[0];
-    },
-
     // eslint-disable-next-line arrow-body-style
     activeService: (state) => {
         return state.services.filter((service) => service.visible === true)[0];
+    },
+
+    allServices: (state) => {
+        return state.services;
     },
 
     // eslint-disable-next-line arrow-body-style
@@ -35,19 +28,18 @@ const getters = {
             .slice()
             .sort((a, b) => (a.index > b.index ? 1 : -1));
     },
+
+    // eslint-disable-next-line arrow-body-style
+    serviceByIdentifier: (state) => (identifier) => {
+        return state.services.filter(
+            (service) => service.identifier === identifier,
+        )[0];
+    },
 };
 
 const actions = {
     async loadServices({ commit }) {
         commit('setServices', await settings.get('services'));
-    },
-
-    setServices({ commit, state }, services) {
-        commit('setServices', services);
-
-        commit('correctIndex');
-
-        settings.set('services', state.services);
     },
 
     addService({ commit, state }) {
@@ -75,6 +67,30 @@ const actions = {
         settings.set('services', state.services);
     },
 
+    setActive({ commit, state }, identifier) {
+        commit('changeActiveService', identifier);
+
+        settings.set('services', state.services);
+    },
+
+    setMessageCount({ commit }, data) {
+        commit('setMessageCount', data);
+    },
+
+    setServices({ commit, state }, services) {
+        commit('setServices', services);
+
+        commit('correctIndex');
+
+        settings.set('services', state.services);
+    },
+
+    toggleNotifications({ commit, state }, identifier) {
+        commit('toggleNotifications', identifier);
+
+        settings.set('services', state.services);
+    },
+
     toggleService({ commit, getters, state }, identifier) {
         commit('toggleService', identifier);
 
@@ -91,34 +107,14 @@ const actions = {
         settings.set('services', state.services);
     },
 
-    toggleNotifications({ commit, state }, identifier) {
-        commit('toggleNotifications', identifier);
-
-        settings.set('services', state.services);
-    },
-
     toggleSound({ commit, state }, identifier) {
         commit('toggleSound', identifier);
 
         settings.set('services', state.services);
     },
-
-    setActive({ commit, state }, identifier) {
-        commit('changeActiveService', identifier);
-
-        settings.set('services', state.services);
-    },
-
-    setMessageCount({ commit }, data) {
-        commit('setMessageCount', data);
-    },
 };
 
 const mutations = {
-    setServices(state, services) {
-        state.services = services;
-    },
-
     addService(state, service) {
         state.services.push(service);
     },
@@ -135,6 +131,12 @@ const mutations = {
             });
     },
 
+    correctIndex(state) {
+        state.services.forEach((service, index) => {
+            service.index = index;
+        });
+    },
+
     removeService(state, identifier) {
         const index = state.services.indexOf(
             state.services.filter(
@@ -144,18 +146,16 @@ const mutations = {
         state.services.splice(index, 1);
     },
 
-    correctIndex(state) {
-        state.services.forEach((service, index) => {
-            service.index = index;
-        });
+    setMessageCount(state, data) {
+        state.services
+            .filter((service) => service.identifier === data.identifier)
+            .forEach((service) => {
+                service.notificationCount = data.count;
+            });
     },
 
-    toggleService(state, identifier) {
-        state.services
-            .filter((service) => service.identifier === identifier)
-            .forEach((service) => {
-                service.enabled = !service.enabled;
-            });
+    setServices(state, services) {
+        state.services = services;
     },
 
     toggleNotifications(state, identifier) {
@@ -166,19 +166,19 @@ const mutations = {
             });
     },
 
+    toggleService(state, identifier) {
+        state.services
+            .filter((service) => service.identifier === identifier)
+            .forEach((service) => {
+                service.enabled = !service.enabled;
+            });
+    },
+
     toggleSound(state, identifier) {
         state.services
             .filter((service) => service.identifier === identifier)
             .forEach((service) => {
                 service.soundEnabled = !service.soundEnabled;
-            });
-    },
-
-    setMessageCount(state, data) {
-        state.services
-            .filter((service) => service.identifier === data.identifier)
-            .forEach((service) => {
-                service.notificationCount = data.count;
             });
     },
 };
