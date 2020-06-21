@@ -20,8 +20,6 @@
                 this.hideAllServices();
 
                 this.showPreferences();
-
-                console.log(this.$store.state.settings.showPreferences);
             },
 
             ...mapActions('services', ['hideAllServices']),

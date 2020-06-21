@@ -25,10 +25,6 @@
             ServiceWebview,
         },
         computed: {
-            showPreferences() {
-                return this.$store.state.settings.showPreferences;
-            },
-
             ...mapGetters('services', ['enabledServices']),
         },
     };

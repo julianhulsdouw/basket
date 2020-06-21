@@ -38,12 +38,14 @@
             },
         },
         methods: {
-            showService() {
-                this.hidePreferences();
+            async showService() {
+                await this.hidePreferences();
+
                 this.setActive(this.service.identifier);
             },
 
             ...mapActions('services', ['setActive']),
+
             ...mapActions('settings', ['hidePreferences']),
         },
     };

@@ -5,12 +5,15 @@ settings.configure({ prettify: true });
 const state = {
     soundMuted: false,
     notificationsMuted: false,
+    showPreferences: false,
 };
 
 const getters = {
     getNotificationsMuted: (state) => state.notificationsMuted,
 
     getSoundMuted: (state) => state.soundMuted,
+
+    showPreferences: (state) => state.showPreferences,
 };
 
 const actions = {
@@ -20,18 +23,18 @@ const actions = {
         commit('showPreferences', await settings.get('showPreferences'));
     },
 
-    hidePreferences({ commit }) {
+    async hidePreferences({ commit }) {
         commit('hidePreferences');
 
         // Persist to disk
-        settings.set('showPreferences', false);
+        await settings.set('showPreferences', state.showPreferences);
     },
 
-    showPreferences({ commit }) {
+    async showPreferences({ commit }) {
         commit('showPreferences');
 
         // Persist to disk
-        settings.set('showPreferences', true);
+        await settings.set('showPreferences', state.showPreferences);
     },
 
     async toggleNotifications({ commit, state }) {
