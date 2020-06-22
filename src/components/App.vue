@@ -7,7 +7,6 @@
                 <Sidebar />
 
                 <div class="content">
-                    <DisconnectedBar />
                     <Webviews />
                 </div>
             </div>
@@ -18,12 +17,10 @@
 <script>
     import Sidebar from './Sidebar';
     import Webviews from './Webviews';
-    import DisconnectedBar from './DisconnectedBar';
 
     export default {
         name: 'App',
         components: {
-            DisconnectedBar,
             Sidebar,
             Webviews,
         },
