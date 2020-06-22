@@ -6,12 +6,6 @@ appId: com.basketapp.basket
 
 compression: maximum
 
-mac:
-    category: Network;InstantMessaging;
-    icon: "./build/static/basket.png"
-    hardenedRuntime: true
-    gatekeeperAssess: false
-
 linux:
     icon: ./build/static/icons/app
     category: Network;InstantMessaging;
@@ -20,3 +14,16 @@ linux:
         - target: AppImage
         - target: deb
         - target: tar.gz
+mac:
+    category: Network;InstantMessaging;
+    icon: './build/static/basket.png'
+    hardenedRuntime: true
+    gatekeeperAssess: false
+
+win:
+    icon: './build/static/basket.png'
+    target:
+        target: nsis
+        arch:
+            - x64
+            - ia32
