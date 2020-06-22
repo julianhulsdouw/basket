@@ -7,6 +7,10 @@
 
     "internet_disconnected": "Niet verbonden met internet.",
 
+    "menu_actual_size": "Originele grootte",
+    "menu_zoom_in": "Inzoomen",
+    "menu_zoom_out": "Uitzoomen",
+
     "notifications_disable": "Zet notificaties uit",
     "notifications_enable": "Zet notificaties aan",
 

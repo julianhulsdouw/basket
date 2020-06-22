@@ -113,9 +113,42 @@ class AppMenu {
                             .length,
                     },
                     { type: 'separator' },
-                    { role: 'resetzoom' },
-                    { role: 'zoomin' },
-                    { role: 'zoomout' },
+                    {
+                        label: i18n.t('menu_actual_size'),
+                        click: () => {
+                            const webview = GetWebview(
+                                this.store.getters['services/activeService']
+                                    .identifier,
+                            );
+
+                            webview.setZoomLevel(0);
+                        },
+                        accelerator: `CmdOrCtrl+0`,
+                    },
+                    {
+                        label: i18n.t('menu_zoom_in'),
+                        click: () => {
+                            const webview = GetWebview(
+                                this.store.getters['services/activeService']
+                                    .identifier,
+                            );
+
+                            webview.setZoomLevel(webview.getZoomLevel() + 1);
+                        },
+                        accelerator: `CmdOrCtrl+=`,
+                    },
+                    {
+                        label: i18n.t('menu_zoom_out'),
+                        click: () => {
+                            const webview = GetWebview(
+                                this.store.getters['services/activeService']
+                                    .identifier,
+                            );
+
+                            webview.setZoomLevel(webview.getZoomLevel() - 1);
+                        },
+                        accelerator: `CmdOrCtrl+-`,
+                    },
                     { type: 'separator' },
                     { role: 'togglefullscreen' },
                 ],

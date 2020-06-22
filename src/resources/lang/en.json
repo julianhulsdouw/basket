@@ -7,6 +7,10 @@
 
     "internet_disconnected": "Not connected to the internet.",
 
+    "menu_actual_size": "Actual size",
+    "menu_zoom_in": "Zoom in",
+    "menu_zoom_out": "Zoom out",
+
     "notifications_disable": "Disable notifications",
     "notifications_enable": "Enable notifications",
 
