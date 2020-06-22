@@ -1,6 +1,4 @@
-import settings from 'electron-settings';
-
-settings.configure({ prettify: true });
+import settings from '../../library/settings';
 
 const state = {
     soundMuted: false,

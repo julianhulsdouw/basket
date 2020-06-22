@@ -1,7 +1,5 @@
-import settings from 'electron-settings';
 import { autoUpdater } from 'electron-updater';
-
-settings.configure({ prettify: true });
+import settings from './library/settings';
 
 const { app, BrowserWindow } = require('electron');
 const { isDevMode } = require('./library/environment');
