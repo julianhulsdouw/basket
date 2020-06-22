@@ -6,9 +6,14 @@ window.checkMessageCount = () => {
 
     let messageCount = 0;
     allMessages.forEach((chat) => {
-        messageCount += parseInt(
-            chat.querySelector('[data-qa="mention_badge"]').innerHTML,
-        );
+        const mentionBadge = chat.querySelector('[data-qa="mention_badge"]');
+
+        let addCount = 1;
+        if (mentionBadge) {
+            addCount = parseInt(mentionBadge.innerHTML);
+        }
+
+        messageCount += addCount;
     });
 
     return messageCount;
