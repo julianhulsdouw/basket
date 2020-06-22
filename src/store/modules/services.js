@@ -37,7 +37,7 @@ const getters = {
 
 const actions = {
     async loadServices({ commit }) {
-        commit('setServices', await settings.get('services'));
+        commit('setServices', (await settings.get('services')) || []);
     },
 
     addService({ commit, state }) {
