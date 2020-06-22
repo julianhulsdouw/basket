@@ -22,3 +22,7 @@
 .im_message_body {
     max-width: 580px !important;
 }
+
+.footer_empty {
+    display: none !important;
+}
