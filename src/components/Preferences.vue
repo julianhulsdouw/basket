@@ -1,9 +1,11 @@
 <template>
-    <div v-if="showPreferences" class="view view-active">
-        <div class="menu">
-            <a href="#" class="active">services</a>
-            <a href="#">settings</a>
-            <a href="#">theme?</a>
+    <div id="preferences">
+        <div v-if="showPreferences" class="view view-active">
+            <div class="menu">
+                <a href="#" class="active">services</a>
+                <a href="#">settings</a>
+                <a href="#">theme?</a>
+            </div>
         </div>
     </div>
 </template>

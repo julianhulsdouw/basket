@@ -20,6 +20,10 @@
                 await this.hideAllServices();
 
                 this.showPreferences();
+
+                if (document.activeElement) {
+                    document.activeElement.blur();
+                }
             },
 
             ...mapActions('services', ['hideAllServices']),

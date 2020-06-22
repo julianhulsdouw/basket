@@ -19,11 +19,23 @@ class AppMenu {
                           submenu: [
                               { role: 'about' },
                               { type: 'separator' },
-                              // TODO: Disabled until there is a preferences modal.
-                              //   {
-                              //       label: 'Preferences',
-                              //       accelerator: 'CmdOrCtrl+,',
-                              //   },
+                              {
+                                  label: 'Preferences',
+                                  accelerator: 'CmdOrCtrl+,',
+                                  click: async () => {
+                                      await this.store.dispatch(
+                                          'services/hideAllServices',
+                                      );
+
+                                      this.store.dispatch(
+                                          'settings/showPreferences',
+                                      );
+
+                                      if (document.activeElement) {
+                                          document.activeElement.blur();
+                                      }
+                                  },
+                              },
                               { type: 'separator' },
                               { role: 'services' },
                               { type: 'separator' },
