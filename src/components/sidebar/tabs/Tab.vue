@@ -133,10 +133,6 @@
                 cursor: default;
             }
         }
-
-        &.is-reordering {
-            z-index: 9999;
-        }
     }
 
     .bottom {

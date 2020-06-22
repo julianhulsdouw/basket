@@ -1,11 +1,6 @@
 <template>
     <div class="sortable-services">
-        <SlickList
-            lock-axis="y"
-            :distance="2"
-            helper-class="is-reordering"
-            v-model="services"
-        >
+        <SlickList lock-axis="y" :distance="2" v-model="services">
             <SlickItem
                 v-for="(service, index) in services"
                 :index="index"
