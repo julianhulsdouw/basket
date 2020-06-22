@@ -8,7 +8,7 @@
         "type": "git",
         "url": "https://github.com/basketapp/basket.git"
     },
-    "author": "Ricardo Cino",
+    "author": "Ricardo Cino <ricardo@cino.io>",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/basketapp/basket/issues"
