@@ -128,10 +128,11 @@ class AppMenu {
                                 .identifier,
                         );
 
-                        webview.focus();
                         if (document.activeElement) {
                             document.activeElement.blur();
                         }
+
+                        webview.focus();
                         // TODO: Make sure the preference/add view is closed
                     },
                 })),
