@@ -52,6 +52,7 @@
         z-index: 1;
         width: 68px;
         height: 100%;
+        user-select: none;
         background-color: $firefly;
 
         .logo {
