@@ -8,6 +8,15 @@ compression: maximum
 
 mac:
     category: Network;InstantMessaging;
-    icon: './build/Static/basket.png'
+    icon: "./build/static/basket.png"
     hardenedRuntime: true
     gatekeeperAssess: false
+
+linux:
+    icon: ./build/static/icons/app
+    category: Network;InstantMessaging;
+    executableName: basket
+    target:
+        - target: AppImage
+        - target: deb
+        - target: tar.gz
