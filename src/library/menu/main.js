@@ -117,7 +117,9 @@ class AppMenu {
                             ? `CmdOrCtrl+${service.index + 1}`
                             : null,
                     enabled: service.enabled,
-                    click: () => {
+                    click: async () => {
+                        await this.store.dispatch('settings/hidePreferences');
+
                         this.store.dispatch(
                             'services/setActive',
                             service.identifier,
@@ -133,7 +135,6 @@ class AppMenu {
                         }
 
                         webview.focus();
-                        // TODO: Make sure the preference/add view is closed
                     },
                 })),
             },
