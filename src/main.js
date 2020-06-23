@@ -1,7 +1,7 @@
 import { autoUpdater } from 'electron-updater';
 import settings from './library/settings';
 
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const { isDevMode } = require('./library/environment');
 
 let mainWindow;
@@ -113,3 +113,10 @@ async function windowStateKeeper(windowName) {
         track,
     };
 }
+
+ipcMain.on('check-for-updates', () => {
+    // Check for updates
+    autoUpdater.checkForUpdatesAndNotify();
+
+    // Show notification if there are no updates.
+});

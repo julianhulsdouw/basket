@@ -1,11 +1,11 @@
 /* eslint indent: 0 */ // --> OFF
-
 import { isMac } from '../environment';
 import i18n from '../lang';
 import GetWebview from '../webview';
 
 const electron = window.require('electron');
 const { Menu } = electron.remote;
+const { ipcRenderer } = electron;
 
 class AppMenu {
     constructor(store) {
@@ -19,6 +19,12 @@ class AppMenu {
                           submenu: [
                               { role: 'about' },
                               { type: 'separator' },
+                              {
+                                  label: 'Check for updates',
+                                  click: () => {
+                                      ipcRenderer.sendSync('check-for-updates');
+                                  },
+                              },
                               {
                                   label: 'Preferences',
                                   accelerator: 'CmdOrCtrl+,',
