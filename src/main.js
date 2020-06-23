@@ -61,8 +61,8 @@ app.on('before-quit', () => {
 });
 
 app.on('activate', () => {
-    if (mainWindow === null) {
-        createWindow(); // eslint-disbale-line
+    if (BrowserWindow.getAllWindows().length === 0) {
+        createWindow();
     } else {
         mainWindow.show();
     }
