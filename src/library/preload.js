@@ -44,5 +44,10 @@ ipcRenderer.once('init-recipe', (channel, message) => {
 });
 
 setInterval(function() {
-    ipcRenderer.sendToHost('message-count', window.checkMessageCount());
+    const messageCount = window.checkMessageCount();
+
+    ipcRenderer.sendToHost(
+        'message-count',
+        isNan(messageCount) ? 0 : messageCount,
+    );
 }, 1000);
