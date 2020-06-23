@@ -3,7 +3,7 @@
         :active="service.visible"
         :disabled="!service.enabled"
         :identifier="service.identifier"
-        :icon="service.icon"
+        :icon="icon"
         :click="showService"
         :context-menu="showContextMenu"
         :notification-count="service.notificationCount"
@@ -32,6 +32,18 @@
             },
         },
         computed: {
+            icon() {
+                if (this.service.customIcon) {
+                    return this.service.customIcon;
+                }
+
+                if (this.service.icon) {
+                    return this.service.icon;
+                }
+
+                return './static/icons/basket.svg';
+            },
+
             showContextMenu() {
                 return Menu.buildFromTemplate(
                     new ContextMenu(this.$store, this.service),
