@@ -20,13 +20,13 @@ class AppMenu {
                               { role: 'about' },
                               { type: 'separator' },
                               {
-                                  label: 'Check for updates',
+                                  label: i18n.t('check_updates'),
                                   click: () => {
                                       ipcRenderer.sendSync('check-for-updates');
                                   },
                               },
                               {
-                                  label: 'Preferences',
+                                  label: i18n.t('preferences'),
                                   accelerator: 'CmdOrCtrl+,',
                                   click: async () => {
                                       await this.store.dispatch(
@@ -106,7 +106,7 @@ class AppMenu {
                     { role: 'forcereload' },
                     { role: 'toggledevtools' },
                     {
-                        label: 'Open Service Developer Tools',
+                        label: i18n.t('open_service_developer_tools'),
                         click: () => {
                             const webview = GetWebview(
                                 this.store.getters['services/activeService']

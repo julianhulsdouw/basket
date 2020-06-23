@@ -1,6 +1,8 @@
 {
     "add_service": "Dienst toevoegen",
 
+    "check_updates": "Controleer op updates",
+
     "copy": "Kopiëren",
     "confirm_delete_service": "Weet je zeker dat je deze dienst wilt verwijderen?",
     "cut": "Knippen",
@@ -14,7 +16,10 @@
     "notifications_disable": "Zet notificaties uit",
     "notifications_enable": "Zet notificaties aan",
 
+    "open_service_developer_tools": "Service Developer Tools openen",
+
     "paste": "Plakken",
+    "preferences": "Voorkeuren",
 
     "reload": "Herladen",
     "remove_service": "Dienst verwijderen",
