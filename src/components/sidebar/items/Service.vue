@@ -40,6 +40,10 @@
         },
         methods: {
             async showService() {
+                if (!this.service.enabled) {
+                    return;
+                }
+
                 await this.hidePreferences();
 
                 this.setActive(this.service.identifier);
