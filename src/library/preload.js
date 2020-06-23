@@ -48,6 +48,6 @@ setInterval(function() {
 
     ipcRenderer.sendToHost(
         'message-count',
-        isNan(messageCount) ? 0 : messageCount,
+        isNaN(messageCount) ? 0 : messageCount,
     );
 }, 1000);
