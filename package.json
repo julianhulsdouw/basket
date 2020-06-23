@@ -54,9 +54,9 @@
         "watch": "npm run development -- --watch",
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
-        "dist": "npm run production && electron-builder",
-        "release": "npm run produdction && electron-builder --publish always"
+        "prod": "npm run production && node ./build-helper/replaceMain.js",
+        "dist": "npm run prod && electron-builder",
+        "release": "npm run prod && electron-builder --publish always"
     },
     "dependencies": {
         "fs-extra": "^9.0.1",
