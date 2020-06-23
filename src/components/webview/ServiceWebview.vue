@@ -54,6 +54,15 @@
                         });
                     }
 
+                    if (event.channel === 'update-icon') {
+                        const icon = event.args[0] || null;
+
+                        this.setIcon({
+                            identifier: this.service.identifier,
+                            icon,
+                        });
+                    }
+
                     if (event.channel === 'message-count') {
                         const unreadMessages = event.args[0] || 0;
 
@@ -86,7 +95,7 @@
             });
         },
         methods: {
-            ...mapActions('services', ['setMessageCount']),
+            ...mapActions('services', ['setMessageCount', 'setIcon']),
 
             ...mapGetters('settings', ['getSoundMuted']),
         },

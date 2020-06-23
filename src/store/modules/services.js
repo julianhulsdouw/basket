@@ -81,6 +81,12 @@ const actions = {
         commit('setMessageCount', data);
     },
 
+    setIcon({ commit, state }, data) {
+        commit('setIcon', data);
+
+        settings.set('services', state.services);
+    },
+
     setServices({ commit, state }, services) {
         commit('setServices', services);
 
@@ -161,6 +167,16 @@ const mutations = {
             .filter((service) => service.identifier === data.identifier)
             .forEach((service) => {
                 service.notificationCount = data.count;
+            });
+    },
+
+    setIcon(state, data) {
+        state.services
+            .filter((service) => service.identifier === data.identifier)
+            .forEach((service) => {
+                if (!service.customIcon) {
+                    service.icon = data.icon;
+                }
             });
     },
 
