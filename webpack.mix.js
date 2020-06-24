@@ -1,5 +1,4 @@
 const mix = require('laravel-mix');
-const LiveReloadPlugin = require('webpack-livereload-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
@@ -27,7 +26,6 @@ mix.setPublicPath(outputDir)
             ],
         },
         plugins: [
-            new LiveReloadPlugin(),
             new HtmlWebpackPlugin({
                 template: './src/app.html',
                 filename: './app.html',
