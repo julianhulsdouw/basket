@@ -1,3 +1,8 @@
+const { remote } = require('electron');
+
+const webContents = remote.getCurrentWebContents();
+const { session } = webContents;
+
 setTimeout(() => {
     const elem = document.querySelector('.landing-title.version-title');
     if (elem && elem.innerText.toLowerCase().includes('google chrome')) {
@@ -26,3 +31,27 @@ window.checkMessageCount = () => {
 
     return messageCount;
 };
+
+window.addEventListener('beforeunload', async () => {
+    try {
+        session.flushStorageData();
+        session.clearStorageData({
+            storages: [
+                'appcache',
+                'serviceworkers',
+                'cachestorage',
+                'websql',
+                'indexdb',
+            ],
+        });
+
+        const registrations = await window.navigator.serviceWorker.getRegistrations();
+
+        registrations.forEach((r) => {
+            r.unregister();
+            console.log('ServiceWorker unregistered');
+        });
+    } catch (err) {
+        console.err(err);
+    }
+});
