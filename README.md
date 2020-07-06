@@ -20,4 +20,4 @@ Logo by Jasper Koopmans
 
 ### License
 
-Basket is open-sourced software licensed under the MIT license.
+Basket is open-sourced software licensed under the <a href="https://github.com/basketapp/basket/blob/master/LICENSE">Apache-2.0 License</a>.
