@@ -30,7 +30,6 @@
         justify-content: center;
         width: 100%;
         height: 52px;
-        background-color: $blue-stone;
 
         a {
             padding: 8px;
