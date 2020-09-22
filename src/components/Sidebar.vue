@@ -7,8 +7,6 @@
 
             <ul class="services">
                 <Services />
-
-                <AddService />
             </ul>
 
             <div class="bottom">
