@@ -19,7 +19,6 @@
 </template>
 
 <script>
-    import AddService from './sidebar/items/AddService';
     import MuteNotifications from './sidebar/items/MuteNotifications';
     import MuteSound from './sidebar/items/MuteSound';
     import Preferences from './sidebar/items/Preferences';
@@ -28,7 +27,6 @@
     export default {
         name: 'Sidebar',
         components: {
-            AddService,
             MuteNotifications,
             MuteSound,
             Preferences,
