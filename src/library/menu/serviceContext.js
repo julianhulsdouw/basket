@@ -10,6 +10,16 @@ class ContextMenu {
                 accelerator: `CmdOrCtrl+${service.index + 1}`,
             },
             {
+                label: i18n.t('edit'),
+                click: () => {
+                    store.dispatch(
+                        'panels/showServicePanel',
+                        service.identifier,
+                    );
+                },
+                enabled: true,
+            },
+            {
                 type: 'separator',
             },
             {

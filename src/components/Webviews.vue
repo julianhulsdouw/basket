@@ -8,20 +8,16 @@
         >
             <ServiceWebview :service="service"></ServiceWebview>
         </div>
-
-        <Preferences />
     </div>
 </template>
 
 <script>
     import { mapGetters } from 'vuex';
-    import Preferences from './Preferences';
     import ServiceWebview from './webview/ServiceWebview';
 
     export default {
         name: 'Webviews',
         components: {
-            Preferences,
             ServiceWebview,
         },
         computed: {

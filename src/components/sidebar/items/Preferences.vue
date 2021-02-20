@@ -1,13 +1,9 @@
 <template>
-    <Tab
-        identifier="preferences"
-        icon="static/icons/settings-black-18dp.svg"
-        :click="clickHandler"
-    />
+    <Tab identifier="preferences" :icon="icon" :click="clickHandler" />
 </template>
 
 <script>
-    import { mapActions } from 'vuex';
+    import { mapActions, mapGetters } from 'vuex';
     import Tab from '../tabs/Tab';
 
     export default {
@@ -15,19 +11,27 @@
         components: {
             Tab,
         },
+        computed: {
+            icon() {
+                return this.currentActivePanel === 'preferences'
+                    ? 'static/icons/settings-white-18dp.svg'
+                    : 'static/icons/settings-black-18dp.svg';
+            },
+            currentActivePanel() {
+                return this.activePanel();
+            },
+        },
         methods: {
             async clickHandler() {
-                await this.hideAllServices();
-
-                this.showPreferences();
+                this.togglePreferencesPanel();
 
                 if (document.activeElement) {
                     document.activeElement.blur();
                 }
             },
 
-            ...mapActions('services', ['hideAllServices']),
-            ...mapActions('settings', ['showPreferences']),
+            ...mapActions('panels', ['togglePreferencesPanel']),
+            ...mapGetters('panels', ['activePanel']),
         },
     };
 </script>

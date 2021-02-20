@@ -3,8 +3,9 @@ import { isMac } from '../environment';
 import i18n from '../lang';
 import GetWebview from '../webview';
 
+const { Menu } = require('@electron/remote');
+
 const electron = window.require('electron');
-const { Menu } = electron.remote;
 const { ipcRenderer } = electron;
 
 class AppMenu {
@@ -29,12 +30,8 @@ class AppMenu {
                                   label: i18n.t('preferences'),
                                   accelerator: 'CmdOrCtrl+,',
                                   click: async () => {
-                                      await this.store.dispatch(
-                                          'services/hideAllServices',
-                                      );
-
                                       this.store.dispatch(
-                                          'settings/showPreferences',
+                                          'panels/togglePreferencesPanel',
                                       );
 
                                       if (document.activeElement) {
@@ -158,8 +155,6 @@ class AppMenu {
                             : null,
                     enabled: service.enabled,
                     click: async () => {
-                        await this.store.dispatch('settings/hidePreferences');
-
                         this.store.dispatch(
                             'services/setActive',
                             service.identifier,

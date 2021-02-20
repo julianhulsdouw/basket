@@ -6,6 +6,14 @@
             <div class="layout">
                 <Sidebar />
 
+                <template v-if="currentActivePanel === 'service'">
+                    <Service />
+                </template>
+
+                <template v-if="currentActivePanel === 'preferences'">
+                    <Preferences />
+                </template>
+
                 <div class="content">
                     <Webviews />
                 </div>
@@ -15,14 +23,27 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex';
     import Sidebar from './Sidebar';
+    import Service from './panels/items/Service';
+    import Preferences from './panels/items/Preferences';
     import Webviews from './Webviews';
 
     export default {
         name: 'App',
         components: {
+            Service,
             Sidebar,
             Webviews,
+            Preferences,
+        },
+        computed: {
+            currentActivePanel() {
+                return this.activePanel();
+            },
+        },
+        methods: {
+            ...mapGetters('panels', ['activePanel']),
         },
     };
 </script>
@@ -36,7 +57,7 @@
         background-color: $silver;
 
         .draggable {
-            position: absolute;
+            position: relative;
             top: 0;
             left: 0;
             z-index: 9999;

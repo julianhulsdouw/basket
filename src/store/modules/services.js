@@ -44,11 +44,12 @@ const actions = {
         const newServiceIdentifier = uuidv4();
         const newService = {
             icon: './static/icons/basket.svg',
+            enabled: true,
             identifier: newServiceIdentifier,
             index: state.services.length,
             visible: false,
             title: 'New service',
-            url: './preferences.html',
+            url: 'https://google.nl',
         };
 
         commit('addService', newService);

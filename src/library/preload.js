@@ -3,8 +3,9 @@ const path = require('path');
 const fs = require('fs-extra');
 const contextMenu = require('./webviewContext'); // Is actually used.
 const Notification = require('./notification'); // Also actually used.
+const remote = require('@electron/remote');
 
-const webContents = electron.remote.getCurrentWebContents();
+const webContents = remote.getCurrentWebContents();
 const ipcRenderer = electron.ipcRenderer;
 
 window.session = webContents;

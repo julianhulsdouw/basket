@@ -16,9 +16,7 @@
     import ContextMenu from '../../../library/menu/serviceContext';
     import GetWebview from '../../../library/webview';
 
-    const electron = require('electron');
-
-    const { Menu } = electron.remote;
+    const { Menu } = require('@electron/remote');
 
     export default {
         name: 'Service',
@@ -33,15 +31,11 @@
         },
         computed: {
             icon() {
-                if (this.service.customIcon) {
-                    return this.service.customIcon;
-                }
-
-                if (this.service.icon) {
-                    return this.service.icon;
-                }
-
-                return './static/icons/basket.svg';
+                return (
+                    this.service.customIcon ||
+                    this.service.icon ||
+                    './static/icons/basket.svg'
+                );
             },
 
             showContextMenu() {
@@ -56,8 +50,6 @@
                     return;
                 }
 
-                await this.hidePreferences();
-
                 this.setActive(this.service.identifier);
 
                 const webview = GetWebview(this.service.identifier);
@@ -70,8 +62,6 @@
             },
 
             ...mapActions('services', ['setActive']),
-
-            ...mapActions('settings', ['hidePreferences']),
         },
     };
 </script>

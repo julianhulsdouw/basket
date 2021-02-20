@@ -4,6 +4,8 @@ import settings from './library/settings';
 const { app, BrowserWindow, ipcMain } = require('electron');
 const { isDevMode } = require('./library/environment');
 
+require('@electron/remote/main').initialize();
+
 let mainWindow;
 let forceQuit;
 
@@ -12,7 +14,7 @@ async function createWindow() {
 
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        titleBarStyle: process.platform === 'darwin' ? 'hidden' : '',
+        titleBarStyle: process.platform === 'darwin' ? 'hidden' : 'default',
         title: 'Basket',
         x: mainWindowStateKeeper.x,
         y: mainWindowStateKeeper.y,
@@ -26,15 +28,16 @@ async function createWindow() {
             enableRemoteModule: true,
         },
     });
+
     // Track window state
     mainWindowStateKeeper.track(mainWindow);
+
+    // and load the index.html of the app.
+    await mainWindow.loadFile('app.html');
 
     if (isDevMode) {
         mainWindow.webContents.openDevTools();
     }
-
-    // and load the index.html of the app.
-    mainWindow.loadFile('app.html');
 
     mainWindow.on('close', (event) => {
         event.preventDefault();
@@ -50,9 +53,8 @@ async function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', () => {
+app.on('ready', async () => {
     createWindow();
-
     autoUpdater.checkForUpdatesAndNotify();
 });
 

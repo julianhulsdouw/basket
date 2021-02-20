@@ -1,12 +1,13 @@
 <template>
     <div class="outer-sidebar">
         <div class="sidebar">
-            <div class="logo">
+            <div class="top">
                 <span>basket</span>
             </div>
 
             <ul class="services">
                 <Services />
+                <AddService />
             </ul>
 
             <div class="bottom">
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+    import AddService from './sidebar/items/AddService';
     import MuteNotifications from './sidebar/items/MuteNotifications';
     import MuteSound from './sidebar/items/MuteSound';
     import Preferences from './sidebar/items/Preferences';
@@ -27,6 +29,7 @@
     export default {
         name: 'Sidebar',
         components: {
+            AddService,
             MuteNotifications,
             MuteSound,
             Preferences,
@@ -51,7 +54,7 @@
         user-select: none;
         background-color: $firefly;
 
-        .logo {
+        .top {
             width: 100%;
             height: 52px;
             background-color: $blue-stone;

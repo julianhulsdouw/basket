@@ -17,7 +17,7 @@
             Tab,
         },
         methods: {
-            showAddModal() {
+            showAddPanel() {
                 // Add service to state / persist.
             },
 

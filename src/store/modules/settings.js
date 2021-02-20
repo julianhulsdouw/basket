@@ -3,36 +3,18 @@ import settings from '../../library/settings';
 const state = {
     soundMuted: false,
     notificationsMuted: false,
-    showPreferences: false,
 };
 
 const getters = {
     getNotificationsMuted: (state) => state.notificationsMuted,
 
     getSoundMuted: (state) => state.soundMuted,
-
-    showPreferences: (state) => state.showPreferences,
 };
 
 const actions = {
     async loadSettings({ commit }) {
         commit('setNotifications', await settings.get('notificationsMuted'));
         commit('setSound', await settings.get('soundMuted'));
-        commit('showPreferences', await settings.get('showPreferences'));
-    },
-
-    async hidePreferences({ commit }) {
-        commit('hidePreferences');
-
-        // Persist to disk
-        await settings.set('showPreferences', state.showPreferences);
-    },
-
-    async showPreferences({ commit }) {
-        commit('showPreferences');
-
-        // Persist to disk
-        await settings.set('showPreferences', state.showPreferences);
     },
 
     async toggleNotifications({ commit, state }) {
@@ -55,20 +37,12 @@ const actions = {
 };
 
 const mutations = {
-    hidePreferences(state) {
-        state.showPreferences = false;
-    },
-
     setNotifications(state, value) {
         state.notificationsMuted = value;
     },
 
     setSound(state, value) {
         state.soundMuted = value;
-    },
-
-    showPreferences(state) {
-        state.showPreferences = true;
     },
 };
 
