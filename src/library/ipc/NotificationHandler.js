@@ -1,5 +1,5 @@
 import { v1 as uuidv1 } from 'uuid';
-import { remote } from 'electron';
+import { remote, ipcRenderer } from 'electron';
 import GetWebview from '../webview';
 
 const mainWindow = remote.getCurrentWindow();
@@ -52,6 +52,8 @@ class NotificationHandler {
             }
             mainWindow.focus();
         };
+
+        ipcRenderer.send('bouncybounce');
 
         setTimeout(() => {
             notification.close();

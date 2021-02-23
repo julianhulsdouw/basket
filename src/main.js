@@ -1,7 +1,7 @@
 import { autoUpdater } from 'electron-updater';
 import settings from './library/settings';
 
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const { isDevMode } = require('./library/environment');
 
 require('@electron/remote/main').initialize();
@@ -123,3 +123,15 @@ setInterval(() => {
     });
     app.badgeCount = messageCount;
 }, 3000);
+
+ipcMain.on('bouncybounce', () => {
+    // Determine if we'd like the dock icon to bounce
+    const shouldBounce =
+        settings.getSync('notificationsMuted') === false &&
+        settings.getSync('dockBounce') === true;
+
+    // Only make bouncy bounce when on MacOS
+    if (process.platform === 'darwin' && shouldBounce) {
+        app.dock.bounce();
+    }
+});
