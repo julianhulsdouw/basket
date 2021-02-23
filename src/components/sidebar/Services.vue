@@ -1,15 +1,14 @@
 <template>
-    <div class="sortable-services">
-        <SlickList lock-axis="y" :distance="2" v-model="services">
-            <SlickItem
-                v-for="(service, index) in services"
-                :index="index"
-                :key="index"
-            >
-                <Service :service="service" />
-            </SlickItem>
-        </SlickList>
-    </div>
+    <SlickList lock-axis="y" :distance="2" v-model="services">
+        <SlickItem
+            v-for="(service, index) in services"
+            :index="index"
+            :key="index"
+            class="slick-item"
+        >
+            <Service :service="service" />
+        </SlickItem>
+    </SlickList>
 </template>
 
 <script>
@@ -46,3 +45,9 @@
         },
     };
 </script>
+
+<style lang="scss" scoped>
+    .slick-item {
+        z-index: 9999;
+    }
+</style>
