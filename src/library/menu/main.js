@@ -5,9 +5,6 @@ import GetWebview from '../webview';
 
 const { Menu } = require('@electron/remote');
 
-const electron = window.require('electron');
-const { ipcRenderer } = electron;
-
 class AppMenu {
     constructor(store) {
         this.store = store;
@@ -20,12 +17,6 @@ class AppMenu {
                           submenu: [
                               { role: 'about' },
                               { type: 'separator' },
-                              {
-                                  label: i18n.t('check_updates'),
-                                  click: () => {
-                                      ipcRenderer.sendSync('check-for-updates');
-                                  },
-                              },
                               {
                                   label: i18n.t('preferences'),
                                   accelerator: 'CmdOrCtrl+,',
