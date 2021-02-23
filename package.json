@@ -1,7 +1,7 @@
 {
     "name": "basket",
     "productName": "Basket",
-    "version": "0.3.6",
+    "version": "0.4.0",
     "description": "Container app to bundle multiple web apps",
     "main": "src/main.js",
     "repository": {
