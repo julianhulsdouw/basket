@@ -50,6 +50,7 @@
                     return;
                 }
 
+                this.hidePanels();
                 this.setActive(this.service.identifier);
 
                 const webview = GetWebview(this.service.identifier);
@@ -62,6 +63,7 @@
             },
 
             ...mapActions('services', ['setActive']),
+            ...mapActions('panels', ['hidePanels']),
         },
     };
 </script>

@@ -86,6 +86,13 @@ class ContextMenu {
                         // eslint-disable-next-line no-alert
                         window.confirm(i18n.t('confirm_delete_service'))
                     ) {
+                        if (
+                            store.getters['panels/activePanelService'] ===
+                            service.identifier
+                        ) {
+                            store.dispatch('panels/hidePanels');
+                        }
+
                         store.dispatch(
                             'services/removeService',
                             service.identifier,

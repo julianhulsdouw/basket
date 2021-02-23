@@ -80,6 +80,8 @@ const actions = {
 
     setMessageCount({ commit }, data) {
         commit('setMessageCount', data);
+
+        settings.set('services', state.services);
     },
 
     setIcon({ commit, state }, data) {

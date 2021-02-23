@@ -17,15 +17,13 @@ const isPinnedIcon = (element) => element.classList.contains('_1EFSv');
 
 window.checkMessageCount = () => {
     const allMessages = document.querySelectorAll(
-        '.CxUIE, .unread, ._0LqQ, .m61XR .ZKn2B',
+        '.CxUIE, .unread, ._0LqQ, .m61XR .ZKn2B, .VOr2j',
     );
 
     let messageCount = 0;
     allMessages.forEach((chat) => {
         if (!isMutedIcon(chat) && !isPinnedIcon(chat)) {
-            chat.querySelectorAll('._31gEB').forEach((test) => {
-                messageCount += parseInt(test.innerHTML);
-            });
+            messageCount += parseInt(chat.innerHTML);
         }
     });
 

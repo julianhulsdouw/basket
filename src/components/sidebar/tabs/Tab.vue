@@ -101,7 +101,6 @@
             position: absolute;
             width: 24px;
             height: 24px;
-            padding: 12px;
             fill: $silver;
         }
 
@@ -109,8 +108,8 @@
             position: absolute;
             width: 16px;
             height: 16px;
-            margin-top: 26px;
-            margin-left: 26px;
+            margin-top: 14px;
+            margin-left: 14px;
             overflow: hidden;
             font-family: 'Lato', sans-serif;
             color: $white;

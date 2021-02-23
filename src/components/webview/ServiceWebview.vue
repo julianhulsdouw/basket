@@ -18,6 +18,7 @@
     import { mapActions, mapGetters } from 'vuex';
     import GetWebview from '../../library/webview';
     import NotificationHandler from '../../library/ipc/NotificationHandler';
+    import decideService from '../../services/services';
 
     const shell = electron.shell;
 
@@ -50,7 +51,7 @@
                 webview.addEventListener('ipc-message', (event) => {
                     if (event.channel === 'init') {
                         webview.send('init-recipe', {
-                            recipe: service.recipe,
+                            recipe: decideService(service.url),
                         });
                     }
 

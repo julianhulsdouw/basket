@@ -26,6 +26,11 @@ const getters = {
 };
 
 const actions = {
+    async hidePanels({ commit }) {
+        commit('setActivePanelService', undefined);
+        commit('setActivePanel', undefined);
+    },
+
     async togglePreferencesPanel({ commit, state }) {
         commit(
             'setActivePanel',

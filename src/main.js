@@ -122,3 +122,11 @@ ipcMain.on('check-for-updates', () => {
 
     // Show notification if there are no updates.
 });
+
+setInterval(() => {
+    let messageCount = 0;
+    settings.getSync('services').forEach((service) => {
+        messageCount += service.notificationCount || 0;
+    });
+    app.badgeCount = messageCount;
+}, 3000);

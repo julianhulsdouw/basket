@@ -1,29 +1,32 @@
 <template>
-    <div class="app">
-        <div class="draggable">&nbsp;</div>
+    <v-app>
+        <div class="app">
+            <div class="draggable">&nbsp;</div>
 
-        <div class="layout">
             <div class="layout">
-                <Sidebar />
+                <div class="layout">
+                    <Sidebar />
 
-                <template v-if="currentActivePanel === 'service'">
-                    <Service />
-                </template>
+                    <template v-if="currentActivePanel === 'service'">
+                        <Service />
+                    </template>
 
-                <template v-if="currentActivePanel === 'preferences'">
-                    <Preferences />
-                </template>
+                    <template v-if="currentActivePanel === 'preferences'">
+                        <Preferences />
+                    </template>
 
-                <div class="content">
-                    <Webviews />
+                    <div class="content">
+                        <Webviews />
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </v-app>
 </template>
 
 <script>
     import { mapGetters } from 'vuex';
+    import { VApp } from 'vuetify/lib';
     import Sidebar from './Sidebar';
     import Service from './panels/items/Service';
     import Preferences from './panels/items/Preferences';
@@ -36,6 +39,7 @@
             Sidebar,
             Webviews,
             Preferences,
+            VApp,
         },
         computed: {
             currentActivePanel() {

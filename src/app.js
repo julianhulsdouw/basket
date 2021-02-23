@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import vuetify from './config/vuetify';
 import store from './store';
 import App from './components/App';
 import AppMenu from './library/menu/main';
@@ -24,4 +25,5 @@ new Vue({
     template: '<App/>',
     store,
     i18n,
+    vuetify,
 }).$mount('#app');

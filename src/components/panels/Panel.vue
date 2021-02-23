@@ -26,7 +26,7 @@
 <style lang="scss">
     .panel-wrapper {
         position: relative;
-        width: 325px;
+        width: 450px;
         height: 100%;
         background-color: #d8dbe2;
 

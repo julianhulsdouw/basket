@@ -2,7 +2,8 @@ const mix = require('laravel-mix');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
-const path = require('path');
+
+require('vuetifyjs-mix-extension');
 
 const outputDir = 'build/';
 
@@ -51,4 +52,5 @@ mix.setPublicPath(outputDir)
     })
     .options({
         globalVueStyles: './src/resources/sass/all.scss',
-    });
+    })
+    .vuetify();
