@@ -14,7 +14,7 @@
         },
         computed: {
             icon() {
-                return this.$store.state.settings.soundMuted
+                return this.getSoundMuted()
                     ? 'static/icons/volume_off-black-18dp.svg'
                     : 'static/icons/volume_up-white-18dp.svg';
             },
@@ -23,7 +23,7 @@
             toggleSoundAndMute() {
                 this.toggleSound();
 
-                const services = this.allServices();
+                const services = this.enabledServices();
                 if (services.length) {
                     const allSoundMuted = this.getSoundMuted();
 
@@ -32,6 +32,7 @@
 
                         // When toggling all all sound make sure all webviews get muted/unmuted
                         // or return the value to the specific service setting
+
                         webview.setAudioMuted(
                             !service.soundEnabled || allSoundMuted,
                         );
@@ -43,7 +44,7 @@
 
             ...mapGetters('settings', ['getSoundMuted']),
 
-            ...mapGetters('services', ['allServices']),
+            ...mapGetters('services', ['enabledServices']),
         },
     };
 </script>

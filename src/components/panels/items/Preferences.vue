@@ -1,31 +1,140 @@
 <template>
     <panel title="Preferences">
         <v-container class="pa-6" fluid>
-            <v-switch
-                v-model="switch1"
-                :label="`Switch 1: ${switch1.toString()}`"
-            ></v-switch>
+            <form @submit.prevent="submit">
+                <v-row>
+                    <v-switch
+                        v-model="startWithOs"
+                        flat
+                        :label="`Start when computer boots`"
+                        disabled
+                    ></v-switch>
+                </v-row>
+                <v-row>
+                    <v-switch
+                        v-model="soundMuted"
+                        flat
+                        :label="`Disable sound`"
+                    ></v-switch>
+                </v-row>
+                <v-row>
+                    <v-switch
+                        v-model="notificationsMuted"
+                        flat
+                        :label="`Disable notifications`"
+                    ></v-switch>
+                </v-row>
+                <v-row>
+                    <v-switch
+                        v-model="dockBounce"
+                        flat
+                        :label="
+                            `Make the dock bounce when receiving a notification`
+                        "
+                    ></v-switch>
+                </v-row>
+
+                <v-divider></v-divider>
+
+                <v-row class="mt-4">
+                    <v-select
+                        v-model="selectedSearchProvider"
+                        :items="searchProviders"
+                        chips
+                        label="Enabled search providers"
+                        multiple
+                    ></v-select>
+                </v-row>
+
+                <v-row class="mt-4">
+                    <v-select
+                        v-model="selectedLanguage"
+                        :items="languages"
+                        label="Language"
+                    ></v-select>
+                </v-row>
+
+                <v-row>
+                    <v-btn type="submit">
+                        save
+                    </v-btn>
+                </v-row>
+            </form>
         </v-container>
     </panel>
 </template>
 
 <script>
-    import { VContainer, VSwitch } from 'vuetify/lib';
+    import { mapActions, mapGetters } from 'vuex';
+    import {
+        VBtn,
+        VContainer,
+        VDivider,
+        VRow,
+        VSelect,
+        VSwitch,
+    } from 'vuetify/lib';
     import Panel from '../Panel';
 
     export default {
         name: 'Preferences',
         data() {
             return {
-                switch1: true,
+                startWithOs: false,
+                notificationsMuted: true,
+                soundMuted: true,
+                dockBounce: true,
+                selectedSearchProvider: [],
+                searchProviders: ['google', 'bing', 'duckduckgo'],
+                selectedLanguage: '',
+                languages: ['English'],
             };
         },
         components: {
             Panel,
+            VBtn,
             VContainer,
+            VDivider,
+            VRow,
+            VSelect,
             VSwitch,
         },
+        mounted() {
+            this.setFormValues();
+        },
         computed: {},
-        methods: {},
+        methods: {
+            setFormValues() {
+                this.notificationsMuted = this.getNotificationsMuted();
+                this.soundMuted = this.getSoundMuted();
+                this.dockBounce = this.getDockBounce();
+                this.selectedLanguage = this.getLanguage();
+                this.selectedSearchProvider = this.getEnabledSearchProviders();
+            },
+
+            submit() {
+                this.setDockBounce(this.dockBounce);
+                this.setLanguage(this.selectedLanguage);
+                this.setEnabledSearchProviders(this.selectedSearchProvider);
+                this.setNotificationsMuted(this.notificationsMuted);
+                this.setSoundMuted(this.soundMuted);
+            },
+
+            ...mapActions('settings', [
+                'setDockBounce',
+                'setEnabledSearchProviders',
+                'setLanguage',
+                'setNotificationsMuted',
+                'setSoundMuted',
+            ]),
+
+            ...mapGetters('settings', [
+                'getDockBounce',
+                'getEnabledSearchProviders',
+                'getLanguage',
+                'getNotificationsMuted',
+                'getSoundMuted',
+            ]),
+        },
     };
 </script>
