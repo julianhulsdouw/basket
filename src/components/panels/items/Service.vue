@@ -5,31 +5,34 @@
                 <v-text-field
                     v-model="title"
                     :rules="titleRules"
-                    label="Title"
+                    :label="$t('title')"
                     required
                 ></v-text-field>
 
                 <v-text-field
                     v-model="url"
                     :rules="urlRules"
-                    label="Url"
+                    :label="$t('url')"
                     required
                 ></v-text-field>
 
                 <v-switch
                     v-model="soundEnabled"
-                    label="Sound enabled?"
+                    :label="$t('settings.disable_sound')"
                 ></v-switch>
 
                 <v-switch
                     v-model="notificationsEnabled"
-                    label="Notifications enabled?"
+                    :label="$t('settings.disable_notifications')"
                 ></v-switch>
 
-                <v-switch v-model="enabled" label="Service enabled?"></v-switch>
+                <v-switch
+                    v-model="enabled"
+                    :label="$t('settings.service_enabled')"
+                ></v-switch>
 
                 <v-btn class="mr-4" @click="save">
-                    Save
+                    {{ $t('save') }}
                 </v-btn>
             </v-form>
         </v-container>

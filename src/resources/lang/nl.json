@@ -36,6 +36,7 @@
         "boot_with_os": "Opstarten met computer",
         "disable_sound": "Geluid uit",
         "disable_notifications": "Notificaties uit",
+        "service_enabled": "Ingeschakeld",
         "dock_bounce": "Laat het dock-icon springen bij notificatie",
         "enabled_search_providers": "Ingeschakelde zoekmachines",
         "language": "Taal"
@@ -44,5 +45,9 @@
     "service_disable": "Zet dienst uit",
     "service_enable": "Zet dienst aan",
     "sound_disable": "Zet geluid uit",
-    "sound_enable": "Zet geluid aan"
+    "sound_enable": "Zet geluid aan",
+
+    "title": "Titel",
+
+    "url": "url"
 }

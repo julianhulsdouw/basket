@@ -36,6 +36,7 @@
         "boot_with_os": "Start when computer boots",
         "disable_sound": "Disable sound",
         "disable_notifications": "Disable notifications",
+        "service_enabled": "Enabled",
         "dock_bounce": "Make the dock bounce when receiving a notification",
         "enabled_search_providers": "Enabled search providers",
         "language": "Language"
@@ -44,5 +45,9 @@
     "service_disable": "Disable service",
     "service_enable": "Enable service",
     "sound_disable": "Disable sound",
-    "sound_enable": "Enable sound"
+    "sound_enable": "Enable sound",
+
+    "title": "Title",
+
+    "url": "url"
 }
