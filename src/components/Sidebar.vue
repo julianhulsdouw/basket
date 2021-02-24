@@ -7,7 +7,7 @@
 
             <ul class="services">
                 <Services />
-                <!-- <AddService /> -->
+                <AddService />
             </ul>
 
             <div class="bottom">
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-    // import AddService from './sidebar/items/AddService';
+    import AddService from './sidebar/items/AddService';
     import MuteNotifications from './sidebar/items/MuteNotifications';
     import MuteSound from './sidebar/items/MuteSound';
     import Preferences from './sidebar/items/Preferences';
@@ -30,7 +30,7 @@
     export default {
         name: 'Sidebar',
         components: {
-            // AddService,
+            AddService,
             MuteNotifications,
             MuteSound,
             Preferences,
