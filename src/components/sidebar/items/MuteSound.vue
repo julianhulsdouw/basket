@@ -22,6 +22,7 @@
         methods: {
             toggleSoundAndMute() {
                 this.toggleSound();
+                this.persistState();
 
                 const services = this.enabledServices();
                 if (services.length) {
@@ -40,7 +41,7 @@
                 }
             },
 
-            ...mapActions('settings', ['toggleSound']),
+            ...mapActions('settings', ['toggleSound', 'persistState']),
 
             ...mapGetters('settings', ['getSoundMuted']),
 

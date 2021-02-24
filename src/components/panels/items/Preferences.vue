@@ -87,7 +87,7 @@
                 selectedSearchProvider: [],
                 searchProviders: ['google', 'bing', 'duckduckgo'],
                 selectedLanguage: '',
-                languages: ['English'],
+                languages: ['English', 'Dutch'],
             };
         },
         components: {
@@ -118,6 +118,8 @@
                 this.setEnabledSearchProviders(this.selectedSearchProvider);
                 this.setNotificationsMuted(this.notificationsMuted);
                 this.setSoundMuted(this.soundMuted);
+
+                this.persistState();
             },
 
             ...mapActions('settings', [
@@ -126,6 +128,7 @@
                 'setLanguage',
                 'setNotificationsMuted',
                 'setSoundMuted',
+                'persistState',
             ]),
 
             ...mapGetters('settings', [

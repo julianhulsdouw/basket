@@ -22,76 +22,53 @@ const getters = {
 
 const actions = {
     async loadSettings({ commit }) {
-        commit('setNotifications', await settings.get('notificationsMuted'));
-        commit('setSound', await settings.get('soundMuted'));
-        commit('setDockBounce', await settings.get('dockBounce'));
+        commit(
+            'setNotifications',
+            await settings.get('settings.notificationsMuted'),
+        );
+        commit('setSound', await settings.get('settings.soundMuted'));
+        commit('setDockBounce', await settings.get('settings.dockBounce'));
         commit(
             'setEnabledSearchProviders',
-            await settings.get('enabledSearchProviders'),
+            await settings.get('settings.enabledSearchProviders'),
         );
-        commit('setLanguage', await settings.get('language'));
+        commit('setLanguage', await settings.get('settings.language'));
+    },
+
+    async persistState({ state }) {
+        settings.set('settings', state);
     },
 
     async toggleNotifications({ commit, state }) {
         const notificationsMuted = !state.notificationsMuted;
 
         commit('setNotifications', notificationsMuted);
-
-        // Persist to disk
-        settings.set('notificationsMuted', notificationsMuted);
     },
 
     async toggleSound({ commit, state }) {
         const soundMuted = !state.soundMuted;
 
         commit('setSound', soundMuted);
-
-        // Persist to disk
-        settings.set('soundMuted', soundMuted);
-    },
-
-    async toggleDockBounce({ commit, state }) {
-        const dockBounce = !state.dockBounce;
-
-        commit('setDockBounce', dockBounce);
-
-        // Persist to disk
-        settings.set('dockBounce', dockBounce);
     },
 
     async setNotificationsMuted({ commit }, value) {
         commit('setNotifications', value);
-
-        // Persist to disk
-        settings.set('notificationsMuted', value);
     },
 
     async setSoundMuted({ commit }, value) {
         commit('setSound', value);
-
-        // Persist to disk
-        settings.set('soundMuted', value);
     },
 
     async setDockBounce({ commit }, value) {
         commit('setDockBounce', value);
-
-        // Persist to disk
-        settings.set('dockBounce', value);
     },
 
     async setEnabledSearchProviders({ commit }, value) {
         commit('setEnabledSearchProviders', value);
-
-        // Persist to disk
-        settings.set('enabledSearchProviders', value);
     },
 
     async setLanguage({ commit }, value) {
         commit('setLanguage', value);
-
-        // Persist to disk
-        settings.set('language', value);
     },
 };
 

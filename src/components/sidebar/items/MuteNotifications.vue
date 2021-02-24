@@ -1,9 +1,5 @@
 <template>
-    <Tab
-        identifier="mutenotifications"
-        :icon="icon"
-        :click="toggleNotifications"
-    />
+    <Tab identifier="mutenotifications" :icon="icon" :click="toggle" />
 </template>
 
 <script>
@@ -23,7 +19,12 @@
             },
         },
         methods: {
-            ...mapActions('settings', ['toggleNotifications']),
+            toggle() {
+                this.toggleNotifications();
+                this.persistState();
+            },
+
+            ...mapActions('settings', ['toggleNotifications', 'persistState']),
         },
     };
 </script>

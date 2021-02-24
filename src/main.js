@@ -126,9 +126,7 @@ setInterval(() => {
 
 ipcMain.on('bouncybounce', () => {
     // Determine if we'd like the dock icon to bounce
-    const shouldBounce =
-        settings.getSync('notificationsMuted') === false &&
-        settings.getSync('dockBounce') === true;
+    const shouldBounce = settings.getSync('settings.dockBounce') === true;
 
     // Only make bouncy bounce when on MacOS
     if (process.platform === 'darwin' && shouldBounce) {
