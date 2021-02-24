@@ -4,4 +4,5 @@ node_modules
 out
 
 settings.json
+settings.json.*
 electron-builder.env

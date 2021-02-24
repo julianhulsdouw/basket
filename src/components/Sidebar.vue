@@ -1,7 +1,7 @@
 <template>
     <div class="outer-sidebar">
         <div class="sidebar">
-            <div class="top">
+            <div class="top" :class="{ mac: isMacOs }">
                 <span>basket</span>
             </div>
 
@@ -25,6 +25,7 @@
     import MuteSound from './sidebar/items/MuteSound';
     import Preferences from './sidebar/items/Preferences';
     import Services from './sidebar/Services';
+    import { isMac } from '../library/environment';
 
     export default {
         name: 'Sidebar',
@@ -34,6 +35,11 @@
             MuteSound,
             Preferences,
             Services,
+        },
+        data() {
+            return {
+                isMacOs: isMac,
+            };
         },
     };
 </script>
@@ -56,16 +62,24 @@
 
         .top {
             width: 100%;
-            height: 52px;
+            height: 26px;
             background-color: $blue-stone;
 
             span {
                 position: absolute;
-                padding-top: 25px;
+                padding-top: 2px;
                 margin-left: 10px;
                 font-family: 'Lato', sans-serif;
                 font-size: 16px;
                 color: $gallery;
+            }
+        }
+
+        .mac {
+            height: 52px;
+
+            span {
+                padding-top: 25px;
             }
         }
 
