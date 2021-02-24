@@ -26,7 +26,7 @@
     "reload": "Reload",
     "remove_service": "Remove service",
 
-    "search": "Search google for",
+    "search": "Search {provider} for",
     "service_disable": "Disable service",
     "service_enable": "Enable service",
     "sound_disable": "Disable sound",

@@ -53,6 +53,10 @@
                         webview.send('init-recipe', {
                             recipe: decideService(service.url),
                         });
+
+                        webview.send('set-search-providers', {
+                            providers: this.getEnabledSearchProviders(),
+                        });
                     }
 
                     if (event.channel === 'update-icon') {
@@ -98,7 +102,10 @@
         methods: {
             ...mapActions('services', ['setMessageCount', 'setIcon']),
 
-            ...mapGetters('settings', ['getSoundMuted']),
+            ...mapGetters('settings', [
+                'getSoundMuted',
+                'getEnabledSearchProviders',
+            ]),
         },
     };
 </script>

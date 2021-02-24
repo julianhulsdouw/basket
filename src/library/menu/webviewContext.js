@@ -12,16 +12,41 @@ const buildMenu = (props) => {
 
     const ContextMenu = [
         {
-            id: 'searchTextSelection',
-            label: `${i18n.t('search')} "${
+            id: 'searchTextSelectionGoogle',
+            label: `${i18n.t('search', { provider: 'Google' })} "${
                 selectedText.length > 15
                     ? `${selectedText.slice(0, 15)}...`
                     : selectedText
             }"`,
-            visible: hasText,
+            visible: hasText && window.searchProviders.includes('google'),
             click() {
-                // TODO Open url based on "default browser preference"
                 const url = `https://www.google.com/search?q=${selectedText}`;
+                shell.openExternal(url);
+            },
+        },
+        {
+            id: 'searchTextSelectionDuckDuckGo',
+            label: `${i18n.t('search', { provider: 'DuckDuckGo' })} "${
+                selectedText.length > 15
+                    ? `${selectedText.slice(0, 15)}...`
+                    : selectedText
+            }"`,
+            visible: hasText && window.searchProviders.includes('duckduckgo'),
+            click() {
+                const url = `https://duckduckgo.com/?q=${selectedText}`;
+                shell.openExternal(url);
+            },
+        },
+        {
+            id: 'searchTextSelectionBing',
+            label: `${i18n.t('search', { provider: 'Bing' })} "${
+                selectedText.length > 15
+                    ? `${selectedText.slice(0, 15)}...`
+                    : selectedText
+            }"`,
+            visible: hasText && window.searchProviders.includes('bing'),
+            click() {
+                const url = `https://www.bing.com/search?q=${selectedText}`;
                 shell.openExternal(url);
             },
         },

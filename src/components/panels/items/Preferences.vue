@@ -120,6 +120,9 @@
                 this.setSoundMuted(this.soundMuted);
 
                 this.persistState();
+
+                // TODO: check if neccesary to reboot app
+                // if so tell the user
             },
 
             ...mapActions('settings', [
