@@ -116,13 +116,9 @@ async function windowStateKeeper(windowName) {
     };
 }
 
-setInterval(() => {
-    let messageCount = 0;
-    settings.getSync('services').forEach((service) => {
-        messageCount += service.notificationCount || 0;
-    });
-    app.badgeCount = messageCount;
-}, 3000);
+ipcMain.on('app-notification-count', (event, count) => {
+    app.badgeCount = count;
+});
 
 ipcMain.on('bouncybounce', () => {
     // Determine if we'd like the dock icon to bounce

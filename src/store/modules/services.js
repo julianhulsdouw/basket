@@ -33,6 +33,16 @@ const getters = {
             (service) => service.identifier === identifier,
         )[0];
     },
+
+    // eslint-disable-next-line arrow-body-style
+    getTotalNotificationCount: (state) => {
+        return state.services
+            .filter((service) => service.enabled === true)
+            .map((service) => service.notificationCount || 0)
+            .reduce((a, b) => {
+                return a + b;
+            });
+    },
 };
 
 const actions = {

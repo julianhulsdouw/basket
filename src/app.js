@@ -1,3 +1,4 @@
+import { ipcRenderer } from 'electron';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import vuetify from './config/vuetify';
@@ -16,10 +17,18 @@ new Vue({
         await this.loadServices();
 
         this.$menu = new AppMenu(store);
+
+        setInterval(() => {
+            ipcRenderer.send(
+                'app-notification-count',
+                this.getTotalNotificationCount(),
+            );
+        }, 3000);
     },
     methods: {
         ...Vuex.mapActions('settings', ['loadSettings']),
         ...Vuex.mapActions('services', ['loadServices']),
+        ...Vuex.mapGetters('services', ['getTotalNotificationCount']),
     },
     components: { App },
     template: '<App/>',
