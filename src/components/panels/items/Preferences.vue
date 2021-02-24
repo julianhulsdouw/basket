@@ -1,12 +1,12 @@
 <template>
-    <panel title="Preferences">
+    <panel :title="$t('preferences')">
         <v-container class="pa-6" fluid>
             <form @submit.prevent="submit">
                 <v-row>
                     <v-switch
                         v-model="startWithOs"
                         flat
-                        :label="`Start when computer boots`"
+                        :label="$t('settings.boot_with_os')"
                         disabled
                     ></v-switch>
                 </v-row>
@@ -14,23 +14,21 @@
                     <v-switch
                         v-model="soundMuted"
                         flat
-                        :label="`Disable sound`"
+                        :label="$t('settings.disable_sound')"
                     ></v-switch>
                 </v-row>
                 <v-row>
                     <v-switch
                         v-model="notificationsMuted"
                         flat
-                        :label="`Disable notifications`"
+                        :label="$t('settings.disable_notifications')"
                     ></v-switch>
                 </v-row>
                 <v-row>
                     <v-switch
                         v-model="dockBounce"
                         flat
-                        :label="
-                            `Make the dock bounce when receiving a notification`
-                        "
+                        :label="$t('settings.dock_bounce')"
                     ></v-switch>
                 </v-row>
 
@@ -41,7 +39,7 @@
                         v-model="selectedSearchProvider"
                         :items="searchProviders"
                         chips
-                        label="Enabled search providers"
+                        :label="$t('settings.enabled_search_providers')"
                         multiple
                     ></v-select>
                 </v-row>
@@ -50,13 +48,15 @@
                     <v-select
                         v-model="selectedLanguage"
                         :items="languages"
-                        label="Language"
+                        item-text="value"
+                        item-value="key"
+                        :label="$t('settings.language')"
                     ></v-select>
                 </v-row>
 
                 <v-row>
                     <v-btn type="submit">
-                        save
+                        {{ $t('save') }}
                     </v-btn>
                 </v-row>
             </form>
@@ -87,7 +87,10 @@
                 selectedSearchProvider: [],
                 searchProviders: ['google', 'bing', 'duckduckgo'],
                 selectedLanguage: '',
-                languages: ['English', 'Dutch'],
+                languages: [
+                    { key: 'en', value: this.$t('language.en') },
+                    { key: 'nl', value: this.$t('language.nl') },
+                ],
             };
         },
         components: {

@@ -11,6 +11,11 @@
 
     "internet_disconnected": "Not connected to the internet.",
 
+    "language": {
+        "en": "English",
+        "nl": "Dutch"
+    },
+
     "menu_actual_size": "Actual size",
     "menu_zoom_in": "Zoom in",
     "menu_zoom_out": "Zoom out",
@@ -26,6 +31,15 @@
     "reload": "Reload",
     "remove_service": "Remove service",
 
+    "save": "Save",
+    "settings": {
+        "boot_with_os": "Start when computer boots",
+        "disable_sound": "Disable sound",
+        "disable_notifications": "Disable notifications",
+        "dock_bounce": "Make the dock bounce when receiving a notification",
+        "enabled_search_providers": "Enabled search providers",
+        "language": "Language"
+    },
     "search": "Search {provider} for",
     "service_disable": "Disable service",
     "service_enable": "Enable service",

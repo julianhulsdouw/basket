@@ -5,7 +5,7 @@ const state = {
     notificationsMuted: false,
     dockBounce: false,
     enabledSearchProviders: ['google'],
-    language: 'english',
+    language: 'en',
 };
 
 const getters = {
