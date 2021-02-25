@@ -7,6 +7,7 @@ class ContextMenu {
         return [
             {
                 label: service.title,
+                enabled: false,
                 accelerator: `CmdOrCtrl+${service.index + 1}`,
             },
             {
@@ -37,6 +38,7 @@ class ContextMenu {
                 label: service.soundEnabled
                     ? i18n.t('sound_disable')
                     : i18n.t('sound_enable'),
+                enabled: service.enabled,
                 click: () => {
                     store.dispatch('services/toggleSound', service.identifier);
 
@@ -55,6 +57,7 @@ class ContextMenu {
                 label: service.notificationsEnabled
                     ? i18n.t('notifications_disable')
                     : i18n.t('notifications_enable'),
+                enabled: service.enabled,
                 click: () => {
                     store.dispatch(
                         'services/toggleNotifications',
