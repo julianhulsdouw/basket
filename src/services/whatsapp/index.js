@@ -27,8 +27,6 @@ window.checkMessageCount = () => {
         }
     });
 
-    console.log(messageCount);
-
     return messageCount;
 };
 
