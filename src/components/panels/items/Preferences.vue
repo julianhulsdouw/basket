@@ -105,7 +105,14 @@
         mounted() {
             this.setFormValues();
         },
-        computed: {},
+        computed: {
+            shouldUpdateIfValuesChanged() {
+                return {
+                    notificationsMuted: this.getNotificationsMuted(),
+                    soundMuted: this.getSoundMuted(),
+                };
+            },
+        },
         methods: {
             setFormValues() {
                 this.notificationsMuted = this.getNotificationsMuted();
@@ -144,6 +151,11 @@
                 'getNotificationsMuted',
                 'getSoundMuted',
             ]),
+        },
+        watch: {
+            shouldUpdateIfValuesChanged() {
+                this.setFormValues();
+            },
         },
     };
 </script>

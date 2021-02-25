@@ -70,6 +70,15 @@
             activeService() {
                 return this.serviceByIdentifier()(this.activePanelService());
             },
+
+            shouldUpdateIfValuesChanged() {
+                return {
+                    notificationsEnabled: this.activeService
+                        .notificationsEnabled,
+                    soundEnabled: this.activeService.soundEnabled,
+                    enabled: this.activeService.enabled,
+                };
+            },
         },
         methods: {
             save() {
@@ -101,6 +110,9 @@
         },
         watch: {
             activeService() {
+                this.setFormValues();
+            },
+            shouldUpdateIfValuesChanged() {
                 this.setFormValues();
             },
         },
