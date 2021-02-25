@@ -59,13 +59,15 @@ const actions = {
             index: state.services.length,
             visible: false,
             title: 'New service',
-            url: 'https://google.nl',
+            url: 'https://source.unsplash.com/random/1600x900',
         };
 
         commit('addService', newService);
         commit('changeActiveService', newServiceIdentifier);
 
         settings.set('services', state.services);
+
+        return newServiceIdentifier;
     },
 
     async hideAllServices({ commit, state }) {
@@ -133,11 +135,29 @@ const actions = {
 
         settings.set('services', state.services);
     },
+
+    updateService({ commit, state }, data) {
+        commit('updateService', data);
+
+        settings.set('services', state.services);
+    },
 };
 
 const mutations = {
     addService(state, service) {
         state.services.push(service);
+    },
+
+    updateService(state, data) {
+        state.services
+            .filter((service) => service.identifier === data.identifier)
+            .forEach((service) => {
+                service.title = data.title;
+                service.url = data.url;
+                service.notificationsEnabled = data.notificationsEnabled;
+                service.soundEnabled = data.soundEnabled;
+                service.enabled = data.enabled;
+            });
     },
 
     changeActiveService(state, identifier) {

@@ -40,7 +40,7 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex';
+    import { mapActions, mapGetters } from 'vuex';
     import { VBtn, VContainer, VForm, VSwitch, VTextField } from 'vuetify/lib';
     import Panel from '../Panel';
 
@@ -73,7 +73,16 @@
         },
         methods: {
             save() {
-                console.log('saved');
+                const data = {
+                    identifier: this.activePanelService(),
+                    title: this.title,
+                    url: this.url,
+                    notificationsEnabled: this.notificationsEnabled,
+                    soundEnabled: this.soundEnabled,
+                    enabled: this.enabled,
+                };
+
+                this.updateService(data);
             },
 
             setFormValues() {
@@ -83,6 +92,8 @@
                 this.soundEnabled = this.activeService.soundEnabled;
                 this.enabled = this.activeService.enabled;
             },
+
+            ...mapActions('services', ['updateService']),
 
             ...mapGetters('panels', ['activePanelService']),
 

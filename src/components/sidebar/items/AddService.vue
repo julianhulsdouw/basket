@@ -17,17 +17,16 @@
             Tab,
         },
         methods: {
-            showAddPanel() {
-                // Add service to state / persist.
-            },
-
-            addServiceHandler() {
-                this.addService();
+            async addServiceHandler() {
+                const newServiceIdentifier = await this.addService();
+                this.showServicePanel(newServiceIdentifier);
 
                 new AppMenu(this.$store); // eslint-disable-line no-new
             },
 
             ...mapActions('services', ['addService']),
+
+            ...mapActions('panels', ['showServicePanel']),
         },
     };
 </script>
