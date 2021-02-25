@@ -1,10 +1,12 @@
 const electron = require('electron');
 const path = require('path');
 const fs = require('fs-extra');
+// eslint-disable-next-line no-unused-vars
 const contextMenu = require('./webviewContext'); // Is actually used.
+// eslint-disable-next-line no-unused-vars
 const Notification = require('./notification'); // Also actually used.
-const remote = require('@electron/remote');
 
+const remote = electron.remote;
 const webContents = remote.getCurrentWebContents();
 const ipcRenderer = electron.ipcRenderer;
 
@@ -23,10 +25,12 @@ setTimeout(() => ipcRenderer.sendToHost('init'), 100);
 
 ipcRenderer.once('init-recipe', (channel, message) => {
     // Require recipe for this specific service.
+    // eslint-disable-next-line
     require(path.join(__dirname, message.recipe));
 
     // Inject CSS if there is a service css file
     const cssPath = path.join(__dirname, message.recipe, 'style.css');
+
     fs.access(cssPath, fs.F_OK, (err) => {
         // If file doesn't exist show in log.
         if (err) {
@@ -48,11 +52,11 @@ ipcRenderer.once('set-search-providers', (channel, message) => {
     window.searchProviders = message.providers;
 });
 
-setInterval(function() {
+setInterval(() => {
     const messageCount = window.checkMessageCount();
 
     ipcRenderer.sendToHost(
         'message-count',
-        isNaN(messageCount) ? 0 : messageCount,
+        Number.isNaN(messageCount) ? 0 : messageCount,
     );
 }, 1000);

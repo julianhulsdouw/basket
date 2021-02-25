@@ -2,12 +2,11 @@ const ipcRenderer = require('electron').ipcRenderer;
 const { v1: uuidv1 } = require('uuid');
 
 class Notification {
-    static permission = 'granted';
-
     constructor(title = '', options = {}) {
         this.title = title;
         this.options = options;
         this.notificationId = uuidv1();
+        this.permission = 'granted';
 
         ipcRenderer.sendToHost(
             'notification',
@@ -28,15 +27,15 @@ class Notification {
     static requestPermission(cb = null) {
         if (!cb) {
             return new Promise((resolve) => {
-                resolve(Notification.permission);
+                resolve('granted');
             });
         }
 
         if (typeof cb === 'function') {
-            return cb(Notification.permission);
+            return cb('granted');
         }
 
-        return Notification.permission;
+        return 'granted';
     }
 
     addEventListener(arg1, arg2) {
@@ -45,12 +44,15 @@ class Notification {
         }
     }
 
+    // eslint-disable-next-line
     onNotify(data) {
         return data;
     }
 
+    // eslint-disable-next-line
     onClick() {}
 
+    // eslint-disable-next-line
     close() {}
 }
 
