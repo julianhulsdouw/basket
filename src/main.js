@@ -23,6 +23,7 @@ async function createWindow() {
         minWidth: 800,
         minHeight: 600,
         webPreferences: {
+            contextIsolation: false,
             nodeIntegration: true,
             webviewTag: true,
             enableRemoteModule: true,
