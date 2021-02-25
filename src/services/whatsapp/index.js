@@ -17,7 +17,7 @@ const isPinnedIcon = (element) => element.classList.contains('_1EFSv');
 
 window.checkMessageCount = () => {
     const allMessages = document.querySelectorAll(
-        '.CxUIE, .unread, ._0LqQ, .m61XR .ZKn2B, .VOr2j',
+        '.CxUIE, .unread, ._0LqQ, .m61XR .ZKn2B, .VOr2j, ._2TiQe ._38M1B',
     );
 
     let messageCount = 0;
@@ -26,6 +26,8 @@ window.checkMessageCount = () => {
             messageCount += parseInt(chat.innerHTML);
         }
     });
+
+    console.log(messageCount);
 
     return messageCount;
 };
