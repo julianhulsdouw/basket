@@ -2,6 +2,10 @@
     <div class="panel-wrapper">
         <div class="top" :class="{ mac: isMacOs }">
             <span>{{ title }}</span>
+
+            <a class="close" @click="hidePanels">
+                {{ $t('close').toLowerCase() }}
+            </a>
         </div>
 
         <slot></slot>
@@ -9,6 +13,7 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex';
     import { isMac } from '../../library/environment';
 
     export default {
@@ -23,6 +28,9 @@
             return {
                 isMacOs: isMac,
             };
+        },
+        methods: {
+            ...mapActions('panels', ['hidePanels']),
         },
     };
 </script>
@@ -42,10 +50,23 @@
             span {
                 position: absolute;
                 padding-top: 2px;
-                margin-left: 10px;
+                margin-left: 8px;
                 font-family: 'Lato', sans-serif;
                 font-size: 16px;
                 color: $gallery;
+            }
+
+            .close {
+                float: right;
+                padding-top: 2px;
+                margin-right: 8px;
+                font-family: 'Lato', sans-serif;
+                font-size: 16px;
+                color: $gallery;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
 
@@ -54,6 +75,10 @@
 
             span {
                 padding-top: 25px;
+            }
+
+            .close {
+                margin-top: 25px;
             }
         }
     }
