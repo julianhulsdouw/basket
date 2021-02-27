@@ -12,5 +12,13 @@ export default function decideService(url) {
         return 'telegram';
     }
 
+    if (url.includes('gmail.com')) {
+        return 'gmail';
+    }
+
+    if (url.includes('discord.com')) {
+        return 'discord';
+    }
+
     return undefined;
 }
