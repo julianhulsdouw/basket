@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import panels from './modules/panels';
-import services from './modules/services';
-import settings from './modules/settings';
+import panels from '../store/panels';
+import services from '../store/services';
+import settings from '../store/settings';
 
 Vue.use(Vuex);
 

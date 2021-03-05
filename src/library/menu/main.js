@@ -1,14 +1,11 @@
 /* eslint indent: 0 */ // --> OFF
 import { isMac } from '../environment';
-import i18n from '../lang';
-import GetWebview from '../webview';
+import i18n from '../../config/i18n';
 
-const { Menu } = require('@electron/remote');
+const { Menu, shell } = require('electron');
 
 class AppMenu {
-    constructor(store) {
-        this.store = store;
-
+    constructor(mainWindow, services) {
         const template = [
             ...(isMac
                 ? [
@@ -21,13 +18,9 @@ class AppMenu {
                                   label: i18n.t('preferences'),
                                   accelerator: 'CmdOrCtrl+,',
                                   click: async () => {
-                                      this.store.dispatch(
-                                          'panels/togglePreferencesPanel',
+                                      mainWindow.webContents.send(
+                                          'openPreferencesPanel',
                                       );
-
-                                      if (document.activeElement) {
-                                          document.activeElement.blur();
-                                      }
                                   },
                               },
                               { type: 'separator' },
@@ -85,50 +78,30 @@ class AppMenu {
                     {
                         label: i18n.t('open_service_developer_tools'),
                         click: () => {
-                            const webview = GetWebview(
-                                this.store.getters['services/activeService']
-                                    .identifier,
+                            mainWindow.webContents.send(
+                                'openServiceDeveloperTools',
                             );
-
-                            webview.openDevTools();
                         },
-                        enabled: this.store.getters['services/enabledServices']
-                            .length,
                     },
                     { type: 'separator' },
                     {
                         label: i18n.t('menu_actual_size'),
                         click: () => {
-                            const webview = GetWebview(
-                                this.store.getters['services/activeService']
-                                    .identifier,
-                            );
-
-                            webview.setZoomLevel(0);
+                            mainWindow.webContents.send('resetZoomLevel');
                         },
                         accelerator: `CmdOrCtrl+0`,
                     },
                     {
                         label: i18n.t('menu_zoom_in'),
                         click: () => {
-                            const webview = GetWebview(
-                                this.store.getters['services/activeService']
-                                    .identifier,
-                            );
-
-                            webview.setZoomLevel(webview.getZoomLevel() + 1);
+                            mainWindow.webContents.send('addZoomLevel');
                         },
                         accelerator: `CmdOrCtrl+=`,
                     },
                     {
                         label: i18n.t('menu_zoom_out'),
                         click: () => {
-                            const webview = GetWebview(
-                                this.store.getters['services/activeService']
-                                    .identifier,
-                            );
-
-                            webview.setZoomLevel(webview.getZoomLevel() - 1);
+                            mainWindow.webContents.send('substractZoomLevel');
                         },
                         accelerator: `CmdOrCtrl+-`,
                     },
@@ -138,7 +111,7 @@ class AppMenu {
             },
             {
                 label: 'Services',
-                submenu: this.store.state.services.services.map((service) => ({
+                submenu: services.map((service) => ({
                     label: service.title,
                     accelerator:
                         service.index < 9
@@ -146,37 +119,27 @@ class AppMenu {
                             : null,
                     enabled: service.enabled,
                     click: async () => {
-                        this.store.dispatch(
-                            'services/setActive',
+                        mainWindow.webContents.send(
+                            'changeService',
                             service.identifier,
                         );
-
-                        const webview = GetWebview(
-                            this.store.getters['services/activeService']
-                                .identifier,
-                        );
-
-                        if (document.activeElement) {
-                            document.activeElement.blur();
-                        }
-
-                        webview.focus();
                     },
                 })),
             },
             {
-                label: 'Window',
+                role: 'windowMenu',
+            },
+            {
+                label: 'Help',
                 submenu: [
-                    { role: 'minimize' },
-                    { role: 'zoom' },
-                    ...(isMac
-                        ? [
-                              { type: 'separator' },
-                              { role: 'front' },
-                              { type: 'separator' },
-                              { role: 'window' },
-                          ]
-                        : [{ role: 'close' }]),
+                    {
+                        label: 'Github',
+                        click: async () => {
+                            await shell.openExternal(
+                                'https://github.com/basketapp/basket',
+                            );
+                        },
+                    },
                 ],
             },
         ];

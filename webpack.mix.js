@@ -8,7 +8,7 @@ require('vuetifyjs-mix-extension');
 const outputDir = 'build/';
 
 mix.setPublicPath(outputDir)
-    .js('src/app.js', outputDir)
+    .js('src/renderer.js', outputDir)
     .js('src/main.js', outputDir)
     .js('src/library/menu/webviewContext.js', outputDir + 'services')
     .webpackConfig({

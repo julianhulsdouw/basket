@@ -1,5 +1,5 @@
-import i18n from '../lang';
-import AppMenu from './main';
+import { ipcRenderer } from 'electron';
+import i18n from '../../config/i18n';
 import GetWebview from '../webview';
 
 class ContextMenu {
@@ -69,13 +69,13 @@ class ContextMenu {
                 label: service.enabled
                     ? i18n.t('service_disable')
                     : i18n.t('service_enable'),
-                click: () => {
-                    store.dispatch(
+                click: async () => {
+                    await store.dispatch(
                         'services/toggleService',
                         service.identifier,
                     );
 
-                    new AppMenu(store); // eslint-disable-line no-new
+                    ipcRenderer.send('re-draw-menu');
                 },
             },
             {
@@ -84,7 +84,7 @@ class ContextMenu {
             {
                 label: i18n.t('remove_service'),
                 enabled: true,
-                click: () => {
+                click: async () => {
                     if (
                         // eslint-disable-next-line no-alert
                         window.confirm(i18n.t('confirm_delete_service'))
@@ -93,15 +93,15 @@ class ContextMenu {
                             store.getters['panels/activePanelService'] ===
                             service.identifier
                         ) {
-                            store.dispatch('panels/hidePanels');
+                            await store.dispatch('panels/hidePanels');
                         }
 
-                        store.dispatch(
+                        await store.dispatch(
                             'services/removeService',
                             service.identifier,
                         );
 
-                        new AppMenu(store); // eslint-disable-line no-new
+                        ipcRenderer.send('re-draw-menu');
                     }
                 },
             },

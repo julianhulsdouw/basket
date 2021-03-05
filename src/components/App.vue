@@ -11,7 +11,7 @@
                         <Service />
                     </template>
 
-                    <template v-if="currentActivePanel === 'preferences'">
+                    <template v-else-if="currentActivePanel === 'preferences'">
                         <Preferences />
                     </template>
 

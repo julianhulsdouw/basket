@@ -1,29 +1,19 @@
-import { ipcRenderer } from 'electron';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import vuetify from './config/vuetify';
-import store from './store';
+import i18n from './config/i18n';
+import store from './config/store';
 import App from './components/App';
-import AppMenu from './library/menu/main';
-import i18n from './library/lang';
+import ipcRendererInit from './library/ipc/renderer';
 
 Vue.use(Vuex);
-
-window.webviews = [];
 
 new Vue({
     async created() {
         await this.loadSettings();
         await this.loadServices();
 
-        this.$menu = new AppMenu(store);
-
-        setInterval(() => {
-            ipcRenderer.send(
-                'app-notification-count',
-                this.getTotalNotificationCount(),
-            );
-        }, 3000);
+        ipcRendererInit(store);
     },
     methods: {
         ...Vuex.mapActions('settings', ['loadSettings']),

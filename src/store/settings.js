@@ -1,4 +1,4 @@
-import settings from '../../library/settings';
+import settings from '../library/settings';
 
 const state = {
     soundMuted: false,

@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import settings from '../../library/settings';
+import settings from '../library/settings';
 
 const state = {
     services: [],
