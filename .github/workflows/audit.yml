@@ -1,0 +1,28 @@
+name: audit
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  audit_ci:
+    runs-on: ubuntu-latest
+    name: JS
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: Setup audit-ci
+        run: npm install -g audit-ci
+
+      - name: Audit NPM dependencies
+        run: audit-ci --medium
