@@ -1,10 +1,14 @@
+/*
+ * This file will be pre-loaded directly without going through webpack.
+ */
+
 const electron = require('electron');
 const path = require('path');
 const fs = require('fs-extra');
 // eslint-disable-next-line no-unused-vars
 const contextMenu = require('./webviewContext'); // Is actually used.
 // eslint-disable-next-line no-unused-vars
-const Notification = require('./notification'); // Also actually used.
+const Notification = require('./notification'); // Is actually used.
 
 const remote = electron.remote;
 const webContents = remote.getCurrentWebContents();

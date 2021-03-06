@@ -14,13 +14,11 @@
 </template>
 
 <script>
-    import electron from 'electron';
+    import { shell } from 'electron';
     import { mapActions, mapGetters } from 'vuex';
     import GetWebview from '../../library/webview';
     import NotificationHandler from '../../library/ipc/NotificationHandler';
     import decideService from '../../services/services';
-
-    const shell = electron.shell;
 
     export default {
         name: 'ServiceWebview',

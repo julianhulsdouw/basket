@@ -36,8 +36,14 @@ mix.setPublicPath(outputDir)
                 patterns: [
                     { from: './src/resources/static', to: 'static' },
                     { from: './src/services', to: 'services' },
-                    { from: './src/library/preload.js', to: 'services' },
-                    { from: './src/library/notification.js', to: 'services' },
+                    {
+                        from: './src/library/preload/index.js',
+                        to: 'services/preload.js',
+                    },
+                    {
+                        from: './src/library/preload/notification.js',
+                        to: 'services',
+                    },
                     { from: './package.json' },
                 ],
             }),
