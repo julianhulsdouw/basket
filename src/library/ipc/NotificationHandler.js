@@ -1,8 +1,6 @@
 import { v1 as uuidv1 } from 'uuid';
-import { remote, ipcRenderer } from 'electron';
+import { ipcRenderer } from 'electron';
 import GetWebview from '../webview';
-
-const mainWindow = remote.getCurrentWindow();
 
 class NotificationHandler {
     constructor(notificationId, options, store) {
@@ -45,12 +43,7 @@ class NotificationHandler {
             const webview = GetWebview(this.service.identifier);
             webview.send(`notification-onclick:${this.notificationId}`, event);
 
-            // Make sure the app gets opened
-            mainWindow.show();
-            if (mainWindow.isMinimized()) {
-                mainWindow.restore();
-            }
-            mainWindow.focus();
+            ipcRenderer.send('open-main-window');
         };
 
         ipcRenderer.send('bouncybounce');
