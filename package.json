@@ -63,7 +63,7 @@
         "production": "mix --production",
         "pre-dist": "npm run production && node ./scripts/replaceMain.js",
         "dist": "npm run pre-dist && electron-builder",
-        "release": "npm run prod && electron-builder --publish always"
+        "release": "npm run production && electron-builder --publish always"
     },
     "dependencies": {
         "fs-extra": "^9.0.1",

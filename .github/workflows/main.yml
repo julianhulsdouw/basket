@@ -22,7 +22,7 @@ jobs:
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
-          build_script_name: "prod"
+          build_script_name: "production"
 
           mac_certs: ${{ secrets.mac_certs }}
 
