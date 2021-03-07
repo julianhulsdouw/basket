@@ -1,20 +1,21 @@
+import { app, BrowserWindow } from 'electron';
+import os from 'os';
 import { autoUpdater } from 'electron-updater';
 import settings from './library/settings';
 import AppMenu from './library/menu/main';
 import ipcMainInit from './library/ipc/main';
-
-const { app, BrowserWindow } = require('electron');
-const { isDevMode } = require('./library/environment');
+import { isDevMode } from './library/environment';
 
 let mainWindow;
 let forceQuit;
+const platform = os.platform();
 
 async function createWindow() {
     const mainWindowStateKeeper = await windowStateKeeper('main'); // eslint-disable-line
 
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        titleBarStyle: process.platform === 'darwin' ? 'hidden' : 'default',
+        titleBarStyle: platform === 'darwin' ? 'hidden' : 'default',
         title: 'Basket',
         x: mainWindowStateKeeper.x,
         y: mainWindowStateKeeper.y,
@@ -42,7 +43,7 @@ async function createWindow() {
     mainWindow.on('close', (event) => {
         event.preventDefault();
 
-        if (!forceQuit && process.platform === 'darwin') {
+        if (!forceQuit && platform === 'darwin') {
             mainWindow.hide();
         } else {
             app.exit(0);

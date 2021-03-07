@@ -1,7 +1,5 @@
 const mix = require('laravel-mix');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const StylelintPlugin = require('stylelint-webpack-plugin');
 
 require('vuetifyjs-mix-extension');
 
@@ -27,13 +25,9 @@ mix.setPublicPath(outputDir)
             ],
         },
         plugins: [
-            new HtmlWebpackPlugin({
-                template: './src/app.html',
-                filename: './app.html',
-                chunks: [],
-            }),
             new CopyWebpackPlugin({
                 patterns: [
+                    { from: './src/app.html' },
                     { from: './src/resources/static', to: 'static' },
                     { from: './src/services', to: 'services' },
                     {
@@ -47,16 +41,18 @@ mix.setPublicPath(outputDir)
                     { from: './package.json' },
                 ],
             }),
-            new StylelintPlugin({
-                files: ['**/*.?(vue|scss)'],
-                fix: false,
-            }),
         ],
         node: {
-            __dirname: false,
+            global: true,
+            __dirname: true,
+            __filename: true,
         },
     })
-    .options({
-        globalVueStyles: './src/resources/sass/all.scss',
+    .vuetify('vuetify-loader')
+    .vue({
+        version: 2,
+        globalStyles: './src/resources/sass/all.scss',
     })
-    .vuetify();
+    .options({
+        extractVueStyles: true,
+    });
