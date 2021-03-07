@@ -10,11 +10,7 @@ const contextMenu = require('./webviewContext'); // Is actually used.
 // eslint-disable-next-line no-unused-vars
 const Notification = require('./notification'); // Is actually used.
 
-const remote = electron.remote;
-const webContents = remote.getCurrentWebContents();
 const ipcRenderer = electron.ipcRenderer;
-
-window.session = webContents;
 
 // Set empty functions for when there is no recipe available
 // or specific functions aren't used.
