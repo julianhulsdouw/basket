@@ -12,10 +12,10 @@
 </template>
 
 <script>
+    import { ipcRenderer } from 'electron';
     import { mapActions, mapGetters } from 'vuex';
     import { SlickList, SlickItem } from 'vue-slicksort';
     import Service from './items/Service';
-    import AppMenu from '../../library/menu/main';
 
     export default {
         name: 'Services',
@@ -33,7 +33,7 @@
                 set(value) {
                     this.setServices(value);
 
-                    new AppMenu(this.$store); // eslint-disable-line no-new
+                    ipcRenderer.send('re-draw-menu');
                 },
             },
 

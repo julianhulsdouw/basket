@@ -7,9 +7,9 @@
 </template>
 
 <script>
+    import { ipcRenderer } from 'electron';
     import { mapActions } from 'vuex';
     import Tab from '../tabs/Tab';
-    import AppMenu from '../../../library/menu/main';
 
     export default {
         name: 'AddService',
@@ -21,7 +21,7 @@
                 const newServiceIdentifier = await this.addService();
                 this.showServicePanel(newServiceIdentifier);
 
-                new AppMenu(this.$store); // eslint-disable-line no-new
+                ipcRenderer.send('re-draw-menu');
             },
 
             ...mapActions('services', ['addService']),
