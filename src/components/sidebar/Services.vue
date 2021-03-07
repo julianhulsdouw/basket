@@ -30,8 +30,8 @@
                     return this.sortedServices;
                 },
 
-                set(value) {
-                    this.setServices(value);
+                async set(value) {
+                    await this.setServices(value);
 
                     ipcRenderer.send('re-draw-menu');
                 },
