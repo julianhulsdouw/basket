@@ -8,9 +8,9 @@ require('vuetifyjs-mix-extension');
 const outputDir = 'build/';
 
 mix.setPublicPath(outputDir)
-    .js('src/renderer.js', outputDir)
-    .js('src/main.js', outputDir)
-    .js('src/library/menu/webviewContext.js', outputDir + 'services')
+    .ts('src/renderer.js', outputDir)
+    .ts('src/main.js', outputDir)
+    .ts('src/library/menu/webviewContext.js', outputDir + 'services')
     .webpackConfig({
         target: 'electron-renderer',
         module: {
