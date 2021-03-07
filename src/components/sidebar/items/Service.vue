@@ -11,12 +11,10 @@
 </template>
 
 <script>
+    import { ipcRenderer } from 'electron';
     import { mapActions } from 'vuex';
     import Tab from '../tabs/Tab';
-    import ContextMenu from '../../../library/menu/serviceContext';
     import GetWebview from '../../../library/webview';
-
-    const { Menu } = require('@electron/remote');
 
     export default {
         name: 'Service',
@@ -37,12 +35,6 @@
                     './static/icons/basket.svg'
                 );
             },
-
-            showContextMenu() {
-                return Menu.buildFromTemplate(
-                    new ContextMenu(this.$store, this.service),
-                );
-            },
         },
         methods: {
             async showService() {
@@ -60,6 +52,10 @@
                 }
 
                 webview.focus();
+            },
+
+            showContextMenu() {
+                ipcRenderer.send('show-service-tab-context-menu', this.service);
             },
 
             ...mapActions('services', ['setActive']),

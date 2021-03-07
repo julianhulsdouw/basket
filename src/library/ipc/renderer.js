@@ -1,4 +1,5 @@
 import GetWebview from '../webview';
+import i18n from '../../config/i18n';
 
 const { ipcRenderer } = require('electron');
 
@@ -56,5 +57,50 @@ export default function ipcRendererInit(store) {
         }
 
         webview.focus();
+    });
+
+    ipcRenderer.on('editService', (event, identifier) => {
+        store.dispatch('panels/showServicePanel', identifier);
+    });
+
+    ipcRenderer.on('reloadService', (event, identifier, url) => {
+        const webview = GetWebview(identifier);
+        webview.loadURL(url);
+    });
+
+    ipcRenderer.on('toggleNotifications', (event, identifier) => {
+        store.dispatch('services/toggleNotifications', identifier);
+    });
+
+    ipcRenderer.on('toggleSound', (event, identifier, soundEnabled) => {
+        store.dispatch('services/toggleSound', identifier);
+
+        const webview = GetWebview(identifier);
+        const allSoundMuted = store.getters['settings/getSoundMuted'];
+
+        // When toggling sound on a service ensure the sound is muted if
+        // the service is muted or all sound is muted.
+        webview.setAudioMuted(!soundEnabled || allSoundMuted);
+    });
+
+    ipcRenderer.on('toggleService', async (event, identifier) => {
+        await store.dispatch('services/toggleService', identifier);
+
+        ipcRenderer.send('re-draw-menu');
+    });
+
+    ipcRenderer.on('removeService', async (event, identifier) => {
+        if (
+            // eslint-disable-next-line no-alert
+            window.confirm(i18n.t('confirm_delete_service'))
+        ) {
+            if (store.getters['panels/activePanelService'] === identifier) {
+                await store.dispatch('panels/hidePanels');
+            }
+
+            await store.dispatch('services/removeService', identifier);
+
+            ipcRenderer.send('re-draw-menu');
+        }
     });
 }

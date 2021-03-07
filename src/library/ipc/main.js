@@ -1,6 +1,8 @@
+import { app, ipcMain, Menu } from 'electron';
 import AppMenu from '../menu/main';
+import ServiceContext from '../menu/serviceContext';
 
-const { app, ipcMain } = require('electron');
+// const { app, ipcMain } = require('electron');
 
 export default function ipcMainInit(settings, mainWindow) {
     ipcMain.on('app-notification-count', (event, count) => {
@@ -22,5 +24,9 @@ export default function ipcMainInit(settings, mainWindow) {
         setTimeout(() => {
             new AppMenu(mainWindow, settings.getSync('services')); // eslint-disable-line
         }, 100);
+    });
+
+    ipcMain.on('show-service-tab-context-menu', (event, service) => {
+        Menu.buildFromTemplate(new ServiceContext(mainWindow, service)).popup();
     });
 }
