@@ -1,6 +1,7 @@
 import { app, ipcMain, Menu } from 'electron';
 import AppMenu from '../menu/main';
 import ServiceContext from '../menu/serviceContext';
+import WebviewContext from '../menu/webviewContext';
 
 // const { app, ipcMain } = require('electron');
 
@@ -28,6 +29,12 @@ export default function ipcMainInit(settings, mainWindow) {
 
     ipcMain.on('show-service-tab-context-menu', (event, service) => {
         Menu.buildFromTemplate(new ServiceContext(mainWindow, service)).popup();
+    });
+
+    ipcMain.on('show-context-menu', (event, actualEvent) => {
+        Menu.buildFromTemplate(
+            new WebviewContext(settings, actualEvent),
+        ).popup();
     });
 
     ipcMain.on('open-main-window', () => {

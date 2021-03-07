@@ -6,8 +6,6 @@ import ipcMainInit from './library/ipc/main';
 const { app, BrowserWindow } = require('electron');
 const { isDevMode } = require('./library/environment');
 
-require('@electron/remote/main').initialize();
-
 let mainWindow;
 let forceQuit;
 
@@ -28,7 +26,6 @@ async function createWindow() {
             contextIsolation: false,
             nodeIntegration: true,
             webviewTag: true,
-            enableRemoteModule: true,
         },
     });
 

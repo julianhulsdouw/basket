@@ -6,8 +6,6 @@ const electron = require('electron');
 const path = require('path');
 const fs = require('fs-extra');
 // eslint-disable-next-line no-unused-vars
-const contextMenu = require('./webviewContext'); // Is actually used.
-// eslint-disable-next-line no-unused-vars
 const Notification = require('./notification'); // Is actually used.
 
 const ipcRenderer = electron.ipcRenderer;
@@ -60,3 +58,11 @@ setInterval(() => {
         Number.isNaN(messageCount) ? 0 : messageCount,
     );
 }, 1000);
+
+window.addEventListener('contextmenu', () => {
+    const selectedText = window.getSelection().toString();
+
+    if (selectedText.length) {
+        ipcRenderer.send('show-context-menu', selectedText);
+    }
+});

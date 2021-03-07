@@ -63,7 +63,6 @@
         "release": "npm run prod && electron-builder --publish always"
     },
     "dependencies": {
-        "@electron/remote": "^1.0.4",
         "fs-extra": "^9.0.1",
         "uuid": "^8.3.2"
     }
