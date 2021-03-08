@@ -9,7 +9,7 @@
         "url": "https://github.com/basketapp/basket.git"
     },
     "author": "Ricardo Cino <ricardo@cino.io>",
-    "license": "MIT",
+    "license": "Apache-2.0",
     "bugs": {
         "url": "https://github.com/basketapp/basket/issues"
     },
@@ -20,6 +20,7 @@
         "deepmerge": "^4.2.2",
         "electron": "^12.0.0",
         "electron-builder": "^22.10.5",
+        "electron-packager": "^15.2.0",
         "electron-settings": "^4.0.2",
         "electron-updater": "^4.3.8",
         "eslint": "^7.21.0",
@@ -55,15 +56,14 @@
     },
     "scripts": {
         "start": "cross-env NODE_ENV=development electron ./build/main.js",
-        "dev": "npm run development ",
-        "development": "mix",
+        "dev": "mix",
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "production": "mix --production",
         "pre-dist": "npm run production && node ./scripts/replaceMain.js",
         "dist": "npm run pre-dist && electron-builder",
-        "release": "npm run production && electron-builder --publish always"
+        "release": "npm run pre-dist && electron-builder --publish always"
     },
     "dependencies": {
         "fs-extra": "^9.0.1",
